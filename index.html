@@ -1,0 +1,3576 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="EMDAR | إمدار — منصة ذكية للأمن السيبراني وذكاء سلاسل الإمداد."
+  />
+
+  <meta name="theme-color" content="#050B16" />
+
+  <title>EMDAR | إمدار — من الإمداد إلى القرار</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    /* =========================================================
+       EMDAR DESIGN SYSTEM
+    ========================================================= */
+
+    :root {
+      --bg: #050B16;
+      --bg-2: #07101D;
+      --card: #0D1626;
+      --card-active: #0B2535;
+
+      --border: #1E293B;
+      --border-soft: rgba(30, 41, 59, 0.65);
+
+      --cyan: #5ED6F7;
+      --cyan-bright: #00E5FF;
+      --blue: #4DA3FF;
+
+      --white: #F1F5F9;
+      --muted: #94A3B8;
+      --muted-2: #64748B;
+
+      --critical: #F0506E;
+      --high: #F5A524;
+      --medium: #4DA3FF;
+      --low: #4ADE80;
+
+      --radius: 18px;
+      --radius-sm: 11px;
+
+      --container: 1220px;
+
+      --shadow:
+        0 25px 80px rgba(0, 0, 0, 0.34);
+
+      --cyan-shadow:
+        0 0 50px rgba(0, 229, 255, 0.10);
+
+      --transition: 220ms ease;
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+
+      background: var(--bg);
+      color: var(--white);
+
+      font-family:
+        "IBM Plex Sans Arabic",
+        "DM Sans",
+        sans-serif;
+
+      line-height: 1.7;
+    }
+
+    ::selection {
+      background: var(--cyan-bright);
+      color: #031018;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+
+    /* =========================================================
+       GLOBAL BACKGROUND
+    ========================================================= */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -20;
+      pointer-events: none;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 82% 7%,
+          rgba(0, 229, 255, 0.075),
+          transparent 27%
+        ),
+        radial-gradient(
+          circle at 8% 40%,
+          rgba(77, 163, 255, 0.055),
+          transparent 30%
+        ),
+        var(--bg);
+    }
+
+    .background::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background-image:
+        linear-gradient(
+          rgba(148, 163, 184, 0.032) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(148, 163, 184, 0.032) 1px,
+          transparent 1px
+        );
+
+      background-size: 46px 46px;
+
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black 0%,
+          rgba(0,0,0,.7) 45%,
+          transparent 100%
+        );
+    }
+
+    .background::after {
+      content: "";
+
+      position: absolute;
+
+      width: 650px;
+      height: 650px;
+
+      top: -300px;
+      right: -250px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(0, 229, 255, 0.08),
+          transparent 68%
+        );
+
+      filter: blur(15px);
+    }
+
+
+    /* =========================================================
+       LAYOUT
+    ========================================================= */
+
+    .container {
+      width: min(
+        calc(100% - 40px),
+        var(--container)
+      );
+
+      margin: 0 auto;
+    }
+
+    section {
+      position: relative;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .header {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 1000;
+
+      border-bottom:
+        1px solid rgba(30, 41, 59, 0.72);
+
+      background:
+        rgba(5, 11, 22, 0.76);
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .navbar {
+      min-height: 78px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 46px;
+      height: 46px;
+
+      object-fit: cover;
+
+      border-radius: 12px;
+
+      border:
+        1px solid rgba(94, 214, 247, 0.25);
+
+      background: var(--card);
+
+      box-shadow:
+        0 0 30px rgba(0, 229, 255, 0.08);
+    }
+
+    .brand-info {
+      display: flex;
+      flex-direction: column;
+
+      line-height: 1.15;
+    }
+
+    .brand-name {
+      color: var(--white);
+
+      font-family:
+        "DM Sans",
+        "IBM Plex Sans Arabic",
+        sans-serif;
+
+      font-size: 19px;
+      font-weight: 800;
+
+      letter-spacing: -0.02em;
+    }
+
+    .brand-tagline {
+      margin-top: 4px;
+
+      color: var(--muted);
+
+      font-size: 9px;
+      font-weight: 500;
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+    }
+
+    .navigation a {
+      position: relative;
+
+      color: var(--muted);
+
+      font-size: 13px;
+      font-weight: 500;
+
+      transition: color var(--transition);
+    }
+
+    .navigation a::after {
+      content: "";
+
+      position: absolute;
+
+      width: 0;
+      height: 1px;
+
+      right: 0;
+      bottom: -7px;
+
+      background: var(--cyan-bright);
+
+      transition: width var(--transition);
+    }
+
+    .navigation a:hover {
+      color: var(--cyan);
+    }
+
+    .navigation a:hover::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+
+    .btn {
+      min-height: 44px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      padding:
+        0 17px;
+
+      border-radius: 10px;
+
+      border:
+        1px solid transparent;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: #031018;
+
+      background:
+        linear-gradient(
+          135deg,
+          #5ED6F7 0%,
+          #00E5FF 100%
+        );
+
+      box-shadow:
+        0 12px 35px rgba(0, 229, 255, 0.12);
+    }
+
+    .btn-primary:hover {
+      box-shadow:
+        0 16px 45px rgba(0, 229, 255, 0.22);
+    }
+
+    .btn-secondary {
+      color: var(--white);
+
+      background:
+        rgba(13, 22, 38, 0.65);
+
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--card-active);
+
+      border-color:
+        rgba(94, 214, 247, 0.38);
+    }
+
+    .language-btn {
+      min-width: 42px;
+      height: 40px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 10px;
+
+      color: var(--muted);
+
+      background: rgba(13, 22, 38, 0.65);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 10px;
+
+      cursor: pointer;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      transition: all var(--transition);
+    }
+
+    .language-btn:hover {
+      color: var(--cyan);
+
+      border-color:
+        rgba(94, 214, 247, 0.35);
+
+      background: var(--card-active);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 100vh;
+
+      padding:
+        150px 0 85px;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.04fr
+        0.96fr;
+
+      align-items: center;
+
+      gap: 70px;
+    }
+
+    .eyebrow {
+      width: fit-content;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding:
+        7px 12px;
+
+      margin-bottom: 22px;
+
+      color: var(--cyan);
+
+      background:
+        rgba(11, 37, 53, 0.56);
+
+      border:
+        1px solid rgba(0, 229, 255, 0.16);
+
+      border-radius: 999px;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--cyan-bright);
+
+      box-shadow:
+        0 0 13px rgba(0, 229, 255, 0.85);
+    }
+
+    .hero-title {
+      max-width: 720px;
+
+      color: var(--white);
+
+      font-family:
+        "IBM Plex Sans Arabic",
+        sans-serif;
+
+      font-size:
+        clamp(48px, 7vw, 84px);
+
+      line-height: 1.04;
+
+      font-weight: 700;
+
+      letter-spacing: -0.055em;
+    }
+
+    .hero-title .gradient {
+      display: block;
+
+      background:
+        linear-gradient(
+          100deg,
+          #4DA3FF,
+          #5ED6F7 50%,
+          #00E5FF
+        );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 660px;
+
+      margin-top: 27px;
+
+      color: var(--muted);
+
+      font-size: 16px;
+
+      line-height: 2;
+    }
+
+    .hero-description strong {
+      color: var(--white);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 11px;
+
+      margin-top: 30px;
+    }
+
+    .hero-disclaimer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-top: 17px;
+
+      color: var(--muted-2);
+
+      font-size: 10px;
+    }
+
+    .hero-disclaimer::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--cyan-bright);
+
+      box-shadow:
+        0 0 10px rgba(0, 229, 255, 0.65);
+    }
+
+
+    /* =========================================================
+       HERO VISUAL
+    ========================================================= */
+
+    .hero-visual {
+      min-height: 510px;
+
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-glow {
+      position: absolute;
+
+      width: 430px;
+      height: 430px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(0, 229, 255, 0.12),
+          transparent 67%
+        );
+
+      filter: blur(8px);
+    }
+
+    .orbit {
+      position: relative;
+
+      width: 385px;
+      height: 385px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(94, 214, 247, 0.18);
+
+      box-shadow:
+        0 0 90px rgba(0, 229, 255, 0.05),
+        inset 0 0 70px rgba(0, 229, 255, 0.035);
+    }
+
+    .orbit::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 31px;
+
+      border-radius: 50%;
+
+      border:
+        1px dashed rgba(94, 214, 247, 0.13);
+    }
+
+    .orbit::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 83px;
+
+      border-radius: 50%;
+
+      border:
+        1px solid rgba(77, 163, 255, 0.12);
+    }
+
+    .orbit-line {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      width: 100%;
+      height: 1px;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(94, 214, 247, 0.18),
+          transparent
+        );
+
+      transform:
+        translate(-50%, -50%)
+        rotate(45deg);
+    }
+
+    .orbit-line.second {
+      transform:
+        translate(-50%, -50%)
+        rotate(-45deg);
+    }
+
+    .orbit-line.third {
+      transform:
+        translate(-50%, -50%)
+        rotate(90deg);
+    }
+
+    .center-logo {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      transform:
+        translate(-50%, -50%);
+
+      width: 132px;
+      height: 132px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background:
+        rgba(13, 22, 38, 0.97);
+
+      border:
+        1px solid rgba(0, 229, 255, 0.36);
+
+      box-shadow:
+        0 0 50px rgba(0, 229, 255, 0.12),
+        inset 0 0 30px rgba(0, 229, 255, 0.05);
+    }
+
+    .center-logo img {
+      width: 76px;
+      height: 76px;
+
+      object-fit: cover;
+
+      border-radius: 17px;
+    }
+
+    .node {
+      position: absolute;
+
+      width: 12px;
+      height: 12px;
+
+      border-radius: 50%;
+
+      border:
+        3px solid var(--bg);
+
+      background: var(--cyan-bright);
+
+      box-shadow:
+        0 0 20px rgba(0, 229, 255, 0.75);
+    }
+
+    .node.n1 {
+      top: 23px;
+      left: 50%;
+
+      transform: translateX(-50%);
+    }
+
+    .node.n2 {
+      right: 23px;
+      top: 50%;
+
+      transform: translateY(-50%);
+    }
+
+    .node.n3 {
+      bottom: 23px;
+      left: 50%;
+
+      transform: translateX(-50%);
+    }
+
+    .node.n4 {
+      left: 23px;
+      top: 50%;
+
+      transform: translateY(-50%);
+    }
+
+    .node.n5 {
+      top: 78px;
+      right: 69px;
+
+      background: var(--high);
+
+      box-shadow:
+        0 0 18px rgba(245, 165, 36, 0.55);
+    }
+
+    .node.n6 {
+      bottom: 78px;
+      left: 69px;
+
+      background: var(--low);
+
+      box-shadow:
+        0 0 18px rgba(74, 222, 128, 0.5);
+    }
+
+    .visual-card {
+      position: absolute;
+
+      min-width: 150px;
+
+      padding:
+        12px 14px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 2px;
+
+      background:
+        rgba(13, 22, 38, 0.91);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 12px;
+
+      backdrop-filter: blur(12px);
+
+      box-shadow: var(--shadow);
+
+      animation:
+        floating 5s ease-in-out infinite;
+    }
+
+    .visual-card strong {
+      color: var(--white);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 0.04em;
+    }
+
+    .visual-card span {
+      color: var(--muted);
+
+      font-size: 9px;
+    }
+
+    .visual-card.one {
+      top: 55px;
+      right: -18px;
+    }
+
+    .visual-card.two {
+      left: -22px;
+      bottom: 76px;
+
+      animation-delay: -2s;
+    }
+
+    .visual-card.three {
+      right: 15px;
+      bottom: 22px;
+
+      animation-delay: -3s;
+    }
+
+    @keyframes floating {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+
+    /* =========================================================
+       HERO METRICS
+    ========================================================= */
+
+    .metrics {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 10px;
+
+      max-width: 690px;
+
+      margin-top: 48px;
+    }
+
+    .metric {
+      padding:
+        18px;
+
+      background:
+        rgba(13, 22, 38, 0.64);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 13px;
+    }
+
+    .metric-number {
+      color: var(--cyan);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .metric-label {
+      margin-top: 2px;
+
+      color: var(--muted);
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       SECTION HEADINGS
+    ========================================================= */
+
+    .section {
+      padding: 105px 0;
+    }
+
+    .section-intro {
+      max-width: 780px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 16px;
+
+      color: var(--cyan);
+
+      font-family:
+        "DM Sans",
+        "IBM Plex Sans Arabic",
+        sans-serif;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      letter-spacing: 0.08em;
+    }
+
+    .section-label::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: var(--cyan-bright);
+
+      box-shadow:
+        0 0 12px rgba(0, 229, 255, 0.8);
+    }
+
+    .section-title {
+      color: var(--white);
+
+      font-size:
+        clamp(31px, 4vw, 52px);
+
+      line-height: 1.17;
+
+      font-weight: 700;
+
+      letter-spacing: -0.035em;
+    }
+
+    .section-description {
+      max-width: 730px;
+
+      margin-top: 17px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.95;
+    }
+
+
+    /* =========================================================
+       CAPABILITIES
+    ========================================================= */
+
+    .capabilities {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 13px;
+
+      margin-top: 48px;
+    }
+
+    .capability {
+      position: relative;
+
+      min-height: 215px;
+
+      padding: 25px;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(13, 22, 38, 0.96),
+          rgba(7, 14, 25, 0.94)
+        );
+
+      border:
+        1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .capability::after {
+      content: "";
+
+      position: absolute;
+
+      width: 160px;
+      height: 160px;
+
+      top: -95px;
+      left: -70px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(0, 229, 255, 0.075),
+          transparent 68%
+        );
+    }
+
+    .capability:hover {
+      transform: translateY(-5px);
+
+      background:
+        var(--card-active);
+
+      border-color:
+        rgba(94, 214, 247, 0.32);
+
+      box-shadow:
+        var(--cyan-shadow);
+    }
+
+    .capability-icon {
+      width: 43px;
+      height: 43px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 19px;
+
+      border-radius: 11px;
+
+      color: var(--cyan);
+
+      background:
+        rgba(0, 229, 255, 0.06);
+
+      border:
+        1px solid rgba(0, 229, 255, 0.14);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .capability h3 {
+      color: var(--white);
+
+      font-size: 18px;
+
+      margin-bottom: 7px;
+    }
+
+    .capability p {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.85;
+    }
+
+
+    /* =========================================================
+       FLOW
+    ========================================================= */
+
+    .flow-box {
+      margin-top: 45px;
+
+      padding: 28px;
+
+      overflow-x: auto;
+
+      background:
+        rgba(13, 22, 38, 0.72);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: var(--radius);
+    }
+
+    .flow {
+      min-width: 820px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flow-item {
+      min-width: 105px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 8px;
+    }
+
+    .flow-circle {
+      width: 45px;
+      height: 45px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      color: var(--cyan);
+
+      background:
+        var(--card-active);
+
+      border:
+        1px solid rgba(94, 214, 247, 0.35);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      box-shadow:
+        0 0 22px rgba(0, 229, 255, 0.05);
+    }
+
+    .flow-label {
+      color: var(--muted);
+
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .flow-arrow {
+      color: #526579;
+
+      font-size: 18px;
+
+      margin: 0 4px;
+    }
+
+
+    /* =========================================================
+       PLATFORM PREVIEW
+    ========================================================= */
+
+    .preview {
+      margin-top: 50px;
+
+      padding: 14px;
+
+      background:
+        #080F1B;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 22px;
+
+      box-shadow: var(--shadow);
+
+      overflow: hidden;
+    }
+
+    .preview-top {
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 12px;
+
+      border-bottom:
+        1px solid var(--border);
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .window-dots span {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: #334155;
+    }
+
+    .preview-name {
+      color: var(--muted-2);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 9px;
+    }
+
+    .dashboard {
+      display: grid;
+
+      grid-template-columns:
+        205px
+        1fr;
+
+      min-height: 420px;
+    }
+
+    .sidebar {
+      padding: 19px 13px;
+
+      border-left:
+        1px solid var(--border);
+    }
+
+    .sidebar-title {
+      padding:
+        5px 9px 18px;
+
+      color: var(--white);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .sidebar-item {
+      padding:
+        9px 10px;
+
+      margin-bottom: 3px;
+
+      border-radius: 8px;
+
+      color: #6F8295;
+
+      font-size: 9px;
+    }
+
+    .sidebar-item.active {
+      color: var(--cyan);
+
+      background:
+        rgba(0, 229, 255, 0.065);
+
+      border:
+        1px solid rgba(0, 229, 255, 0.12);
+    }
+
+    .dashboard-content {
+      padding: 23px;
+    }
+
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 18px;
+    }
+
+    .dashboard-header h3 {
+      color: var(--white);
+
+      font-size: 16px;
+    }
+
+    .demo-tag {
+      color: var(--muted-2);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 8px;
+    }
+
+    .dashboard-metrics {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 9px;
+    }
+
+    .dash-card {
+      padding: 15px;
+
+      background: var(--card);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 10px;
+    }
+
+    .dash-label {
+      color: var(--muted);
+
+      font-size: 8px;
+    }
+
+    .dash-value {
+      margin-top: 5px;
+
+      color: var(--white);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .dash-value.high {
+      color: var(--high);
+    }
+
+    .dash-value.critical {
+      color: var(--critical);
+    }
+
+    .dashboard-lower {
+      display: grid;
+
+      grid-template-columns:
+        1.15fr
+        0.85fr;
+
+      gap: 9px;
+
+      margin-top: 9px;
+    }
+
+    .dash-panel {
+      min-height: 210px;
+
+      padding: 17px;
+
+      background: var(--card);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 10px;
+    }
+
+    .dash-panel-title {
+      color: var(--white);
+
+      font-size: 10px;
+      font-weight: 700;
+
+      margin-bottom: 17px;
+    }
+
+    .risk-row {
+      display: grid;
+
+      grid-template-columns:
+        60px
+        1fr
+        30px;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-bottom: 13px;
+    }
+
+    .risk-name {
+      color: var(--muted);
+
+      font-size: 8px;
+    }
+
+    .risk-track {
+      height: 5px;
+
+      border-radius: 99px;
+
+      overflow: hidden;
+
+      background: #172235;
+    }
+
+    .risk-fill {
+      height: 100%;
+
+      border-radius: inherit;
+    }
+
+    .risk-fill.critical {
+      width: 87%;
+      background: var(--critical);
+    }
+
+    .risk-fill.high {
+      width: 68%;
+      background: var(--high);
+    }
+
+    .risk-fill.medium {
+      width: 47%;
+      background: var(--medium);
+    }
+
+    .risk-fill.low {
+      width: 25%;
+      background: var(--low);
+    }
+
+    .risk-number {
+      color: var(--white);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 8px;
+
+      text-align: left;
+    }
+
+    .alert {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      padding: 9px 0;
+
+      border-bottom:
+        1px solid rgba(30, 41, 59, 0.65);
+    }
+
+    .alert:last-child {
+      border-bottom: 0;
+    }
+
+    .alert-dot {
+      width: 7px;
+      height: 7px;
+
+      flex-shrink: 0;
+
+      border-radius: 50%;
+    }
+
+    .alert-dot.critical {
+      background: var(--critical);
+
+      box-shadow:
+        0 0 10px rgba(240, 80, 110, 0.45);
+    }
+
+    .alert-dot.high {
+      background: var(--high);
+
+      box-shadow:
+        0 0 10px rgba(245, 165, 36, 0.4);
+    }
+
+    .alert-text {
+      color: var(--muted);
+
+      font-size: 8px;
+    }
+
+
+    /* =========================================================
+       CYBER SECTION
+    ========================================================= */
+
+    .cyber-grid {
+      display: grid;
+
+      grid-template-columns:
+        0.95fr
+        1.05fr;
+
+      gap: 14px;
+
+      margin-top: 48px;
+    }
+
+    .cyber-card {
+      position: relative;
+
+      padding: 29px;
+
+      min-height: 300px;
+
+      background: var(--card);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      overflow: hidden;
+    }
+
+    .cyber-card.active {
+      background:
+        linear-gradient(
+          145deg,
+          #0B2535,
+          #0D1626
+        );
+
+      border-color:
+        rgba(0, 229, 255, 0.28);
+
+      box-shadow:
+        var(--cyan-shadow);
+    }
+
+    .cyber-card h3 {
+      color: var(--white);
+
+      font-size: 21px;
+
+      margin-bottom: 10px;
+    }
+
+    .cyber-card > p {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.9;
+    }
+
+    .threat-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
+      gap: 8px;
+
+      margin-top: 20px;
+    }
+
+    .threat {
+      padding: 10px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 7px;
+
+      color: var(--muted);
+
+      background:
+        rgba(5, 11, 22, 0.38);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 9px;
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 9px;
+    }
+
+    .threat::before {
+      content: "";
+
+      width: 5px;
+      height: 5px;
+
+      flex-shrink: 0;
+
+      border-radius: 50%;
+
+      background: var(--cyan-bright);
+
+      box-shadow:
+        0 0 8px rgba(0, 229, 255, 0.7);
+    }
+
+    .score-area {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      margin-top: 32px;
+    }
+
+    .score {
+      color: var(--high);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 58px;
+      font-weight: 800;
+
+      line-height: 1;
+    }
+
+    .score-caption {
+      margin-top: 5px;
+
+      color: var(--muted);
+
+      font-size: 9px;
+    }
+
+    .confidence {
+      text-align: left;
+
+      color: var(--muted);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 9px;
+    }
+
+    .confidence strong {
+      display: block;
+
+      margin-top: 2px;
+
+      color: var(--cyan);
+
+      font-size: 19px;
+    }
+
+
+    /* =========================================================
+       RISK LEGEND
+    ========================================================= */
+
+    .risk-legend {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 9px;
+
+      margin-top: 24px;
+    }
+
+    .legend {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      padding:
+        7px 9px;
+
+      color: var(--muted);
+
+      background:
+        rgba(13, 22, 38, 0.7);
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 8px;
+
+      font-size: 9px;
+    }
+
+    .legend-dot {
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+    }
+
+    .legend-dot.critical {
+      background: var(--critical);
+    }
+
+    .legend-dot.high {
+      background: var(--high);
+    }
+
+    .legend-dot.medium {
+      background: var(--medium);
+    }
+
+    .legend-dot.low {
+      background: var(--low);
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta-section {
+      padding:
+        85px 0 110px;
+    }
+
+    .cta {
+      position: relative;
+
+      padding:
+        62px 55px;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(0, 229, 255, 0.20);
+
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0B2535 0%,
+          #0D1626 65%
+        );
+
+      box-shadow: var(--shadow);
+    }
+
+    .cta::before {
+      content: "";
+
+      position: absolute;
+
+      width: 470px;
+      height: 470px;
+
+      left: -230px;
+      top: -240px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(0, 229, 255, 0.12),
+          transparent 68%
+        );
+    }
+
+    .cta-content {
+      position: relative;
+
+      max-width: 730px;
+    }
+
+    .cta h2 {
+      color: var(--white);
+
+      font-size:
+        clamp(33px, 5vw, 55px);
+
+      line-height: 1.14;
+
+      font-weight: 700;
+
+      letter-spacing: -0.035em;
+    }
+
+    .cta p {
+      max-width: 650px;
+
+      margin-top: 15px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.9;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 10px;
+
+      margin-top: 26px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      border-top:
+        1px solid var(--border);
+
+      background:
+        rgba(3, 8, 17, 0.72);
+    }
+
+    .footer-inner {
+      min-height: 120px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 25px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+
+      gap: 3px;
+    }
+
+    .footer-brand strong {
+      color: var(--white);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .footer-brand span {
+      color: var(--muted);
+
+      font-size: 9px;
+    }
+
+    .footer-credit {
+      text-align: left;
+
+      color: var(--muted-2);
+
+      font-size: 9px;
+
+      line-height: 1.8;
+    }
+
+    .footer-credit strong {
+      color: var(--cyan);
+
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       REVEAL ANIMATION
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(24px);
+
+      transition:
+        opacity 700ms ease,
+        transform 700ms ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 1050px) {
+
+      .navigation {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+
+      .hero-visual {
+        min-height: 470px;
+      }
+
+      .capabilities {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .cyber-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    @media (max-width: 760px) {
+
+      .container {
+        width:
+          min(
+            calc(100% - 28px),
+            var(--container)
+          );
+      }
+
+      .navbar {
+        min-height: 70px;
+      }
+
+      .brand-logo {
+        width: 41px;
+        height: 41px;
+      }
+
+      .brand-name {
+        font-size: 17px;
+      }
+
+      .brand-tagline {
+        font-size: 8px;
+      }
+
+      .header-actions .btn-primary {
+        display: none;
+      }
+
+      .hero {
+        padding:
+          120px 0 70px;
+      }
+
+      .hero-title {
+        font-size:
+          clamp(44px, 14vw, 65px);
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 390px;
+      }
+
+      .orbit {
+        width: 300px;
+        height: 300px;
+      }
+
+      .center-logo {
+        width: 105px;
+        height: 105px;
+      }
+
+      .center-logo img {
+        width: 59px;
+        height: 59px;
+      }
+
+      .visual-card {
+        min-width: 120px;
+
+        padding:
+          9px 10px;
+      }
+
+      .visual-card.one {
+        right: -5px;
+        top: 25px;
+      }
+
+      .visual-card.two {
+        left: -5px;
+        bottom: 48px;
+      }
+
+      .visual-card.three {
+        right: 0;
+        bottom: 20px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .capabilities {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-box {
+        padding: 22px 15px;
+      }
+
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .dashboard-metrics {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .dashboard-lower {
+        grid-template-columns: 1fr;
+      }
+
+      .preview {
+        padding: 9px;
+      }
+
+      .dashboard-content {
+        padding: 17px;
+      }
+
+      .cta {
+        padding:
+          42px 24px;
+      }
+
+      .footer-inner {
+        min-height: auto;
+
+        padding:
+          28px 0;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .footer-credit {
+        text-align: right;
+      }
+    }
+
+
+    @media (max-width: 430px) {
+
+      .hero-title {
+        font-size: 43px;
+      }
+
+      .orbit {
+        width: 270px;
+        height: 270px;
+      }
+
+      .visual-card {
+        transform: scale(0.86);
+      }
+
+      .visual-card.one {
+        right: -25px;
+      }
+
+      .visual-card.two {
+        left: -25px;
+      }
+
+      .threat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-metrics {
+        gap: 6px;
+      }
+
+      .dash-card {
+        padding: 11px;
+      }
+
+      .dash-value {
+        font-size: 18px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =======================================================
+       GLOBAL BACKGROUND
+  ======================================================== -->
+
+  <div class="background"></div>
+
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header class="header">
+
+    <div class="container">
+
+      <div class="navbar">
+
+        <a href="#home" class="brand">
+
+          <img
+            src="emdarlogo.jpeg"
+            alt="EMDAR | إمدار"
+            class="brand-logo"
+          />
+
+          <div class="brand-info">
+
+            <div class="brand-name">
+              EMDAR | إمدار
+            </div>
+
+            <div class="brand-tagline">
+              من الإمداد إلى القرار.
+            </div>
+
+          </div>
+
+        </a>
+
+
+        <nav class="navigation">
+
+          <a href="#about">
+            عن إمدار
+          </a>
+
+          <a href="#capabilities">
+            القدرات
+          </a>
+
+          <a href="#cyber">
+            الذكاء السيبراني
+          </a>
+
+          <a href="#platform">
+            المنصة
+          </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+          <button
+            type="button"
+            class="language-btn"
+            id="languageButton"
+          >
+            EN
+          </button>
+
+          <a
+            href="https://emdar-supply-flow.base44.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            جرّب النموذج
+            <span>↗</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
+
+  <main id="home">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="hero-grid">
+
+
+          <div class="hero-content reveal">
+
+            <div class="eyebrow">
+
+              <span class="eyebrow-dot"></span>
+
+              منصة ذكية للأمن السيبراني وذكاء سلاسل الإمداد
+
+            </div>
+
+
+            <h1 class="hero-title">
+
+              من المخاطر
+
+              <span class="gradient">
+                إلى القرار.
+              </span>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+              <strong>إمدار | EMDAR</strong>
+              منصة ذكية تجمع بين
+              <strong>الأمن السيبراني وذكاء سلاسل الإمداد</strong>
+              لمساعدة المنشآت على اكتشاف المخاطر والتهديدات
+              مبكرًا، وفهم تأثيرها على العمليات، ومحاكاة
+              السيناريوهات المحتملة، ثم الوصول إلى قرارات
+              استباقية ومدروسة.
+
+            </p>
+
+
+            <div class="hero-actions">
+
+              <a
+                href="https://emdar-supply-flow.base44.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+              >
+                جرّب النموذج الأولي
+                <span>→</span>
+              </a>
+
+              <a
+                href="#about"
+                class="btn btn-secondary"
+              >
+                اكتشف إمدار
+                <span>↓</span>
+              </a>
+
+            </div>
+
+
+            <div class="hero-disclaimer">
+              بيانات تجريبية ومحاكاة توضيحية — ليست تنبؤات مؤكدة
+            </div>
+
+
+            <div class="metrics">
+
+              <div class="metric">
+
+                <div class="metric-number">
+                  Cyber
+                </div>
+
+                <div class="metric-label">
+                  Cyber Resilience
+                </div>
+
+              </div>
+
+
+              <div class="metric">
+
+                <div class="metric-number">
+                  Supply
+                </div>
+
+                <div class="metric-label">
+                  Supply Chain Intelligence
+                </div>
+
+              </div>
+
+
+              <div class="metric">
+
+                <div class="metric-number">
+                  SAR
+                </div>
+
+                <div class="metric-label">
+                  Impact & Cost Intelligence
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- HERO VISUAL -->
+
+          <div class="hero-visual reveal">
+
+            <div class="hero-glow"></div>
+
+
+            <div class="orbit">
+
+              <div class="orbit-line"></div>
+              <div class="orbit-line second"></div>
+              <div class="orbit-line third"></div>
+
+
+              <div class="node n1"></div>
+              <div class="node n2"></div>
+              <div class="node n3"></div>
+              <div class="node n4"></div>
+              <div class="node n5"></div>
+              <div class="node n6"></div>
+
+
+              <div class="center-logo">
+
+                <img
+                  src="emdarlogo.jpeg"
+                  alt="EMDAR Logo"
+                />
+
+              </div>
+
+            </div>
+
+
+            <div class="visual-card one">
+
+              <strong>
+                DETECT
+              </strong>
+
+              <span>
+                تهديد سيبراني
+              </span>
+
+            </div>
+
+
+            <div class="visual-card two">
+
+              <strong>
+                ANALYZE
+              </strong>
+
+              <span>
+                مخاطر سلسلة الإمداد
+              </span>
+
+            </div>
+
+
+            <div class="visual-card three">
+
+              <strong>
+                DECISION
+              </strong>
+
+              <span>
+                خطة استجابة موصى بها
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section
+      class="section"
+      id="about"
+    >
+
+      <div class="container">
+
+        <div class="section-intro reveal">
+
+          <div class="section-label">
+            EMDAR INTELLIGENCE
+          </div>
+
+          <h2 class="section-title">
+            عندما يتحول الخطر الرقمي
+            إلى أثر حقيقي في سلسلة الإمداد.
+          </h2>
+
+          <p class="section-description">
+
+            يربط إمدار بين التهديدات السيبرانية،
+            الموردين، الموانئ، الشحنات، المسارات،
+            المخزون والعمليات؛ لتحويل البيانات المعقدة
+            والمخاطر المتغيرة إلى صورة واضحة تدعم
+            متخذ القرار.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CAPABILITIES
+    ====================================================== -->
+
+    <section
+      class="section"
+      id="capabilities"
+      style="padding-top:0;"
+    >
+
+      <div class="container">
+
+        <div class="capabilities">
+
+
+          <article class="capability reveal">
+
+            <div class="capability-icon">
+              ◉
+            </div>
+
+            <h3>
+              اكتشاف
+            </h3>
+
+            <p>
+              رصد مؤشرات المخاطر والتهديدات السيبرانية
+              المحتملة وإبراز الأحداث التي تحتاج إلى
+              انتباه فوري.
+            </p>
+
+          </article>
+
+
+          <article class="capability reveal">
+
+            <div class="capability-icon">
+              ◌
+            </div>
+
+            <h3>
+              تحليل
+            </h3>
+
+            <p>
+              فهم نوع الخطر، نقطة الدخول المحتملة،
+              الأنظمة والأصول المتأثرة، ومدى ارتباطه
+              بسلسلة الإمداد.
+            </p>
+
+          </article>
+
+
+          <article class="capability reveal">
+
+            <div class="capability-icon">
+              ◇
+            </div>
+
+            <h3>
+              محاكاة
+            </h3>
+
+            <p>
+              محاكاة سيناريوهات الهجمات والانقطاعات
+              وقياس أثرها المحتمل على الموانئ والشحنات
+              والمخزون والتكلفة.
+            </p>
+
+          </article>
+
+
+          <article class="capability reveal">
+
+            <div class="capability-icon">
+              ◆
+            </div>
+
+            <h3>
+              توصية
+            </h3>
+
+            <p>
+              مقارنة البدائل وخطط الاستجابة وفق
+              الوقت، التكلفة، المخاطر، السعة
+              واستمرارية الأعمال.
+            </p>
+
+          </article>
+
+
+          <article class="capability reveal">
+
+            <div class="capability-icon">
+              ↗
+            </div>
+
+            <h3>
+              استجابة
+            </h3>
+
+            <p>
+              تحويل التحليل إلى إجراءات واضحة تشمل
+              الأمن السيبراني، الموردين، النقل،
+              الجمارك والعمليات.
+            </p>
+
+          </article>
+
+
+          <article class="capability reveal">
+
+            <div class="capability-icon">
+              ↻
+            </div>
+
+            <h3>
+              تعافٍ
+            </h3>
+
+            <p>
+              إعادة التخطيط ديناميكيًا عند تغير
+              الظروف ودعم التعافي واستمرارية
+              الأعمال.
+            </p>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FLOW
+    ====================================================== -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-intro reveal">
+
+          <div class="section-label">
+            EMDAR FLOW
+          </div>
+
+          <h2 class="section-title">
+            من الاكتشاف إلى التعافي.
+          </h2>
+
+        </div>
+
+
+        <div class="flow-box reveal">
+
+          <div class="flow">
+
+
+            <div class="flow-item">
+
+              <div class="flow-circle">
+                01
+              </div>
+
+              <div class="flow-label">
+                اكتشاف
+              </div>
+
+            </div>
+
+
+            <div class="flow-arrow">
+              ←
+            </div>
+
+
+            <div class="flow-item">
+
+              <div class="flow-circle">
+                02
+              </div>
+
+              <div class="flow-label">
+                تحليل
+              </div>
+
+            </div>
+
+
+            <div class="flow-arrow">
+              ←
+            </div>
+
+
+            <div class="flow-item">
+
+              <div class="flow-circle">
+                03
+              </div>
+
+              <div class="flow-label">
+                محاكاة
+              </div>
+
+            </div>
+
+
+            <div class="flow-arrow">
+              ←
+            </div>
+
+
+            <div class="flow-item">
+
+              <div class="flow-circle">
+                04
+              </div>
+
+              <div class="flow-label">
+                توصية
+              </div>
+
+            </div>
+
+
+            <div class="flow-arrow">
+              ←
+            </div>
+
+
+            <div class="flow-item">
+
+              <div class="flow-circle">
+                05
+              </div>
+
+              <div class="flow-label">
+                استجابة
+              </div>
+
+            </div>
+
+
+            <div class="flow-arrow">
+              ←
+            </div>
+
+
+            <div class="flow-item">
+
+              <div class="flow-circle">
+                06
+              </div>
+
+              <div class="flow-label">
+                تعافٍ
+              </div>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PLATFORM
+    ====================================================== -->
+
+    <section
+      class="section"
+      id="platform"
+    >
+
+      <div class="container">
+
+        <div class="section-intro reveal">
+
+          <div class="section-label">
+            PLATFORM
+          </div>
+
+          <h2 class="section-title">
+            رؤية موحدة لسلسلة الإمداد.
+          </h2>
+
+          <p class="section-description">
+            واجهة واحدة تجمع المخاطر السيبرانية،
+            الموانئ، الشحنات، المخزون والتنبيهات
+            في صورة تساعد على فهم الوضع واتخاذ القرار.
+          </p>
+
+        </div>
+
+
+        <div class="preview reveal">
+
+
+          <div class="preview-top">
+
+            <div class="window-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="preview-name">
+              EMDAR Intelligence Dashboard
+            </div>
+
+          </div>
+
+
+          <div class="dashboard">
+
+
+            <aside class="sidebar">
+
+              <div class="sidebar-title">
+                EMDAR
+              </div>
+
+              <div class="sidebar-item active">
+                نظرة عامة
+              </div>
+
+              <div class="sidebar-item">
+                الذكاء السيبراني
+              </div>
+
+              <div class="sidebar-item">
+                خريطة المخاطر
+              </div>
+
+              <div class="sidebar-item">
+                الشحنات
+              </div>
+
+              <div class="sidebar-item">
+                المخزون
+              </div>
+
+              <div class="sidebar-item">
+                المحاكاة
+              </div>
+
+              <div class="sidebar-item">
+                التقارير
+              </div>
+
+            </aside>
+
+
+            <div class="dashboard-content">
+
+
+              <div class="dashboard-header">
+
+                <h3>
+                  نظرة عامة على المخاطر
+                </h3>
+
+                <span class="demo-tag">
+                  SIMULATED DEMO DATA
+                </span>
+
+              </div>
+
+
+              <div class="dashboard-metrics">
+
+
+                <div class="dash-card">
+
+                  <div class="dash-label">
+                    Supply Chain Risk
+                  </div>
+
+                  <div class="dash-value high">
+                    68
+                  </div>
+
+                </div>
+
+
+                <div class="dash-card">
+
+                  <div class="dash-label">
+                    Active Cyber Threats
+                  </div>
+
+                  <div class="dash-value critical">
+                    04
+                  </div>
+
+                </div>
+
+
+                <div class="dash-card">
+
+                  <div class="dash-label">
+                    Affected Shipments
+                  </div>
+
+                  <div class="dash-value">
+                    12
+                  </div>
+
+                </div>
+
+
+                <div class="dash-card">
+
+                  <div class="dash-label">
+                    High-Risk Ports
+                  </div>
+
+                  <div class="dash-value">
+                    03
+                  </div>
+
+                </div>
+
+
+              </div>
+
+
+              <div class="dashboard-lower">
+
+
+                <div class="dash-panel">
+
+                  <div class="dash-panel-title">
+                    مستويات المخاطر
+                  </div>
+
+
+                  <div class="risk-row">
+
+                    <div class="risk-name">
+                      حرجة
+                    </div>
+
+                    <div class="risk-track">
+                      <div class="risk-fill critical"></div>
+                    </div>
+
+                    <div class="risk-number">
+                      87
+                    </div>
+
+                  </div>
+
+
+                  <div class="risk-row">
+
+                    <div class="risk-name">
+                      عالية
+                    </div>
+
+                    <div class="risk-track">
+                      <div class="risk-fill high"></div>
+                    </div>
+
+                    <div class="risk-number">
+                      68
+                    </div>
+
+                  </div>
+
+
+                  <div class="risk-row">
+
+                    <div class="risk-name">
+                      متوسطة
+                    </div>
+
+                    <div class="risk-track">
+                      <div class="risk-fill medium"></div>
+                    </div>
+
+                    <div class="risk-number">
+                      47
+                    </div>
+
+                  </div>
+
+
+                  <div class="risk-row">
+
+                    <div class="risk-name">
+                      منخفضة
+                    </div>
+
+                    <div class="risk-track">
+                      <div class="risk-fill low"></div>
+                    </div>
+
+                    <div class="risk-number">
+                      25
+                    </div>
+
+                  </div>
+
+
+                </div>
+
+
+                <div class="dash-panel">
+
+                  <div class="dash-panel-title">
+                    التنبيهات الأخيرة
+                  </div>
+
+
+                  <div class="alert">
+
+                    <div class="alert-dot critical"></div>
+
+                    <div class="alert-text">
+                      تهديد سيبراني عالي التأثير
+                    </div>
+
+                  </div>
+
+
+                  <div class="alert">
+
+                    <div class="alert-dot high"></div>
+
+                    <div class="alert-text">
+                      ارتفاع مخاطر أحد الموردين
+                    </div>
+
+                  </div>
+
+
+                  <div class="alert">
+
+                    <div class="alert-dot high"></div>
+
+                    <div class="alert-text">
+                      تأخير محتمل في شحنة
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CYBER INTELLIGENCE
+    ====================================================== -->
+
+    <section
+      class="section"
+      id="cyber"
+    >
+
+      <div class="container">
+
+        <div class="section-intro reveal">
+
+          <div class="section-label">
+            CYBER INTELLIGENCE
+          </div>
+
+          <h2 class="section-title">
+            الأمن السيبراني جزء من
+            سلسلة الإمداد، وليس طبقة منفصلة.
+          </h2>
+
+          <p class="section-description">
+
+            يربط إمدار التهديد الرقمي بالأثر التشغيلي
+            المحتمل، من نقطة الدخول والأنظمة المتأثرة
+            إلى الموردين والموانئ والشحنات.
+
+          </p>
+
+        </div>
+
+
+        <div class="cyber-grid">
+
+
+          <article class="cyber-card active reveal">
+
+            <div class="section-label">
+              EARLY WARNING
+            </div>
+
+            <h3>
+              التهديدات المتوقعة
+            </h3>
+
+            <p>
+
+              عرض مؤشرات وتهديدات محتملة بناءً على
+              البيانات المتاحة والمحاكاة، مع توضيح
+              مستوى الثقة والأسباب التي أدت إلى رفع
+              التنبيه.
+
+            </p>
+
+
+            <div class="threat-grid">
+
+              <div class="threat">
+                Ransomware
+              </div>
+
+              <div class="threat">
+                Supply Chain Compromise
+              </div>
+
+              <div class="threat">
+                Third-Party Compromise
+              </div>
+
+              <div class="threat">
+                Credential Theft
+              </div>
+
+              <div class="threat">
+                Port System Outage
+              </div>
+
+              <div class="threat">
+                GPS / AIS Anomaly
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <article class="cyber-card reveal">
+
+            <div class="section-label">
+              RISK INTELLIGENCE
+            </div>
+
+            <h3>
+              Risk Score
+            </h3>
+
+            <p>
+
+              تقييم مركب يربط احتمالية الخطر،
+              شدة تأثيره، مدى انتشاره المحتمل،
+              وتأثيره على استمرارية سلسلة الإمداد.
+
+            </p>
+
+
+            <div class="score-area">
+
+              <div>
+
+                <div class="score">
+                  68
+                </div>
+
+                <div class="score-caption">
+                  مستوى المخاطر — High
+                </div>
+
+              </div>
+
+
+              <div class="confidence">
+
+                Confidence
+
+                <strong>
+                  82%
+                </strong>
+
+              </div>
+
+            </div>
+
+
+            <div class="risk-legend">
+
+              <div class="legend">
+                <span class="legend-dot critical"></span>
+                حرجة
+              </div>
+
+              <div class="legend">
+                <span class="legend-dot high"></span>
+                عالية
+              </div>
+
+              <div class="legend">
+                <span class="legend-dot medium"></span>
+                متوسطة
+              </div>
+
+              <div class="legend">
+                <span class="legend-dot low"></span>
+                منخفضة
+              </div>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="cta-section">
+
+      <div class="container">
+
+        <div class="cta reveal">
+
+          <div class="cta-content">
+
+            <div class="section-label">
+              EXPERIENCE EMDAR
+            </div>
+
+            <h2>
+              حوّل المخاطر
+              إلى قرارات.
+            </h2>
+
+            <p>
+
+              استكشف النموذج الأولي لمنصة إمدار،
+              واكتشف كيف يمكن ربط الأمن السيبراني
+              وذكاء سلاسل الإمداد والمحاكاة في تجربة
+              واحدة لدعم القرار.
+
+            </p>
+
+
+            <div class="cta-actions">
+
+              <a
+                href="https://emdar-supply-flow.base44.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+              >
+                جرّب النموذج الأولي
+                <span>↗</span>
+              </a>
+
+              <a
+                href="#home"
+                class="btn btn-secondary"
+              >
+                العودة للأعلى
+                ↑
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-inner">
+
+
+        <div class="footer-brand">
+
+          <strong>
+            EMDAR | إمدار
+          </strong>
+
+          <span>
+            من الإمداد إلى القرار.
+          </span>
+
+        </div>
+
+
+        <div class="footer-credit">
+
+          <div>
+            Designed & Developed by
+            <strong>
+              Jawaher Alhoqish
+            </strong>
+          </div>
+
+          <div>
+            © 2026 EMDAR | إمدار. All rights reserved.
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+    ======================================================== -->
+
+  <script>
+
+    /* =======================================================
+       SCROLL REVEAL
+    ======================================================== */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.10
+        }
+      );
+
+
+    revealElements.forEach((element) => {
+      observer.observe(element);
+    });
+
+
+    /* =======================================================
+       LANGUAGE TOGGLE
+       Simple professional bilingual navigation.
+    ======================================================== */
+
+    const languageButton =
+      document.getElementById(
+        "languageButton"
+      );
+
+    let english = false;
+
+
+    const arabicNavigation = [
+      "عن إمدار",
+      "القدرات",
+      "الذكاء السيبراني",
+      "المنصة"
+    ];
+
+    const englishNavigation = [
+      "About EMDAR",
+      "Capabilities",
+      "Cyber Intelligence",
+      "Platform"
+    ];
+
+
+    languageButton.addEventListener(
+      "click",
+      () => {
+
+        english = !english;
+
+        if (english) {
+
+          document.documentElement.lang = "en";
+          document.documentElement.dir = "ltr";
+
+          languageButton.textContent = "AR";
+
+          document
+            .querySelectorAll(".navigation a")
+            .forEach((link, index) => {
+
+              link.textContent =
+                englishNavigation[index];
+
+            });
+
+        } else {
+
+          document.documentElement.lang = "ar";
+          document.documentElement.dir = "rtl";
+
+          languageButton.textContent = "EN";
+
+          document
+            .querySelectorAll(".navigation a")
+            .forEach((link, index) => {
+
+              link.textContent =
+                arabicNavigation[index];
+
+            });
+
+        }
+
+      }
+    );
+
+
+    /* =======================================================
+       HEADER SCROLL EFFECT
+    ======================================================== */
+
+    const header =
+      document.querySelector(".header");
+
+
+    window.addEventListener(
+      "scroll",
+      () => {
+
+        if (window.scrollY > 30) {
+
+          header.style.background =
+            "rgba(5, 11, 22, 0.90)";
+
+        } else {
+
+          header.style.background =
+            "rgba(5, 11, 22, 0.76)";
+
+        }
+
+      }
+    );
+
+
+    /* =======================================================
+       SMOOTH ANCHOR BEHAVIOR
+    ======================================================== */
+
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          (event) => {
+
+            const targetId =
+              link.getAttribute("href");
+
+            const target =
+              document.querySelector(
+                targetId
+              );
+
+            if (target) {
+
+              event.preventDefault();
+
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+              });
+
+            }
+
+          }
+        );
+
+      });
+
+  </script>
+
+</body>
+</html>
