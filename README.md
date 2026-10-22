@@ -379,9 +379,6 @@ https://emdar-supply-flow.base44.app
 
 ---
 
-## 👩🏻‍💻 صاحبة المشروع
-
-**جواهر الحوقيش | Jawaher Alhoqish**
 
 Cybersecurity & Supply Chain Intelligence Project
 
