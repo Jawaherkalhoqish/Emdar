@@ -3,15 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="EMDAR | منصة ذكية لمرونة سلاسل الإمداد، تكتشف التغيرات غير الطبيعية، تقيّم الثقة والمخاطر، وتحول المخاطر إلى قرارات وبدائل تشغيلية."
+  >
+
   <meta name="theme-color" content="#0B1F3B">
-  <meta name="description" content="EMDAR | منصة ذكية لمرونة سلاسل الإمداد والأمن السيبراني — من الإمداد إلى القرار.">
-  <meta name="keywords" content="EMDAR, إمدار, Supply Chain, Cyber Resilience, Cybersecurity, Saudi Arabia, AI">
+
   <title>EMDAR | من الإمداد إلى القرار</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
 
@@ -28,25 +36,22 @@
       --cool-gray: #F3F6FB;
 
       --white: #FFFFFF;
-      --text: #F7FAFF;
-      --muted: #B8C6D9;
-      --dark-text: #10233F;
+      --text: #F3F6FB;
+      --muted: #AFC0D5;
 
-      --border: rgba(203, 213, 225, .16);
-      --border-blue: rgba(125, 211, 252, .30);
+      --line: rgba(203, 213, 225, 0.14);
+      --line-strong: rgba(125, 211, 252, 0.28);
 
-      --card-dark: rgba(255,255,255,.055);
-      --card-dark-hover: rgba(255,255,255,.085);
+      --card: rgba(17, 40, 72, 0.72);
+      --card-light: rgba(255,255,255,0.07);
 
-      --shadow: 0 25px 70px rgba(0, 0, 0, .28);
+      --danger: #FB7185;
+      --success: #4ADE80;
+      --warning: #FBBF24;
 
       --radius: 22px;
+      --container: 1180px;
     }
-
-
-    /* =========================================================
-       RESET
-       ========================================================= */
 
     * {
       box-sizing: border-box;
@@ -62,17 +67,16 @@
       overflow-x: hidden;
 
       color: var(--text);
-
       background:
         radial-gradient(
-          circle at 82% 12%,
-          rgba(59,130,246,.20),
-          transparent 30%
+          circle at 82% 18%,
+          rgba(59,130,246,.18),
+          transparent 28%
         ),
         radial-gradient(
-          circle at 10% 72%,
-          rgba(125,211,252,.10),
-          transparent 28%
+          circle at 15% 72%,
+          rgba(125,211,252,.08),
+          transparent 30%
         ),
         var(--midnight);
 
@@ -80,10 +84,6 @@
         "IBM Plex Sans Arabic",
         "DM Sans",
         sans-serif;
-
-      transition:
-        background .35s ease,
-        color .35s ease;
     }
 
     body.en {
@@ -91,23 +91,6 @@
         "DM Sans",
         "IBM Plex Sans Arabic",
         sans-serif;
-    }
-
-    body.light {
-      color: var(--dark-text);
-
-      background:
-        radial-gradient(
-          circle at 85% 12%,
-          rgba(59,130,246,.10),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 8% 75%,
-          rgba(125,211,252,.10),
-          transparent 30%
-        ),
-        var(--cool-gray);
     }
 
     a {
@@ -126,72 +109,61 @@
       outline-offset: 4px;
     }
 
-
-    /* =========================================================
-       BACKGROUND GRID
-       ========================================================= */
-
     .page {
       min-height: 100vh;
       position: relative;
       overflow: hidden;
     }
 
+    /* subtle technical grid */
+
     .page::before {
       content: "";
       position: fixed;
       inset: 0;
-
       pointer-events: none;
-
-      opacity: .055;
+      opacity: .08;
 
       background-image:
         linear-gradient(
-          rgba(125,211,252,.8) 1px,
+          rgba(125,211,252,.45) 1px,
           transparent 1px
         ),
         linear-gradient(
           90deg,
-          rgba(125,211,252,.8) 1px,
+          rgba(125,211,252,.45) 1px,
           transparent 1px
         );
 
       background-size: 76px 76px;
 
-      mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 80%
-      );
+      mask-image:
+        linear-gradient(
+          to bottom,
+          black,
+          transparent 85%
+        );
 
       z-index: 0;
     }
 
-
-    /* =========================================================
-       CONTAINER
-       ========================================================= */
-
     .container {
       width: min(
-        1180px,
-        calc(100% - 44px)
+        var(--container),
+        calc(100% - 48px)
       );
 
       margin: 0 auto;
-
       position: relative;
       z-index: 2;
     }
-
 
     /* =========================================================
        HEADER
        ========================================================= */
 
     header {
-      min-height: 88px;
+      min-height: 86px;
 
       display: flex;
       align-items: center;
@@ -199,7 +171,7 @@
 
       gap: 24px;
 
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--line);
     }
 
     .brand {
@@ -208,113 +180,111 @@
       gap: 15px;
     }
 
-    .logo-box {
-      width: 62px;
-      height: 62px;
+    /*
+      IMPORTANT:
+      No white box around the transparent logo.
+    */
+
+    .logo {
+      width: 76px;
+      height: 76px;
 
       display: grid;
       place-items: center;
 
-      background: rgba(255,255,255,.96);
+      background: transparent;
+      border: none;
+      box-shadow: none;
 
-      border-radius: 16px;
-
-      box-shadow:
-        0 12px 35px rgba(0,0,0,.20);
+      flex-shrink: 0;
     }
 
-    .logo-box img {
-      width: 54px;
-      height: 54px;
+    .logo img {
+      width: 100%;
+      height: 100%;
 
       object-fit: contain;
 
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+
+    .brand-text strong {
       display: block;
-    }
 
-    .brand-info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+      font-family: "DM Sans", sans-serif;
 
-    .brand-name {
-      font-family:
-        "DM Sans",
-        "IBM Plex Sans Arabic",
-        sans-serif;
-
-      font-size: 17px;
-      font-weight: 700;
-
-      letter-spacing: .12em;
+      font-size: 18px;
+      letter-spacing: .16em;
 
       color: var(--ice-blue);
     }
 
-    .brand-sub {
+    .brand-text span {
+      display: block;
+
+      margin-top: 2px;
+
       color: var(--muted);
-      font-size: 11px;
+
+      font-size: 12px;
+      line-height: 1.5;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .header-button {
-      border: 1px solid var(--border-blue);
+    #langButton {
+      border: 1px solid var(--line-strong);
 
       background: rgba(125,211,252,.06);
 
-      color: var(--text);
+      color: var(--white);
+
+      padding: 10px 17px;
 
       border-radius: 999px;
 
-      padding: 9px 14px;
-
-      font: inherit;
-      font-size: 12px;
-      font-weight: 600;
-
       cursor: pointer;
 
+      font: inherit;
+      font-size: 13px;
+      font-weight: 600;
+
       transition:
-        transform .25s ease,
-        background .25s ease,
-        border-color .25s ease;
+        .25s ease;
     }
 
-    .header-button:hover {
-      transform: translateY(-2px);
-
+    #langButton:hover {
       background: rgba(125,211,252,.13);
-
-      border-color: rgba(125,211,252,.55);
+      transform: translateY(-2px);
     }
-
 
     /* =========================================================
        HERO
        ========================================================= */
 
     .hero {
-      min-height: 650px;
+      min-height: 690px;
 
       display: grid;
 
       grid-template-columns:
-        minmax(0, 1.08fr)
-        minmax(420px, .92fr);
+        minmax(0, 1.05fr)
+        minmax(400px, .95fr);
+
+      gap: 70px;
 
       align-items: center;
 
-      gap: 50px;
-
       padding:
-        65px 0
-        70px;
+        68px
+        0
+        78px;
     }
 
     .hero-copy {
@@ -324,14 +294,14 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
 
       color: var(--ice-blue);
 
       font-size: 12px;
       font-weight: 700;
 
-      letter-spacing: .12em;
+      letter-spacing: .08em;
     }
 
     .eyebrow::before {
@@ -345,84 +315,85 @@
       background: var(--ice-blue);
 
       box-shadow:
-        0 0 18px rgba(125,211,252,.8);
+        0 0 18px rgba(125,211,252,.9);
     }
 
     h1 {
-      margin: 20px 0 20px;
-
-      max-width: 720px;
+      margin:
+        18px
+        0
+        22px;
 
       font-size:
-        clamp(45px, 5.5vw, 76px);
+        clamp(
+          43px,
+          5.1vw,
+          72px
+        );
 
-      line-height: 1.12;
+      line-height: 1.18;
 
-      letter-spacing: -.045em;
+      font-weight: 700;
 
-      font-weight: 600;
+      letter-spacing: -.035em;
     }
 
     body:not(.en) h1 {
-      line-height: 1.25;
+      line-height: 1.35;
       letter-spacing: 0;
     }
 
-    .highlight {
+    h1 .accent {
+      display: inline-block;
+
       color: var(--ice-blue);
+
+      text-shadow:
+        0 0 38px rgba(125,211,252,.18);
     }
 
     .hero-description {
-      max-width: 670px;
+      max-width: 660px;
+
+      margin: 0;
 
       color: var(--muted);
 
       font-size: 17px;
-
-      line-height: 1.95;
-
-      margin: 0 0 27px;
+      line-height: 2;
     }
 
     .hero-description strong {
-      color: var(--text);
+      color: var(--white);
       font-weight: 600;
     }
-
-
-    /* =========================================================
-       BUTTONS
-       ========================================================= */
 
     .buttons {
       display: flex;
 
       flex-wrap: wrap;
 
-      gap: 12px;
+      gap: 13px;
 
-      margin-top: 25px;
+      margin-top: 31px;
     }
 
     .button {
-      min-height: 58px;
+      min-height: 57px;
 
       display: inline-flex;
 
       align-items: center;
       justify-content: center;
 
-      gap: 10px;
-
       padding:
-        13px 24px;
+        13px
+        23px;
 
-      border-radius: 16px;
+      border-radius: 15px;
 
       font-size: 15px;
       font-weight: 700;
-
-      text-align: center;
 
       transition:
         transform .25s ease,
@@ -435,43 +406,54 @@
     }
 
     .primary {
-      color: #07172B;
+      color: #071a32;
 
       background:
         linear-gradient(
           135deg,
           var(--ice-blue),
-          #A7E3FF
+          #60A5FA
         );
 
       box-shadow:
-        0 15px 35px rgba(125,211,252,.18);
+        0 15px 35px rgba(59,130,246,.20);
     }
 
     .primary:hover {
       box-shadow:
-        0 20px 45px rgba(125,211,252,.28);
+        0 20px 42px rgba(59,130,246,.32);
     }
 
     .secondary {
-      color: var(--text);
+      color: var(--white);
 
-      background: rgba(255,255,255,.055);
+      border:
+        1px solid
+        rgba(203,213,225,.24);
 
-      border: 1px solid var(--border-blue);
+      background:
+        rgba(255,255,255,.045);
     }
 
     .secondary:hover {
-      background: rgba(255,255,255,.10);
+      border-color: var(--ice-blue);
+      background: rgba(125,211,252,.08);
     }
 
+    .small-note {
+      margin-top: 15px;
+
+      color: #8197B1;
+
+      font-size: 11px;
+    }
 
     /* =========================================================
-       HERO VISUAL
+       CENTER VISUAL
        ========================================================= */
 
-    .visual {
-      min-height: 480px;
+    .hero-visual {
+      min-height: 470px;
 
       position: relative;
 
@@ -482,73 +464,77 @@
     .visual-glow {
       position: absolute;
 
-      width: 440px;
-      height: 440px;
+      width: 420px;
+      height: 420px;
 
       border-radius: 50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(59,130,246,.28),
-          rgba(125,211,252,.08) 42%,
+          rgba(59,130,246,.24),
+          rgba(125,211,252,.07) 42%,
           transparent 70%
         );
 
-      filter: blur(8px);
+      filter: blur(12px);
     }
 
-    .network {
-      width: min(420px, 90vw);
-      aspect-ratio: 1;
+    .visual-system {
+      width: 410px;
+      height: 410px;
 
       position: relative;
 
+      border:
+        1px solid
+        rgba(125,211,252,.22);
+
       border-radius: 50%;
 
-      border: 1px solid
-        rgba(125,211,252,.28);
-
       box-shadow:
-        inset 0 0 70px
-        rgba(59,130,246,.06),
-        0 0 80px
-        rgba(59,130,246,.10);
+        inset 0 0 80px rgba(59,130,246,.06),
+        0 0 90px rgba(29,78,219,.10);
     }
 
-    .network::before,
-    .network::after {
+    .visual-system::before {
       content: "";
 
       position: absolute;
 
+      inset: 43px;
+
+      border:
+        1px dashed
+        rgba(125,211,252,.22);
+
       border-radius: 50%;
 
-      inset: 42px;
-
-      border: 1px dashed
-        rgba(125,211,252,.28);
-
       animation:
-        rotate 45s linear infinite;
+        rotate 42s linear infinite;
     }
 
-    .network::after {
-      inset: 94px;
+    .visual-system::after {
+      content: "";
 
-      border-style: solid;
-
-      opacity: .55;
-
-      animation-direction: reverse;
-      animation-duration: 35s;
-    }
-
-    .network-center {
       position: absolute;
 
-      width: 125px;
-      height: 125px;
+      inset: 95px;
+
+      border:
+        1px solid
+        rgba(59,130,246,.22);
+
+      border-radius: 50%;
+
+      animation:
+        rotateReverse 35s linear infinite;
+    }
+
+    /* central logo */
+
+    .visual-center {
+      position: absolute;
 
       left: 50%;
       top: 50%;
@@ -556,117 +542,133 @@
       transform:
         translate(-50%, -50%);
 
-      border-radius: 50%;
+      width: 155px;
+      height: 155px;
 
       display: grid;
       place-items: center;
 
+      border-radius: 50%;
+
       background:
-        linear-gradient(
-          145deg,
-          #12345D,
-          #0B1F3B
+        radial-gradient(
+          circle,
+          rgba(29,78,219,.35),
+          rgba(11,31,59,.94) 70%
         );
 
       border:
         1px solid
-        rgba(125,211,252,.65);
+        rgba(125,211,252,.48);
 
       box-shadow:
-        0 0 0 16px
-        rgba(125,211,252,.045),
-        0 0 70px
-        rgba(59,130,246,.32);
-
-      animation:
-        pulse 4s ease-in-out infinite;
+        0 0 0 17px rgba(125,211,252,.025),
+        0 0 70px rgba(59,130,246,.26);
     }
 
-    .network-center img {
-      width: 92px;
-      height: 92px;
+    .visual-center img {
+      width: 116px;
+      height: 116px;
 
       object-fit: contain;
+
+      background: transparent;
+
+      filter:
+        drop-shadow(
+          0 0 18px
+          rgba(125,211,252,.18)
+        );
     }
+
+    /* orbit nodes */
 
     .node {
       position: absolute;
 
-      min-width: 145px;
+      width: 128px;
 
-      padding: 12px 15px;
+      padding:
+        12px
+        13px;
+
+      border:
+        1px solid
+        rgba(125,211,252,.22);
 
       border-radius: 15px;
 
       background:
-        rgba(8, 25, 48, .92);
-
-      border:
-        1px solid
-        rgba(125,211,252,.24);
+        rgba(8,25,48,.92);
 
       box-shadow:
-        0 18px 40px rgba(0,0,0,.22);
+        0 14px 30px rgba(0,0,0,.18);
 
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+
+      z-index: 4;
     }
 
     .node small {
       display: block;
 
-      margin-bottom: 4px;
+      margin-bottom: 5px;
 
       color: var(--ice-blue);
 
       font-size: 9px;
       font-weight: 700;
 
-      letter-spacing: .12em;
+      letter-spacing: .11em;
     }
 
     .node strong {
       display: block;
 
-      color: var(--text);
+      color: var(--white);
 
-      font-size: 13px;
-      line-height: 1.5;
+      font-size: 12px;
+
+      line-height: 1.45;
     }
 
     .node.one {
       top: 7%;
-      left: -8%;
+      right: 3%;
     }
 
     .node.two {
-      left: -14%;
-      bottom: 16%;
+      bottom: 9%;
+      right: -2%;
     }
 
     .node.three {
-      right: -10%;
-      top: 24%;
-
-      border-color:
-        rgba(59,130,246,.48);
+      bottom: 18%;
+      left: -7%;
     }
 
     .node.four {
-      right: -12%;
-      bottom: 10%;
-
-      border-color:
-        rgba(125,211,252,.55);
-
-      background:
-        rgba(14,52,88,.95);
+      top: 18%;
+      left: -9%;
     }
 
-    .pulse-dot {
+    .node.active {
+      border-color:
+        rgba(125,211,252,.52);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(29,78,219,.35),
+          rgba(8,25,48,.96)
+        );
+    }
+
+    .signal {
       position: absolute;
 
-      width: 9px;
-      height: 9px;
+      width: 7px;
+      height: 7px;
 
       border-radius: 50%;
 
@@ -674,78 +676,110 @@
 
       box-shadow:
         0 0 18px
-        rgba(125,211,252,.95);
+        rgba(125,211,252,.9);
+
+      z-index: 5;
 
       animation:
-        float 3s ease-in-out infinite;
+        float 3.2s ease-in-out infinite;
     }
 
-    .pulse-dot.a {
-      right: 24%;
-      top: 13%;
+    .signal.a {
+      top: 16%;
+      right: 30%;
     }
 
-    .pulse-dot.b {
-      left: 22%;
-      bottom: 22%;
+    .signal.b {
+      bottom: 17%;
+      left: 29%;
 
-      animation-delay: 1s;
+      animation-delay: 1.1s;
     }
 
-    .pulse-dot.c {
-      right: 14%;
-      bottom: 31%;
+    .signal.c {
+      top: 39%;
+      left: 9%;
 
-      animation-delay: 1.7s;
+      animation-delay: .5s;
     }
-
 
     /* =========================================================
-       TRUST STRIP
+       CORE STATEMENT
        ========================================================= */
 
-    .trust-strip {
+    .statement {
+      padding:
+        30px
+        0
+        55px;
+    }
+
+    .statement-inner {
+      padding:
+        30px
+        32px;
+
+      border-top:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
       display: grid;
 
       grid-template-columns:
         repeat(3, 1fr);
 
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-
-      padding: 24px 0;
+      gap: 20px;
     }
 
-    .trust-item {
-      padding: 0 24px;
+    .statement-item {
+      min-height: 90px;
 
-      min-height: 60px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      gap: 4px;
+      padding-inline:
+        20px;
     }
 
-    .trust-item:not(:last-child) {
+    .statement-item:not(:last-child) {
       border-inline-end:
-        1px solid var(--border);
+        1px solid var(--line);
     }
 
-    .trust-item strong {
+    .statement-item b {
+      display: block;
+
       color: var(--ice-blue);
 
-      font-size: 17px;
-      font-weight: 700;
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 12px;
+
+      letter-spacing: .12em;
     }
 
-    .trust-item span {
+    .statement-item strong {
+      display: block;
+
+      margin-top: 10px;
+
+      color: var(--white);
+
+      font-size: 18px;
+
+      line-height: 1.5;
+    }
+
+    .statement-item span {
+      display: block;
+
+      margin-top: 4px;
+
       color: var(--muted);
 
       font-size: 12px;
     }
-
 
     /* =========================================================
        SECTIONS
@@ -753,12 +787,17 @@
 
     .section {
       padding:
-        100px 0
+        75px
+        0
         65px;
     }
 
     .section-label {
       color: var(--ice-blue);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
 
       font-size: 11px;
       font-weight: 700;
@@ -767,40 +806,38 @@
     }
 
     h2 {
+      margin:
+        13px
+        0
+        16px;
+
       max-width: 850px;
 
-      margin:
-        13px 0 18px;
-
       font-size:
-        clamp(31px, 4vw, 51px);
+        clamp(
+          31px,
+          4vw,
+          48px
+        );
 
-      line-height: 1.25;
+      line-height: 1.3;
 
-      font-weight: 600;
-
-      letter-spacing: -.025em;
-    }
-
-    body:not(.en) h2 {
-      letter-spacing: 0;
+      font-weight: 700;
     }
 
     .section-intro {
-      max-width: 750px;
+      max-width: 760px;
+
+      margin: 0 0 34px;
 
       color: var(--muted);
 
-      font-size: 16px;
-
-      line-height: 1.9;
-
-      margin-bottom: 36px;
+      font-size: 15px;
+      line-height: 1.95;
     }
 
-
     /* =========================================================
-       CORE CARDS
+       CARDS
        ========================================================= */
 
     .cards {
@@ -813,25 +850,28 @@
     }
 
     .card {
-      min-height: 220px;
+      position: relative;
 
-      padding: 27px;
+      min-height: 215px;
 
-      border-radius: var(--radius);
+      padding:
+        25px;
 
       border:
-        1px solid var(--border);
+        1px solid
+        var(--line);
+
+      border-radius:
+        var(--radius);
 
       background:
         linear-gradient(
           145deg,
-          rgba(255,255,255,.075),
-          rgba(255,255,255,.025)
+          rgba(29,78,219,.14),
+          rgba(17,40,72,.62)
         );
 
-      box-shadow:
-        0 20px 45px
-        rgba(0,0,0,.10);
+      overflow: hidden;
 
       transition:
         transform .3s ease,
@@ -839,94 +879,16 @@
         background .3s ease;
     }
 
-    .card:hover {
-      transform: translateY(-7px);
-
-      border-color:
-        rgba(125,211,252,.42);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.10),
-          rgba(255,255,255,.035)
-        );
-    }
-
-    .card-number {
-      color: var(--ice-blue);
-
-      font-size: 11px;
-      font-weight: 700;
-
-      letter-spacing: .14em;
-    }
-
-    .card h3 {
-      margin:
-        28px 0
-        9px;
-
-      font-size: 21px;
-    }
-
-    .card p {
-      margin: 0;
-
-      color: var(--muted);
-
-      font-size: 14px;
-
-      line-height: 1.8;
-    }
-
-
-    /* =========================================================
-       BEFORE / DURING / AFTER
-       ========================================================= */
-
-    .timeline {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
-      gap: 16px;
-
-      margin-top: 42px;
-    }
-
-    .timeline-card {
-      position: relative;
-
-      min-height: 285px;
-
-      padding: 30px;
-
-      overflow: hidden;
-
-      border-radius: 24px;
-
-      border: 1px solid var(--border);
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(29,78,219,.16),
-          rgba(255,255,255,.035)
-        );
-    }
-
-    .timeline-card::after {
+    .card::before {
       content: "";
 
       position: absolute;
 
-      width: 150px;
-      height: 150px;
+      width: 130px;
+      height: 130px;
 
-      right: -60px;
-      bottom: -70px;
+      right: -55px;
+      top: -55px;
 
       border-radius: 50%;
 
@@ -938,169 +900,66 @@
         );
     }
 
-    .timeline-phase {
-      color: var(--ice-blue);
+    .card:hover {
+      transform: translateY(-6px);
 
-      font-size: 11px;
-      font-weight: 700;
-
-      letter-spacing: .14em;
-    }
-
-    .timeline-card h3 {
-      margin:
-        25px 0 11px;
-
-      font-size: 23px;
-    }
-
-    .timeline-card p {
-      margin: 0;
-
-      color: var(--muted);
-
-      font-size: 14px;
-
-      line-height: 1.85;
-    }
-
-    .timeline-list {
-      padding: 0;
-      margin: 24px 0 0;
-
-      list-style: none;
-    }
-
-    .timeline-list li {
-      position: relative;
-
-      padding-inline-start: 19px;
-
-      margin-bottom: 10px;
-
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-    .timeline-list li::before {
-      content: "";
-
-      position: absolute;
-
-      top: .65em;
-
-      inset-inline-start: 0;
-
-      width: 6px;
-      height: 6px;
-
-      border-radius: 50%;
-
-      background: var(--ice-blue);
-    }
-
-
-    /* =========================================================
-       DYNAMIC ALTERNATIVES
-       ========================================================= */
-
-    .alternatives {
-      display: grid;
-
-      grid-template-columns:
-        .8fr 1.2fr;
-
-      gap: 25px;
-
-      align-items: stretch;
-
-      margin-top: 42px;
-    }
-
-    .alternative-main {
-      padding: 34px;
-
-      border-radius: 25px;
-
-      border: 1px solid
-        rgba(125,211,252,.22);
+      border-color:
+        rgba(125,211,252,.4);
 
       background:
         linear-gradient(
           145deg,
-          rgba(29,78,219,.22),
-          rgba(11,31,59,.65)
+          rgba(29,78,219,.21),
+          rgba(17,40,72,.75)
         );
     }
 
-    .alternative-main h3 {
-      margin: 0 0 12px;
-
-      font-size: 26px;
-    }
-
-    .alternative-main p {
-      color: var(--muted);
-
-      line-height: 1.9;
-
-      font-size: 14px;
-    }
-
-    .alternative-options {
-      display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
-      gap: 12px;
-    }
-
-    .option {
-      padding: 23px;
-
-      border-radius: 19px;
-
-      border: 1px solid var(--border);
-
-      background:
-        rgba(255,255,255,.045);
-    }
-
-    .option span {
+    .card-number {
       color: var(--ice-blue);
 
-      font-size: 10px;
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 11px;
       font-weight: 700;
 
-      letter-spacing: .12em;
+      letter-spacing: .13em;
     }
 
-    .option strong {
-      display: block;
+    .card h3 {
+      margin:
+        25px
+        0
+        9px;
 
-      margin-top: 13px;
+      color: var(--white);
 
-      font-size: 16px;
+      font-size: 20px;
     }
 
-    .option p {
-      margin: 7px 0 0;
+    .card p {
+      margin: 0;
 
       color: var(--muted);
 
-      font-size: 12px;
+      font-size: 13px;
 
-      line-height: 1.7;
+      line-height: 1.85;
     }
 
-
     /* =========================================================
-       CYBER ATTACKS
+       FLOW
        ========================================================= */
 
-    .attack-grid {
+    .flow-section {
+      padding:
+        72px
+        0
+        80px;
+    }
+
+    .flow {
       display: grid;
 
       grid-template-columns:
@@ -1108,179 +967,200 @@
 
       gap: 10px;
 
-      margin-top: 38px;
-    }
-
-    .attack {
-      min-height: 100px;
-
-      padding: 18px 14px;
-
-      display: flex;
-      flex-direction: column;
-
-      justify-content: space-between;
-
-      border-radius: 17px;
-
-      border: 1px solid var(--border);
-
-      background:
-        rgba(255,255,255,.045);
-
-      transition:
-        transform .25s ease,
-        border-color .25s ease;
-    }
-
-    .attack:hover {
-      transform: translateY(-4px);
-
-      border-color:
-        rgba(125,211,252,.42);
-    }
-
-    .attack strong {
-      color: var(--text);
-
-      font-size: 13px;
-    }
-
-    .attack span {
-      color: var(--muted);
-
-      font-size: 10px;
-    }
-
-
-    /* =========================================================
-       DECISION FLOW
-       ========================================================= */
-
-    .flow {
-      margin-top: 40px;
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(6, 1fr);
-
-      gap: 9px;
+      margin-top: 35px;
     }
 
     .flow-step {
-      position: relative;
+      min-height: 150px;
 
-      min-height: 115px;
-
-      padding: 20px 14px;
-
-      display: flex;
-      flex-direction: column;
-
-      justify-content: center;
-
-      border-radius: 17px;
+      padding:
+        20px
+        17px;
 
       border:
-        1px solid var(--border);
+        1px solid
+        var(--line);
+
+      border-radius:
+        18px;
 
       background:
-        rgba(255,255,255,.045);
+        rgba(255,255,255,.035);
 
-      text-align: center;
+      position: relative;
     }
 
-    .flow-step strong {
-      color: var(--ice-blue);
+    .flow-step::after {
+      content: "→";
 
-      font-size: 12px;
+      position: absolute;
+
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      inset-inline-end: -15px;
+
+      color:
+        rgba(125,211,252,.65);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 20px;
+
+      z-index: 5;
+    }
+
+    .flow-step:last-child::after {
+      display: none;
     }
 
     .flow-step span {
-      margin-top: 7px;
+      display: block;
+
+      color: var(--ice-blue);
+
+      font-family:
+        "DM Sans",
+        sans-serif;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: .12em;
+    }
+
+    .flow-step strong {
+      display: block;
+
+      margin-top: 18px;
+
+      color: var(--white);
+
+      font-size: 16px;
+    }
+
+    .flow-step p {
+      margin:
+        7px
+        0
+        0;
 
       color: var(--muted);
 
-      font-size: 10px;
-      line-height: 1.5;
+      font-size: 11px;
+
+      line-height: 1.7;
     }
 
-
     /* =========================================================
-       CLOSING CTA
+       CTA
        ========================================================= */
 
-    .closing {
-      margin:
-        45px 0
-        70px;
+    .cta {
+      padding:
+        30px
+        0
+        85px;
+    }
+
+    .cta-box {
+      position: relative;
+
+      overflow: hidden;
 
       padding:
-        70px 45px;
-
-      text-align: center;
-
-      border-radius: 30px;
+        55px
+        50px;
 
       border:
         1px solid
         rgba(125,211,252,.25);
 
+      border-radius:
+        28px;
+
       background:
         radial-gradient(
-          circle at 50% 0%,
-          rgba(59,130,246,.25),
-          transparent 55%
+          circle at 85% 20%,
+          rgba(59,130,246,.22),
+          transparent 32%
         ),
         linear-gradient(
-          145deg,
-          rgba(29,78,219,.18),
-          rgba(255,255,255,.035)
+          135deg,
+          rgba(29,78,219,.20),
+          rgba(11,31,59,.90)
         );
 
-      box-shadow:
-        var(--shadow);
+      text-align: center;
     }
 
-    .closing h2 {
-      max-width: 800px;
+    .cta-box::before {
+      content: "";
 
-      margin:
-        0 auto
-        14px;
+      position: absolute;
+
+      width: 250px;
+      height: 250px;
+
+      left: -100px;
+      bottom: -140px;
+
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(125,211,252,.13),
+          transparent 70%
+        );
     }
 
-    .closing p {
-      max-width: 650px;
+    .cta-box h2 {
+      margin:
+        0
+        auto
+        13px;
+    }
+
+    .cta-box p {
+      max-width: 700px;
 
       margin:
-        0 auto 27px;
+        0
+        auto;
 
       color: var(--muted);
 
-      font-size: 15px;
-
       line-height: 1.9;
+
+      font-size: 14px;
     }
 
+    .cta-box .button {
+      margin-top: 27px;
+    }
 
     /* =========================================================
        FOOTER
        ========================================================= */
 
     footer {
-      padding:
-        27px 0
-        34px;
-
       border-top:
-        1px solid var(--border);
+        1px solid var(--line);
+
+      padding:
+        27px
+        0
+        35px;
 
       display: flex;
 
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
 
       gap: 20px;
 
@@ -1289,142 +1169,27 @@
       font-size: 12px;
     }
 
-    .footer-brand {
+    .credit {
+      line-height: 1.8;
+    }
+
+    .credit strong {
+      color: var(--white);
+    }
+
+    .credit .english {
+      font-family:
+        "DM Sans",
+        sans-serif;
+    }
+
+    .footer-tagline {
       color: var(--ice-blue);
 
-      font-weight: 700;
+      font-size: 12px;
 
-      letter-spacing: .12em;
+      font-weight: 600;
     }
-
-    .footer-note {
-      color: var(--muted);
-    }
-
-
-    /* =========================================================
-       LIGHT MODE
-       ========================================================= */
-
-    body.light .brand-sub,
-    body.light .hero-description,
-    body.light .section-intro,
-    body.light .card p,
-    body.light .timeline-card p,
-    body.light .timeline-list li,
-    body.light .alternative-main p,
-    body.light .option p,
-    body.light .attack span,
-    body.light .flow-step span,
-    body.light .closing p,
-    body.light .footer-note,
-    body.light .trust-item span {
-      color: #52647A;
-    }
-
-    body.light h1,
-    body.light h2,
-    body.light .card h3,
-    body.light .timeline-card h3,
-    body.light .alternative-main h3,
-    body.light .option strong,
-    body.light .attack strong {
-      color: var(--dark-text);
-    }
-
-    body.light .card,
-    body.light .timeline-card,
-    body.light .option,
-    body.light .attack,
-    body.light .flow-step {
-      background:
-        rgba(255,255,255,.75);
-
-      border-color:
-        rgba(11,31,59,.10);
-
-      box-shadow:
-        0 15px 40px
-        rgba(11,31,59,.06);
-    }
-
-    body.light .alternative-main {
-      background:
-        linear-gradient(
-          145deg,
-          rgba(59,130,246,.11),
-          rgba(255,255,255,.72)
-        );
-    }
-
-    body.light .node {
-      background:
-        rgba(255,255,255,.92);
-
-      border-color:
-        rgba(29,78,219,.17);
-
-      box-shadow:
-        0 15px 35px
-        rgba(11,31,59,.10);
-    }
-
-    body.light .node strong {
-      color: var(--dark-text);
-    }
-
-    body.light .node small {
-      color: var(--deep-blue);
-    }
-
-    body.light .secondary {
-      color: var(--dark-text);
-
-      background:
-        rgba(255,255,255,.65);
-    }
-
-    body.light .header-button {
-      color: var(--dark-text);
-      background:
-        rgba(255,255,255,.55);
-    }
-
-    body.light .network {
-      border-color:
-        rgba(29,78,219,.20);
-    }
-
-    body.light .network::before,
-    body.light .network::after {
-      border-color:
-        rgba(29,78,219,.20);
-    }
-
-    body.light .network-center {
-      background:
-        linear-gradient(
-          145deg,
-          #E9F5FF,
-          #FFFFFF
-        );
-    }
-
-    body.light .trust-item:not(:last-child) {
-      border-color:
-        rgba(11,31,59,.10);
-    }
-
-    body.light .closing {
-      background:
-        radial-gradient(
-          circle at 50% 0%,
-          rgba(59,130,246,.12),
-          transparent 55%
-        ),
-        rgba(255,255,255,.70);
-    }
-
 
     /* =========================================================
        ANIMATIONS
@@ -1432,37 +1197,37 @@
 
     @keyframes rotate {
       to {
-        transform: rotate(360deg);
+        transform:
+          rotate(360deg);
       }
     }
 
-    @keyframes pulse {
-      50% {
-        box-shadow:
-          0 0 0 24px
-          rgba(125,211,252,.025),
-          0 0 90px
-          rgba(59,130,246,.40);
+    @keyframes rotateReverse {
+      to {
+        transform:
+          rotate(-360deg);
       }
     }
 
     @keyframes float {
       50% {
-        transform: translateY(-12px);
+        transform:
+          translateY(-13px);
       }
     }
-
 
     /* =========================================================
        RESPONSIVE
        ========================================================= */
 
-    @media (max-width: 1000px) {
+    @media (max-width: 950px) {
 
       .hero {
         grid-template-columns: 1fr;
 
-        padding-top: 50px;
+        gap: 35px;
+
+        padding-top: 55px;
       }
 
       .hero-copy {
@@ -1474,16 +1239,19 @@
       }
 
       .hero-description {
-        margin-left: auto;
-        margin-right: auto;
+        margin-inline: auto;
       }
 
       .buttons {
         justify-content: center;
       }
 
-      .visual {
-        min-height: 420px;
+      .small-note {
+        text-align: center;
+      }
+
+      .hero-visual {
+        min-height: 450px;
       }
 
       .cards {
@@ -1491,83 +1259,63 @@
           repeat(2, 1fr);
       }
 
-      .timeline {
-        grid-template-columns:
-          1fr;
-      }
-
-      .alternatives {
-        grid-template-columns:
-          1fr;
-      }
-
-      .attack-grid {
-        grid-template-columns:
-          repeat(3, 1fr);
-      }
-
       .flow {
         grid-template-columns:
           repeat(3, 1fr);
       }
+
+      .flow-step::after {
+        display: none;
+      }
     }
 
-
-    @media (max-width: 700px) {
+    @media (max-width: 680px) {
 
       .container {
         width:
           min(
-            100% - 28px,
-            1180px
+            var(--container),
+            calc(100% - 30px)
           );
       }
 
       header {
-        min-height: 76px;
+        min-height: 78px;
       }
 
-      .brand {
-        gap: 10px;
+      .logo {
+        width: 61px;
+        height: 61px;
       }
 
-      .logo-box {
-        width: 52px;
-        height: 52px;
-        border-radius: 13px;
+      .brand-text strong {
+        font-size: 15px;
       }
 
-      .logo-box img {
-        width: 45px;
-        height: 45px;
-      }
-
-      .brand-name {
-        font-size: 14px;
-      }
-
-      .brand-sub {
+      .brand-text span {
         font-size: 9px;
       }
 
-      .header-button {
+      #langButton {
         padding:
-          8px 10px;
+          8px
+          12px;
 
-        font-size: 10px;
+        font-size: 11px;
       }
 
       .hero {
         padding:
-          42px 0
-          50px;
+          42px
+          0
+          58px;
       }
 
       h1 {
         font-size:
           clamp(
-            39px,
-            10vw,
+            38px,
+            11vw,
             54px
           );
       }
@@ -1576,45 +1324,60 @@
         font-size:
           clamp(
             37px,
-            9.4vw,
-            52px
+            10vw,
+            51px
           );
       }
 
       .hero-description {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       .buttons {
-        flex-direction: column;
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        width: 100%;
       }
 
       .button {
         width: 100%;
       }
 
-      .visual {
-        min-height: 330px;
+      .hero-visual {
+        min-height: 350px;
       }
 
-      .network {
-        width: 285px;
+      .visual-system {
+        width: 315px;
+        height: 315px;
       }
 
-      .network-center {
-        width: 91px;
-        height: 91px;
+      .visual-system::before {
+        inset: 32px;
       }
 
-      .network-center img {
-        width: 68px;
-        height: 68px;
+      .visual-system::after {
+        inset: 73px;
+      }
+
+      .visual-center {
+        width: 118px;
+        height: 118px;
+      }
+
+      .visual-center img {
+        width: 88px;
+        height: 88px;
       }
 
       .node {
-        min-width: 106px;
+        width: 103px;
+
         padding:
-          9px 10px;
+          9px
+          10px;
       }
 
       .node strong {
@@ -1626,80 +1389,72 @@
       }
 
       .node.one {
-        left: -12%;
+        top: 3%;
+        right: -5%;
       }
 
       .node.two {
-        left: -16%;
+        right: -10%;
+        bottom: 4%;
       }
 
       .node.three {
-        right: -13%;
+        left: -12%;
+        bottom: 8%;
       }
 
       .node.four {
-        right: -15%;
+        left: -13%;
+        top: 10%;
       }
 
-      .trust-strip {
-        grid-template-columns:
-          1fr;
-        gap: 0;
-      }
+      .statement-inner {
+        grid-template-columns: 1fr;
 
-      .trust-item {
+        gap: 20px;
+
         padding:
-          15px 0;
+          25px
+          0;
       }
 
-      .trust-item:not(:last-child) {
+      .statement-item {
+        min-height: auto;
+
+        padding:
+          0
+          5px;
+      }
+
+      .statement-item:not(:last-child) {
         border-inline-end: none;
+
         border-bottom:
-          1px solid var(--border);
-      }
+          1px solid var(--line);
 
-      .section {
-        padding:
-          70px 0
-          45px;
-      }
-
-      h2 {
-        font-size:
-          clamp(
-            30px,
-            8vw,
-            40px
-          );
+        padding-bottom: 20px;
       }
 
       .cards {
-        grid-template-columns:
-          1fr;
+        grid-template-columns: 1fr;
       }
 
       .card {
         min-height: auto;
       }
 
-      .alternative-options {
-        grid-template-columns:
-          1fr;
-      }
-
-      .attack-grid {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
       .flow {
-        grid-template-columns:
-          repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
 
-      .closing {
+      .flow-step {
+        min-height: auto;
+      }
+
+      .cta-box {
         padding:
-          50px 22px;
+          40px
+          22px;
       }
 
       footer {
@@ -1709,59 +1464,15 @@
       }
     }
 
-
-    @media (max-width: 430px) {
-
-      .header-actions {
-        gap: 5px;
-      }
-
-      .brand-sub {
-        display: none;
-      }
-
-      .network {
-        width: 245px;
-      }
-
-      .visual {
-        min-height: 285px;
-      }
-
-      .node {
-        min-width: 94px;
-      }
-
-      .node.one {
-        top: 4%;
-      }
-
-      .node.two {
-        bottom: 8%;
-      }
-
-      .node.three {
-        top: 20%;
-      }
-
-      .node.four {
-        bottom: 4%;
-      }
-
-      .attack-grid {
-        grid-template-columns:
-          1fr 1fr;
-      }
-    }
-
-
     @media (prefers-reduced-motion: reduce) {
 
       *,
       *::before,
       *::after {
         animation: none !important;
+
         transition: none !important;
+
         scroll-behavior: auto !important;
       }
     }
@@ -1769,14 +1480,13 @@
   </style>
 </head>
 
-
 <body>
 
   <div class="page">
 
-    <!-- =====================================================
+    <!-- =======================================================
          HEADER
-         ===================================================== -->
+         ======================================================= -->
 
     <header class="container">
 
@@ -1786,26 +1496,24 @@
         aria-label="EMDAR"
       >
 
-        <div class="logo-box">
+        <!-- Transparent logo — NO white box -->
+        <div class="logo">
           <img
             src="EMDAR_colored_transparent.png"
             alt="EMDAR logo"
           >
         </div>
 
-        <div class="brand-info">
+        <div class="brand-text">
 
-          <div class="brand-name">
-            EMDAR
-          </div>
+          <strong>EMDAR</strong>
 
-          <div
-            class="brand-sub"
+          <span
             data-ar="من الإمداد إلى القرار"
             data-en="From Supply to Decision"
           >
             من الإمداد إلى القرار
-          </div>
+          </span>
 
         </div>
 
@@ -1815,17 +1523,7 @@
       <div class="header-actions">
 
         <button
-          id="themeButton"
-          class="header-button"
-          type="button"
-          aria-label="Toggle theme"
-        >
-          ☼
-        </button>
-
-        <button
           id="langButton"
-          class="header-button"
           type="button"
           aria-label="Switch language"
         >
@@ -1839,10 +1537,9 @@
 
     <main id="top">
 
-
-      <!-- ===================================================
+      <!-- =====================================================
            HERO
-           =================================================== -->
+           ===================================================== -->
 
       <section class="hero container">
 
@@ -1850,10 +1547,10 @@
 
           <div
             class="eyebrow"
-            data-ar="مرونة سلاسل الإمداد · الأمن السيبراني · الذكاء الاصطناعي"
-            data-en="SUPPLY CHAIN RESILIENCE · CYBERSECURITY · AI"
+            data-ar="مرونة سلاسل الإمداد · الأمن السيبراني · الذكاء التشغيلي"
+            data-en="SUPPLY CHAIN RESILIENCE · CYBERSECURITY · OPERATIONAL INTELLIGENCE"
           >
-            مرونة سلاسل الإمداد · الأمن السيبراني · الذكاء الاصطناعي
+            مرونة سلاسل الإمداد · الأمن السيبراني · الذكاء التشغيلي
           </div>
 
 
@@ -1869,7 +1566,7 @@
             <br>
 
             <span
-              class="highlight"
+              class="accent"
               data-ar="قبل أن يتحول إلى تعطل."
               data-en="before it becomes disruption."
             >
@@ -1881,10 +1578,10 @@
 
           <p
             class="hero-description"
-            data-ar="إمدار منصة ذكية لمرونة سلاسل الإمداد، تبدأ باكتشاف التغيرات غير الطبيعية في سلوك الموردين والحسابات والأجهزة والأنظمة، وتقيّم مستوى الثقة والتعرض للخطر قبل أن يتحول إلى حادث."
-            data-en="EMDAR is an intelligent supply-chain resilience platform that detects abnormal changes in supplier, account, device, and system behavior, assessing trust and exposure before risk becomes an incident."
+            data-ar="إمدار منصة ذكية لمرونة سلاسل الإمداد، تبدأ باكتشاف التغيرات غير الطبيعية في سلوك الموردين والحسابات والأجهزة والأنظمة، ثم تقيّم مستوى الثقة والتعرض للخطر قبل أن يتحول إلى حادث."
+            data-en="EMDAR is an intelligent supply-chain resilience platform that detects abnormal changes in supplier, account, device, and system behavior, then evaluates trust and exposure before risk becomes an incident."
           >
-            إمدار منصة ذكية لمرونة سلاسل الإمداد، تبدأ باكتشاف التغيرات غير الطبيعية في سلوك الموردين والحسابات والأجهزة والأنظمة، وتقيّم مستوى الثقة والتعرض للخطر قبل أن يتحول إلى حادث.
+            إمدار منصة ذكية لمرونة سلاسل الإمداد، تبدأ باكتشاف التغيرات غير الطبيعية في سلوك الموردين والحسابات والأجهزة والأنظمة، ثم تقيّم مستوى الثقة والتعرض للخطر قبل أن يتحول إلى حادث.
           </p>
 
 
@@ -1905,32 +1602,43 @@
             <a
               class="button secondary"
               href="#how"
-              data-ar="اكتشف كيف تعمل إمدار ↓"
-              data-en="Discover how EMDAR works ↓"
+              data-ar="كيف تعمل إمدار؟ ↓"
+              data-en="How EMDAR Works ↓"
             >
-              اكتشف كيف تعمل إمدار ↓
+              كيف تعمل إمدار؟ ↓
             </a>
 
+          </div>
+
+
+          <div
+            class="small-note"
+            data-ar="نموذج أولي · بيانات وتجارب توضيحية · منصة دفاعية وداعمة للقرار"
+            data-en="Prototype · Illustrative data and scenarios · Defensive decision-support platform"
+          >
+            نموذج أولي · بيانات وتجارب توضيحية · منصة دفاعية وداعمة للقرار
           </div>
 
         </div>
 
 
-        <!-- =================================================
-             HERO VISUAL
-             ================================================= -->
+        <!-- ===================================================
+             CENTRAL VISUAL
+             =================================================== -->
 
         <div
-          class="visual"
+          class="hero-visual"
           aria-hidden="true"
         >
 
           <div class="visual-glow"></div>
 
 
-          <div class="network">
+          <div class="visual-system">
 
-            <div class="network-center">
+            <!-- Central transparent logo -->
+
+            <div class="visual-center">
 
               <img
                 src="EMDAR_colored_transparent.png"
@@ -1940,39 +1648,31 @@
             </div>
 
 
+            <!-- Intelligence nodes -->
+
             <div class="node one">
 
-              <small
-                data-ar="السلوك"
-                data-en="BEHAVIOR"
-              >
-                السلوك
-              </small>
+              <small>BEHAVIORAL DNA</small>
 
               <strong
-                data-ar="بصمة سلوكية"
+                data-ar="بصمة السلوك"
                 data-en="Behavioral DNA"
               >
-                بصمة سلوكية
+                بصمة السلوك
               </strong>
 
             </div>
 
 
-            <div class="node two">
+            <div class="node two active">
 
-              <small
-                data-ar="الثقة"
-                data-en="TRUST"
-              >
-                الثقة
-              </small>
+              <small>TRUST</small>
 
               <strong
-                data-ar="ثقة ديناميكية"
-                data-en="Dynamic Trust"
+                data-ar="الثقة السلوكية"
+                data-en="Behavioral Trust"
               >
-                ثقة ديناميكية
+                الثقة السلوكية
               </strong>
 
             </div>
@@ -1980,12 +1680,7 @@
 
             <div class="node three">
 
-              <small
-                data-ar="الحماية"
-                data-en="PROTECT"
-              >
-                الحماية
-              </small>
+              <small>RESILIENCE</small>
 
               <strong
                 data-ar="تحصين السلسلة"
@@ -1999,26 +1694,21 @@
 
             <div class="node four">
 
-              <small
-                data-ar="القرار"
-                data-en="DECISION"
-              >
-                القرار
-              </small>
+              <small>ALTERNATIVES</small>
 
               <strong
-                data-ar="أفضل بديل →"
-                data-en="Best Alternative →"
+                data-ar="بدائل مستمرة"
+                data-en="Dynamic Alternatives"
               >
-                أفضل بديل →
+                بدائل مستمرة
               </strong>
 
             </div>
 
 
-            <i class="pulse-dot a"></i>
-            <i class="pulse-dot b"></i>
-            <i class="pulse-dot c"></i>
+            <i class="signal a"></i>
+            <i class="signal b"></i>
+            <i class="signal c"></i>
 
           </div>
 
@@ -2027,114 +1717,119 @@
       </section>
 
 
-      <!-- ===================================================
-           TRUST STRIP
-           =================================================== -->
+      <!-- =====================================================
+           CORE STATEMENT
+           ===================================================== -->
 
-      <section class="trust-strip container">
+      <section class="statement container">
 
-        <div class="trust-item">
+        <div class="statement-inner">
 
-          <strong
-            data-ar="قبل الهجوم"
-            data-en="Before the Attack"
-          >
-            قبل الهجوم
-          </strong>
+          <div class="statement-item">
 
-          <span
-            data-ar="اكتشاف التغيرات السلوكية والمؤشرات المبكرة"
-            data-en="Detect behavioral changes and early signals"
-          >
-            اكتشاف التغيرات السلوكية والمؤشرات المبكرة
-          </span>
+            <b>01 / DETECT</b>
 
-        </div>
+            <strong
+              data-ar="نكتشف التغيير قبل الهجوم"
+              data-en="Detect change before the attack"
+            >
+              نكتشف التغيير قبل الهجوم
+            </strong>
 
+            <span
+              data-ar="السلوك غير الطبيعي قد يكون أول إشارة."
+              data-en="Abnormal behavior can be the first signal."
+            >
+              السلوك غير الطبيعي قد يكون أول إشارة.
+            </span>
 
-        <div class="trust-item">
-
-          <strong
-            data-ar="أثناء الخطر"
-            data-en="During Risk"
-          >
-            أثناء الخطر
-          </strong>
-
-          <span
-            data-ar="تحليل الأثر ومحاكاة البدائل"
-            data-en="Analyze impact and simulate alternatives"
-          >
-            تحليل الأثر ومحاكاة البدائل
-          </span>
-
-        </div>
+          </div>
 
 
-        <div class="trust-item">
+          <div class="statement-item">
 
-          <strong
-            data-ar="مع تغيّر الواقع"
-            data-en="As Reality Changes"
-          >
-            مع تغيّر الواقع
-          </strong>
+            <b>02 / PROTECT</b>
 
-          <span
-            data-ar="إعادة التخطيط واختيار الحل الأنسب"
-            data-en="Re-plan and select the best response"
-          >
-            إعادة التخطيط واختيار الحل الأنسب
-          </span>
+            <strong
+              data-ar="نحصّن السلسلة قبل التعطل"
+              data-en="Protect before disruption"
+            >
+              نحصّن السلسلة قبل التعطل
+            </strong>
+
+            <span
+              data-ar="الثقة تتغير، والاستجابة تتغير معها."
+              data-en="Trust changes, and protection changes with it."
+            >
+              الثقة تتغير، والاستجابة تتغير معها.
+            </span>
+
+          </div>
+
+
+          <div class="statement-item">
+
+            <b>03 / REPLAN</b>
+
+            <strong
+              data-ar="نعيد التخطيط مع تغيّر الواقع"
+              data-en="Re-plan as reality changes"
+            >
+              نعيد التخطيط مع تغيّر الواقع
+            </strong>
+
+            <span
+              data-ar="المسار الأفضل اليوم قد لا يكون الأفضل غدًا."
+              data-en="The best option today may not be the best tomorrow."
+            >
+              المسار الأفضل اليوم قد لا يكون الأفضل غدًا.
+            </span>
+
+          </div>
 
         </div>
 
       </section>
 
 
-      <!-- ===================================================
-           CORE IDEA
-           =================================================== -->
+      <!-- =====================================================
+           INTELLIGENCE
+           ===================================================== -->
 
       <section class="section container">
 
         <div
           class="section-label"
-          data-ar="الفكرة الأساسية"
-          data-en="THE CORE IDEA"
+          data-ar="الذكاء السلوكي"
+          data-en="BEHAVIORAL INTELLIGENCE"
         >
-          الفكرة الأساسية
+          الذكاء السلوكي
         </div>
 
 
         <h2
-          data-ar="لا ننتظر الحادث حتى يحدث."
-          data-en="We don't wait for the incident to happen."
+          data-ar="إمدار لا تسأل فقط: هل بيانات الدخول صحيحة؟"
+          data-en="EMDAR does not only ask: are the credentials valid?"
         >
-          لا ننتظر الحادث حتى يحدث.
+          إمدار لا تسأل فقط: هل بيانات الدخول صحيحة؟
         </h2>
 
 
         <p
           class="section-intro"
-          data-ar="إمدار تربط بين السلوك والثقة والمخاطر التشغيلية والقرارات اللوجستية. عندما يتغير شيء في السلسلة، لا تكتفي بإظهار التنبيه؛ بل تساعد متخذ القرار على فهم ما يعنيه هذا التغيير وما الذي يمكن فعله حياله."
-          data-en="EMDAR connects behavior, trust, operational risk, and logistics decisions. When something changes across the chain, it doesn't stop at an alert — it helps decision-makers understand the impact and determine what to do next."
+          data-ar="بل تسأل: هل هذا الكيان يتصرف مثل نفسه؟ لأن الاختراق لا يغيّر كلمة المرور دائمًا… لكنه قد يغيّر السلوك."
+          data-en="It asks: is this entity behaving like itself? An attack does not always change the password — but it can change the behavior."
         >
-          إمدار تربط بين السلوك والثقة والمخاطر التشغيلية والقرارات اللوجستية. عندما يتغير شيء في السلسلة، لا تكتفي بإظهار التنبيه؛ بل تساعد متخذ القرار على فهم ما يعنيه هذا التغيير وما الذي يمكن فعله حياله.
+          بل تسأل: هل هذا الكيان يتصرف مثل نفسه؟ لأن الاختراق لا يغيّر كلمة المرور دائمًا… لكنه قد يغيّر السلوك.
         </p>
 
 
         <div class="cards">
 
-
           <article class="card">
 
-            <div
-              class="card-number"
-              data-ar="01 / السلوك"
-              data-en="01 / BEHAVIOR"
-            >
-              01 / السلوك
+            <div class="card-number">
+              01 / BEHAVIORAL DNA
             </div>
 
             <h3
@@ -2145,10 +1840,10 @@
             </h3>
 
             <p
-              data-ar="تبني إمدار خطًا أساسيًا للسلوك الطبيعي للموردين والحسابات والأجهزة والأنظمة، ثم تلتقط الانحرافات غير المعتادة."
-              data-en="EMDAR builds a behavioral baseline for suppliers, accounts, devices, and systems, then identifies unusual deviations."
+              data-ar="تبني إمدار خطًا أساسيًا لسلوك الموردين والحسابات والأجهزة والأنظمة، ثم تلتقط الانحرافات عن هذا النمط."
+              data-en="EMDAR builds a behavioral baseline for suppliers, accounts, devices, and systems, then detects deviations from that pattern."
             >
-              تبني إمدار خطًا أساسيًا للسلوك الطبيعي للموردين والحسابات والأجهزة والأنظمة، ثم تلتقط الانحرافات غير المعتادة.
+              تبني إمدار خطًا أساسيًا لسلوك الموردين والحسابات والأجهزة والأنظمة، ثم تلتقط الانحرافات عن هذا النمط.
             </p>
 
           </article>
@@ -2156,26 +1851,22 @@
 
           <article class="card">
 
-            <div
-              class="card-number"
-              data-ar="02 / الثقة"
-              data-en="02 / TRUST"
-            >
-              02 / الثقة
+            <div class="card-number">
+              02 / TRUST
             </div>
 
             <h3
-              data-ar="الثقة الديناميكية"
-              data-en="Dynamic Trust"
+              data-ar="الثقة السلوكية"
+              data-en="Behavioral Trust"
             >
-              الثقة الديناميكية
+              الثقة السلوكية
             </h3>
 
             <p
-              data-ar="الثقة ليست ثابتة. عندما يتغير السلوك، تتغير درجة الثقة ومستوى التعرض للخطر، فتبدأ إمدار باتخاذ إجراءات وقائية."
-              data-en="Trust is not static. When behavior changes, trust and exposure change — triggering preventive actions."
+              data-ar="مستوى الثقة ليس ثابتًا. يتغير مع السلوك، وتُستخدم هذه الإشارة لتحديد مستوى التعرض للخطر والإجراءات الوقائية."
+              data-en="Trust is not static. It changes with behavior and helps determine exposure and preventive controls."
             >
-              الثقة ليست ثابتة. عندما يتغير السلوك، تتغير درجة الثقة ومستوى التعرض للخطر، فتبدأ إمدار باتخاذ إجراءات وقائية.
+              مستوى الثقة ليس ثابتًا. يتغير مع السلوك، وتُستخدم هذه الإشارة لتحديد مستوى التعرض للخطر والإجراءات الوقائية.
             </p>
 
           </article>
@@ -2183,12 +1874,8 @@
 
           <article class="card">
 
-            <div
-              class="card-number"
-              data-ar="03 / التحصين"
-              data-en="03 / IMMUNIZE"
-            >
-              03 / التحصين
+            <div class="card-number">
+              03 / IMMUNIZATION
             </div>
 
             <h3
@@ -2199,10 +1886,10 @@
             </h3>
 
             <p
-              data-ar="قبل أن يتحول الخطر إلى تعطل، تقترح إمدار إجراءات وقائية مثل التحقق الإضافي، تقليل الاعتماد، رفع المخزون الاحتياطي وتجهيز البدائل."
-              data-en="Before risk becomes disruption, EMDAR can recommend enhanced verification, reduced dependency, safety stock, and prepared alternatives."
+              data-ar="عندما ترتفع المخاطر، تقترح إمدار إجراءات وقائية مثل التحقق الإضافي، مراجعة العمليات الحساسة، رفع المخزون الاحتياطي، أو تجهيز بدائل."
+              data-en="When risk rises, EMDAR recommends preventive controls such as enhanced verification, sensitive-operation review, safety stock, or alternate capacity."
             >
-              قبل أن يتحول الخطر إلى تعطل، تقترح إمدار إجراءات وقائية مثل التحقق الإضافي، تقليل الاعتماد، رفع المخزون الاحتياطي وتجهيز البدائل.
+              عندما ترتفع المخاطر، تقترح إمدار إجراءات وقائية مثل التحقق الإضافي، مراجعة العمليات الحساسة، رفع المخزون الاحتياطي، أو تجهيز بدائل.
             </p>
 
           </article>
@@ -2212,12 +1899,226 @@
       </section>
 
 
-      <!-- ===================================================
+      <!-- =====================================================
+           ALTERNATIVES
+           ===================================================== -->
+
+      <section class="section container">
+
+        <div
+          class="section-label"
+          data-ar="التخطيط البديل المستمر"
+          data-en="DYNAMIC ALTERNATIVE PLANNING"
+        >
+          التخطيط البديل المستمر
+        </div>
+
+
+        <h2
+          data-ar="لا نكتفي بالتنبؤ بالمشكلة. نقترح ماذا نفعل حيالها."
+          data-en="We do not stop at predicting the problem. We recommend what to do about it."
+        >
+          لا نكتفي بالتنبؤ بالمشكلة. نقترح ماذا نفعل حيالها.
+        </h2>
+
+
+        <p
+          class="section-intro"
+          data-ar="إذا تغير الطقس، ازدحم ميناء، تعطّل مطار، انخفضت قدرة مورد، أو أصبح مسار معين أكثر خطورة، تعيد إمدار مقارنة الخيارات من حيث التكلفة والوقت والمخاطر واستمرارية العمليات."
+          data-en="If weather changes, a port becomes congested, an airport is disrupted, supplier capacity falls, or a route becomes riskier, EMDAR recalculates the available options across cost, time, risk, and continuity."
+        >
+          إذا تغير الطقس، ازدحم ميناء، تعطّل مطار، انخفضت قدرة مورد، أو أصبح مسار معين أكثر خطورة، تعيد إمدار مقارنة الخيارات من حيث التكلفة والوقت والمخاطر واستمرارية العمليات.
+        </p>
+
+
+        <div class="cards">
+
+          <article class="card">
+
+            <div class="card-number">
+              PLAN A
+            </div>
+
+            <h3
+              data-ar="المسار الحالي"
+              data-en="Current Route"
+            >
+              المسار الحالي
+            </h3>
+
+            <p
+              data-ar="الاستمرار بالخيار الحالي عندما يبقى أفضل من البدائل."
+              data-en="Continue with the current option when it remains the best alternative."
+            >
+              الاستمرار بالخيار الحالي عندما يبقى أفضل من البدائل.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-number">
+              PLAN B
+            </div>
+
+            <h3
+              data-ar="بديل تشغيلي"
+              data-en="Operational Alternative"
+            >
+              بديل تشغيلي
+            </h3>
+
+            <p
+              data-ar="تغيير المورد أو الميناء أو المسار أو وسيلة النقل لتقليل التأخير والتعرض."
+              data-en="Change supplier, port, route, or transport mode to reduce delay and exposure."
+            >
+              تغيير المورد أو الميناء أو المسار أو وسيلة النقل لتقليل التأخير والتعرض.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-number">
+              PLAN C
+            </div>
+
+            <h3
+              data-ar="خطة احتياطية"
+              data-en="Contingency Plan"
+            >
+              خطة احتياطية
+            </h3>
+
+            <p
+              data-ar="اختيار بديل أكثر تحفظًا عندما تتغير الظروف أو يصبح استمرار الخطة الأصلية غير مناسب."
+              data-en="Use a more resilient fallback when conditions change or the original plan becomes unsuitable."
+            >
+              اختيار بديل أكثر تحفظًا عندما تتغير الظروف أو يصبح استمرار الخطة الأصلية غير مناسب.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           CYBER
+           ===================================================== -->
+
+      <section class="section container">
+
+        <div
+          class="section-label"
+          data-ar="الأمن السيبراني"
+          data-en="CYBER RESILIENCE"
+        >
+          الأمن السيبراني
+        </div>
+
+
+        <h2
+          data-ar="وإذا وقع الهجوم، لا تتوقف إمدار."
+          data-en="And if an attack happens, EMDAR keeps going."
+        >
+          وإذا وقع الهجوم، لا تتوقف إمدار.
+        </h2>
+
+
+        <p
+          class="section-intro"
+          data-ar="تحلل إمدار نوع الهجوم وتأثيره على الموردين والأنظمة والشحنات والمخزون والعمليات، ثم تحاكي خطط الاستجابة والتعافي وتقارن بينها."
+          data-en="EMDAR analyzes the attack and its impact on suppliers, systems, shipments, inventory, and operations, then simulates and compares response and recovery plans."
+        >
+          تحلل إمدار نوع الهجوم وتأثيره على الموردين والأنظمة والشحنات والمخزون والعمليات، ثم تحاكي خطط الاستجابة والتعافي وتقارن بينها.
+        </p>
+
+
+        <div class="cards">
+
+          <article class="card">
+
+            <div class="card-number">
+              CYBER THREATS
+            </div>
+
+            <h3
+              data-ar="هجمات حقيقية ضمن نموذج التحليل"
+              data-en="Attack scenarios"
+            >
+              هجمات حقيقية ضمن نموذج التحليل
+            </h3>
+
+            <p
+              data-ar="Ransomware، DDoS، Phishing، Account Takeover، Supply Chain Attack، Third-Party Compromise، وGPS/AIS Spoofing وغيرها."
+              data-en="Ransomware, DDoS, phishing, account takeover, supply-chain attacks, third-party compromise, and GPS/AIS spoofing."
+            >
+              Ransomware، DDoS، Phishing، Account Takeover، Supply Chain Attack، Third-Party Compromise، وGPS/AIS Spoofing وغيرها.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-number">
+              IMPACT
+            </div>
+
+            <h3
+              data-ar="من الهجوم إلى الأثر"
+              data-en="From attack to impact"
+            >
+              من الهجوم إلى الأثر
+            </h3>
+
+            <p
+              data-ar="تربط إمدار الحادث السيبراني بالأثر التشغيلي: تأخير الشحنات، نقص المخزون، تعطل الموردين، أو توقف العمليات."
+              data-en="EMDAR connects the cyber incident to operational impact: shipment delays, inventory shortages, supplier disruption, or operational downtime."
+            >
+              تربط إمدار الحادث السيبراني بالأثر التشغيلي: تأخير الشحنات، نقص المخزون، تعطل الموردين، أو توقف العمليات.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-number">
+              A / B / C
+            </div>
+
+            <h3
+              data-ar="محاكاة الاستجابة"
+              data-en="Response simulation"
+            >
+              محاكاة الاستجابة
+            </h3>
+
+            <p
+              data-ar="تقارن إمدار بين Plan A وPlan B وPlan C من حيث المخاطر والتكلفة والوقت واستمرارية العمليات، ثم تعيد التخطيط إذا تغيرت الظروف."
+              data-en="EMDAR compares Plan A, B, and C across risk, cost, time, and continuity, then replans if conditions change."
+            >
+              تقارن إمدار بين Plan A وPlan B وPlan C من حيث المخاطر والتكلفة والوقت واستمرارية العمليات، ثم تعيد التخطيط إذا تغيرت الظروف.
+            </p>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
            HOW IT WORKS
-           =================================================== -->
+           ===================================================== -->
 
       <section
-        class="section container"
+        class="flow-section container"
         id="how"
       >
 
@@ -2238,682 +2139,109 @@
         </h2>
 
 
-        <p
-          class="section-intro"
-          data-ar="من اكتشاف السلوك غير الطبيعي، إلى تقييم الثقة، ثم فهم الأثر واقتراح البدائل، وإذا تغيرت الظروف تعيد إمدار التخطيط من جديد."
-          data-en="From detecting abnormal behavior and evaluating trust, to understanding impact and proposing alternatives — and when conditions change, EMDAR replans again."
-        >
-          من اكتشاف السلوك غير الطبيعي، إلى تقييم الثقة، ثم فهم الأثر واقتراح البدائل، وإذا تغيرت الظروف تعيد إمدار التخطيط من جديد.
-        </p>
-
-
-        <div class="timeline">
-
-
-          <article class="timeline-card">
-
-            <div
-              class="timeline-phase"
-              data-ar="BEFORE"
-              data-en="BEFORE"
-            >
-              BEFORE
-            </div>
-
-            <h3
-              data-ar="قبل الهجوم"
-              data-en="Before the Attack"
-            >
-              قبل الهجوم
-            </h3>
-
-            <p
-              data-ar="نبحث عن التغير قبل أن يصبح حادثًا."
-              data-en="We look for change before it becomes an incident."
-            >
-              نبحث عن التغير قبل أن يصبح حادثًا.
-            </p>
-
-            <ul class="timeline-list">
-
-              <li
-                data-ar="بصمة السلوك"
-                data-en="Behavioral DNA"
-              >
-                بصمة السلوك
-              </li>
-
-              <li
-                data-ar="اكتشاف الشذوذ"
-                data-en="Anomaly detection"
-              >
-                اكتشاف الشذوذ
-              </li>
-
-              <li
-                data-ar="تقييم الثقة والتعرض"
-                data-en="Trust and exposure assessment"
-              >
-                تقييم الثقة والتعرض
-              </li>
-
-              <li
-                data-ar="تحصين استباقي"
-                data-en="Proactive immunization"
-              >
-                تحصين استباقي
-              </li>
-
-            </ul>
-
-          </article>
-
-
-          <article class="timeline-card">
-
-            <div
-              class="timeline-phase"
-              data-ar="DURING"
-              data-en="DURING"
-            >
-              DURING
-            </div>
-
-            <h3
-              data-ar="إذا وقع الهجوم"
-              data-en="If an Attack Happens"
-            >
-              إذا وقع الهجوم
-            </h3>
-
-            <p
-              data-ar="لا تتوقف إمدار عند التنبيه؛ بل تحلل الهجوم وأثره على سلسلة الإمداد."
-              data-en="EMDAR goes beyond the alert by analyzing the attack and its supply-chain impact."
-            >
-              لا تتوقف إمدار عند التنبيه؛ بل تحلل الهجوم وأثره على سلسلة الإمداد.
-            </p>
-
-            <ul class="timeline-list">
-
-              <li
-                data-ar="تصنيف الهجوم"
-                data-en="Attack classification"
-              >
-                تصنيف الهجوم
-              </li>
-
-              <li
-                data-ar="تحليل الأثر"
-                data-en="Impact analysis"
-              >
-                تحليل الأثر
-              </li>
-
-              <li
-                data-ar="محاكاة Plan A / B / C"
-                data-en="Plan A / B / C simulation"
-              >
-                محاكاة Plan A / B / C
-              </li>
-
-              <li
-                data-ar="الاستجابة والتعافي"
-                data-en="Response and recovery"
-              >
-                الاستجابة والتعافي
-              </li>
-
-            </ul>
-
-          </article>
-
-
-          <article class="timeline-card">
-
-            <div
-              class="timeline-phase"
-              data-ar="REPLAN"
-              data-en="REPLAN"
-            >
-              REPLAN
-            </div>
-
-            <h3
-              data-ar="عندما تتغير الظروف"
-              data-en="When Conditions Change"
-            >
-              عندما تتغير الظروف
-            </h3>
-
-            <p
-              data-ar="إذا تغير الطقس أو الميناء أو المورد أو التكلفة أو الوقت، تعيد إمدار حساب الخيارات."
-              data-en="If weather, port, supplier, cost, or timing changes, EMDAR recalculates the available options."
-            >
-              إذا تغير الطقس أو الميناء أو المورد أو التكلفة أو الوقت، تعيد إمدار حساب الخيارات.
-            </p>
-
-            <ul class="timeline-list">
-
-              <li
-                data-ar="تغيير المورد"
-                data-en="Change supplier"
-              >
-                تغيير المورد
-              </li>
-
-              <li
-                data-ar="تغيير الميناء أو المسار"
-                data-en="Change port or route"
-              >
-                تغيير الميناء أو المسار
-              </li>
-
-              <li
-                data-ar="تغيير وسيلة النقل"
-                data-en="Change transport mode"
-              >
-                تغيير وسيلة النقل
-              </li>
-
-              <li
-                data-ar="تغيير موعد الشحن"
-                data-en="Change shipment timing"
-              >
-                تغيير موعد الشحن
-              </li>
-
-            </ul>
-
-          </article>
-
-        </div>
-
-      </section>
-
-
-      <!-- ===================================================
-           DYNAMIC ALTERNATIVES
-           =================================================== -->
-
-      <section class="section container">
-
-        <div
-          class="section-label"
-          data-ar="البدائل المستمرة"
-          data-en="DYNAMIC ALTERNATIVES"
-        >
-          البدائل المستمرة
-        </div>
-
-
-        <h2
-          data-ar="لا نتنبأ بالمشكلة فقط. نقترح ماذا نفعل حيالها."
-          data-en="We don't only predict the problem. We recommend what to do about it."
-        >
-          لا نتنبأ بالمشكلة فقط. نقترح ماذا نفعل حيالها.
-        </h2>
-
-
-        <div class="alternatives">
-
-
-          <div class="alternative-main">
-
-            <h3
-              data-ar="Dynamic Alternative Planning"
-              data-en="Dynamic Alternative Planning"
-            >
-              Dynamic Alternative Planning
-            </h3>
-
-            <p
-              data-ar="تراقب إمدار المتغيرات التي تؤثر على القرار، مثل الطقس، ازدحام الموانئ والمطارات، توفر الموردين، المخاطر السيبرانية، التكلفة، ووقت الوصول. ثم تقارن البدائل وتعيد التوصية عندما يتغير الواقع."
-              data-en="EMDAR monitors decision variables such as weather, port and airport congestion, supplier availability, cyber risk, cost, and ETA. It compares alternatives and updates the recommendation as reality changes."
-            >
-              تراقب إمدار المتغيرات التي تؤثر على القرار، مثل الطقس، ازدحام الموانئ والمطارات، توفر الموردين، المخاطر السيبرانية، التكلفة، ووقت الوصول. ثم تقارن البدائل وتعيد التوصية عندما يتغير الواقع.
-            </p>
-
-          </div>
-
-
-          <div class="alternative-options">
-
-
-            <div class="option">
-
-              <span>PLAN A</span>
-
-              <strong
-                data-ar="المسار الحالي"
-                data-en="Current Route"
-              >
-                المسار الحالي
-              </strong>
-
-              <p
-                data-ar="الاستمرار مع الوضع الحالي إذا بقيت المخاطر ضمن الحدود المقبولة."
-                data-en="Continue with the current plan when risk remains acceptable."
-              >
-                الاستمرار مع الوضع الحالي إذا بقيت المخاطر ضمن الحدود المقبولة.
-              </p>
-
-            </div>
-
-
-            <div class="option">
-
-              <span>PLAN B</span>
-
-              <strong
-                data-ar="بديل تشغيلي"
-                data-en="Operational Alternative"
-              >
-                بديل تشغيلي
-              </strong>
-
-              <p
-                data-ar="تغيير المورد أو الميناء أو المسار أو وسيلة النقل."
-                data-en="Change the supplier, port, route, or transport mode."
-              >
-                تغيير المورد أو الميناء أو المسار أو وسيلة النقل.
-              </p>
-
-            </div>
-
-
-            <div class="option">
-
-              <span>PLAN C</span>
-
-              <strong
-                data-ar="خطة حماية"
-                data-en="Protection Plan"
-              >
-                خطة حماية
-              </strong>
-
-              <p
-                data-ar="تقليل الاعتماد، رفع المخزون الاحتياطي وتجهيز بديل قبل التعطل."
-                data-en="Reduce dependency, increase safety stock, and prepare an alternative before disruption."
-              >
-                تقليل الاعتماد، رفع المخزون الاحتياطي وتجهيز بديل قبل التعطل.
-              </p>
-
-            </div>
-
-
-            <div class="option">
-
-              <span>REPLAN</span>
-
-              <strong
-                data-ar="إعادة التخطيط"
-                data-en="Re-plan"
-              >
-                إعادة التخطيط
-              </strong>
-
-              <p
-                data-ar="إذا تغيرت الظروف، تعيد إمدار المقارنة وتختار الحل الأنسب."
-                data-en="When conditions change, EMDAR recalculates and selects the best option."
-              >
-                إذا تغيرت الظروف، تعيد إمدار المقارنة وتختار الحل الأنسب.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ===================================================
-           CYBERSECURITY
-           =================================================== -->
-
-      <section class="section container">
-
-        <div
-          class="section-label"
-          data-ar="الأمن السيبراني"
-          data-en="CYBERSECURITY"
-        >
-          الأمن السيبراني
-        </div>
-
-
-        <h2
-          data-ar="الأمن السيبراني ليس طبقة إضافية. هو جزء من القرار."
-          data-en="Cybersecurity isn't an extra layer. It's part of the decision."
-        >
-          الأمن السيبراني ليس طبقة إضافية. هو جزء من القرار.
-        </h2>
-
-
-        <p
-          class="section-intro"
-          data-ar="إمدار تربط المؤشرات السيبرانية بالأثر التشغيلي واللوجستي، بحيث لا يبقى السؤال: هل تعرضنا لهجوم؟ بل ماذا يعني هذا الهجوم على الموردين والشحنات والمخزون واستمرارية العمليات؟"
-          data-en="EMDAR connects cyber signals to operational and logistics impact. The question is not only whether an attack happened, but what it means for suppliers, shipments, inventory, and business continuity."
-        >
-          إمدار تربط المؤشرات السيبرانية بالأثر التشغيلي واللوجستي، بحيث لا يبقى السؤال: هل تعرضنا لهجوم؟ بل ماذا يعني هذا الهجوم على الموردين والشحنات والمخزون واستمرارية العمليات؟
-        </p>
-
-
-        <div class="attack-grid">
-
-
-          <div class="attack">
-            <strong
-              data-ar="Ransomware"
-              data-en="Ransomware"
-            >
-              Ransomware
-            </strong>
-
-            <span
-              data-ar="برمجيات فدية"
-              data-en="Extortion malware"
-            >
-              برمجيات فدية
-            </span>
-          </div>
-
-
-          <div class="attack">
-            <strong
-              data-ar="DDoS"
-              data-en="DDoS"
-            >
-              DDoS
-            </strong>
-
-            <span
-              data-ar="حجب الخدمة"
-              data-en="Denial of service"
-            >
-              حجب الخدمة
-            </span>
-          </div>
-
-
-          <div class="attack">
-            <strong
-              data-ar="Phishing"
-              data-en="Phishing"
-            >
-              Phishing
-            </strong>
-
-            <span
-              data-ar="تصيد احتيالي"
-              data-en="Credential deception"
-            >
-              تصيد احتيالي
-            </span>
-          </div>
-
-
-          <div class="attack">
-            <strong
-              data-ar="Account Takeover"
-              data-en="Account Takeover"
-            >
-              Account Takeover
-            </strong>
-
-            <span
-              data-ar="استيلاء على الحساب"
-              data-en="Account compromise"
-            >
-              استيلاء على الحساب
-            </span>
-          </div>
-
-
-          <div class="attack">
-            <strong
-              data-ar="Supply Chain Attack"
-              data-en="Supply Chain Attack"
-            >
-              Supply Chain Attack
-            </strong>
-
-            <span
-              data-ar="هجوم سلسلة إمداد"
-              data-en="Supply-chain compromise"
-            >
-              هجوم سلسلة إمداد
-            </span>
-          </div>
-
-
-          <div class="attack">
-            <strong
-              data-ar="Third-Party Compromise"
-              data-en="Third-Party Compromise"
-            >
-              Third-Party Compromise
-            </strong>
-
-            <span
-              data-ar="اختراق طرف ثالث"
-              data-en="Third-party risk"
-            >
-              اختراق طرف ثالث
-            </span>
-          </div>
-
-
-          <div class="attack">
-            <strong
-              data-ar="Port System Attack"
-              data-en="Port System Attack"
-            >
-              Port System Attack
-            </strong>
-
-            <span
-              data-ar="استهداف أنظمة الميناء"
-              data-en="Port system compromise"
-            >
-              استهداف أنظمة الميناء
-            </span>
-          </div>
-
-
-          <div class="attack">
-            <strong
-              data-ar="GPS / AIS Spoofing"
-              data-en="GPS / AIS Spoofing"
-            >
-              GPS / AIS Spoofing
-            </strong>
-
-            <span
-              data-ar="تلاعب بالموقع والإشارات"
-              data-en="Navigation signal manipulation"
-            >
-              تلاعب بالموقع والإشارات
-            </span>
-          </div>
-
-
-          <div class="attack">
-            <strong
-              data-ar="Business Email Compromise"
-              data-en="Business Email Compromise"
-            >
-              Business Email Compromise
-            </strong>
-
-            <span
-              data-ar="اختراق البريد التجاري"
-              data-en="Business email fraud"
-            >
-              اختراق البريد التجاري
-            </span>
-          </div>
-
-
-          <div class="attack">
-            <strong
-              data-ar="API Abuse"
-              data-en="API Abuse"
-            >
-              API Abuse
-            </strong>
-
-            <span
-              data-ar="إساءة استخدام الواجهات"
-              data-en="Interface abuse"
-            >
-              إساءة استخدام الواجهات
-            </span>
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- ===================================================
-           DECISION FLOW
-           =================================================== -->
-
-      <section class="section container">
-
-        <div
-          class="section-label"
-          data-ar="من الإشارة إلى الاستجابة"
-          data-en="FROM SIGNAL TO RESPONSE"
-        >
-          من الإشارة إلى الاستجابة
-        </div>
-
-
-        <h2
-          data-ar="إمدار لا تخبرك فقط بما قد يحدث… بل ماذا يمكنك أن تفعل حياله."
-          data-en="EMDAR doesn't only tell you what may happen — it tells you what you can do about it."
-        >
-          إمدار لا تخبرك فقط بما قد يحدث… بل ماذا يمكنك أن تفعل حياله.
-        </h2>
-
-
         <div class="flow">
 
-
           <div class="flow-step">
 
+            <span>01 / DETECT</span>
+
             <strong
-              data-ar="01 · اكتشاف"
-              data-en="01 · DETECT"
+              data-ar="اكتشاف"
+              data-en="Detect"
             >
-              01 · اكتشاف
+              اكتشاف
             </strong>
 
-            <span
-              data-ar="التقاط التغير"
-              data-en="Capture change"
+            <p
+              data-ar="التقاط التغيرات غير الطبيعية."
+              data-en="Detect abnormal changes."
             >
-              التقاط التغير
-            </span>
+              التقاط التغيرات غير الطبيعية.
+            </p>
 
           </div>
 
 
           <div class="flow-step">
 
+            <span>02 / TRUST</span>
+
             <strong
-              data-ar="02 · تحليل"
-              data-en="02 · ANALYZE"
+              data-ar="تقييم"
+              data-en="Assess"
             >
-              02 · تحليل
+              تقييم
             </strong>
 
-            <span
-              data-ar="فهم الخطر والأثر"
-              data-en="Understand risk and impact"
+            <p
+              data-ar="حساب الثقة والتعرض للخطر."
+              data-en="Assess trust and exposure."
             >
-              فهم الخطر والأثر
-            </span>
+              حساب الثقة والتعرض للخطر.
+            </p>
 
           </div>
 
 
           <div class="flow-step">
 
+            <span>03 / PROTECT</span>
+
             <strong
-              data-ar="03 · محاكاة"
-              data-en="03 · SIMULATE"
+              data-ar="تحصين"
+              data-en="Protect"
             >
-              03 · محاكاة
+              تحصين
             </strong>
 
-            <span
-              data-ar="اختبار السيناريوهات"
-              data-en="Test scenarios"
+            <p
+              data-ar="تفعيل إجراءات وقائية."
+              data-en="Apply preventive controls."
             >
-              اختبار السيناريوهات
-            </span>
+              تفعيل إجراءات وقائية.
+            </p>
 
           </div>
 
 
           <div class="flow-step">
 
-            <strong
-              data-ar="04 · توصية"
-              data-en="04 · RECOMMEND"
-            >
-              04 · توصية
-            </strong>
+            <span>04 / OPTIMIZE</span>
 
-            <span
+            <strong
               data-ar="مقارنة البدائل"
-              data-en="Compare alternatives"
+              data-en="Optimize"
             >
               مقارنة البدائل
-            </span>
+            </strong>
+
+            <p
+              data-ar="اختيار أفضل خيار حسب الظروف."
+              data-en="Choose the best option for current conditions."
+            >
+              اختيار أفضل خيار حسب الظروف.
+            </p>
 
           </div>
 
 
           <div class="flow-step">
 
-            <strong
-              data-ar="05 · استجابة"
-              data-en="05 · RESPOND"
-            >
-              05 · استجابة
-            </strong>
-
-            <span
-              data-ar="تنفيذ الخطة"
-              data-en="Execute the plan"
-            >
-              تنفيذ الخطة
-            </span>
-
-          </div>
-
-
-          <div class="flow-step">
+            <span>05 / REPLAN</span>
 
             <strong
-              data-ar="06 · إعادة تخطيط"
-              data-en="06 · REPLAN"
+              data-ar="إعادة التخطيط"
+              data-en="Replan"
             >
-              06 · إعادة تخطيط
+              إعادة التخطيط
             </strong>
 
-            <span
-              data-ar="الاستجابة للواقع الجديد"
-              data-en="Adapt to new reality"
+            <p
+              data-ar="تحديث القرار عندما يتغير الواقع."
+              data-en="Update the decision as reality changes."
             >
-              الاستجابة للواقع الجديد
-            </span>
+              تحديث القرار عندما يتغير الواقع.
+            </p>
 
           </div>
 
@@ -2922,13 +2250,13 @@
       </section>
 
 
-      <!-- ===================================================
-           FINAL CTA
-           =================================================== -->
+      <!-- =====================================================
+           CTA
+           ===================================================== -->
 
-      <section class="container">
+      <section class="cta container">
 
-        <div class="closing">
+        <div class="cta-box">
 
           <div
             class="section-label"
@@ -2949,7 +2277,7 @@
 
           <p
             data-ar="نكتشف التغيير قبل الهجوم، نحصّن السلسلة قبل التعطل، ونُعيد التخطيط مع تغيّر الواقع."
-            data-en="We detect change before the attack, immunize the supply chain before disruption, and re-plan as reality changes."
+            data-en="We detect change before the attack, protect the supply chain before disruption, and re-plan as reality changes."
           >
             نكتشف التغيير قبل الهجوم، نحصّن السلسلة قبل التعطل، ونُعيد التخطيط مع تغيّر الواقع.
           </p>
@@ -2973,37 +2301,38 @@
     </main>
 
 
-    <!-- =====================================================
+    <!-- =======================================================
          FOOTER
-         ===================================================== -->
+         ======================================================= -->
 
     <footer class="container">
 
-      <div>
+      <div class="credit">
 
-        <span
-          class="footer-brand"
+        <div
+          data-ar="تصميم وتطوير"
+          data-en="Designed & Developed by"
         >
-          EMDAR
-        </span>
+          تصميم وتطوير
+        </div>
 
-        <span
-          class="footer-note"
-          data-ar=" · من الإمداد إلى القرار"
-          data-en=" · From Supply to Decision"
+        <strong
+          class="english"
+          data-ar="جواهر الهقيش"
+          data-en="Jawaher Alhoqish"
         >
-          · من الإمداد إلى القرار
-        </span>
+          جواهر الهقيش
+        </strong>
 
       </div>
 
 
       <div
-        class="footer-note"
-        data-ar="منصة ذكية لمرونة سلاسل الإمداد والأمن السيبراني"
-        data-en="Intelligent supply-chain resilience and cybersecurity platform"
+        class="footer-tagline"
+        data-ar="إمدار | من الإمداد إلى القرار"
+        data-en="EMDAR | From Supply to Decision"
       >
-        منصة ذكية لمرونة سلاسل الإمداد والأمن السيبراني
+        إمدار | من الإمداد إلى القرار
       </div>
 
     </footer>
@@ -3011,15 +2340,11 @@
   </div>
 
 
-  <!-- =======================================================
-       JAVASCRIPT
-       ======================================================= -->
+  <!-- =========================================================
+       LANGUAGE SCRIPT
+       ========================================================= -->
 
   <script>
-
-    /* =====================================================
-       LANGUAGE
-       ===================================================== */
 
     const langButton =
       document.getElementById("langButton");
@@ -3029,12 +2354,14 @@
 
     function updateLanguage() {
 
-      document.documentElement.lang = language;
+      document.documentElement.lang =
+        language;
 
       document.documentElement.dir =
         language === "ar"
           ? "rtl"
           : "ltr";
+
 
       document.body.classList.toggle(
         "en",
@@ -3043,13 +2370,19 @@
 
 
       document
-        .querySelectorAll("[data-ar][data-en]")
+        .querySelectorAll(
+          "[data-ar][data-en]"
+        )
         .forEach(element => {
 
-          element.textContent =
+          const value =
             element.getAttribute(
               "data-" + language
             );
+
+          if (value !== null) {
+            element.textContent = value;
+          }
 
         });
 
@@ -3083,62 +2416,7 @@
     );
 
 
-    /* =====================================================
-       THEME
-       ===================================================== */
-
-    const themeButton =
-      document.getElementById("themeButton");
-
-
-    let theme =
-      localStorage.getItem("emdar-theme")
-      || "dark";
-
-
-    function updateTheme() {
-
-      document.body.classList.toggle(
-        "light",
-        theme === "light"
-      );
-
-
-      themeButton.textContent =
-        theme === "light"
-          ? "☾"
-          : "☼";
-
-
-      localStorage.setItem(
-        "emdar-theme",
-        theme
-      );
-
-    }
-
-
-    themeButton.addEventListener(
-      "click",
-      () => {
-
-        theme =
-          theme === "dark"
-            ? "light"
-            : "dark";
-
-        updateTheme();
-
-      }
-    );
-
-
-    /* =====================================================
-       INITIAL STATE
-       ===================================================== */
-
     updateLanguage();
-    updateTheme();
 
   </script>
 
