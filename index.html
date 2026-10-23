@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="theme-color" content="#0B1F3B">
+  <meta name="theme-color" content="#071426">
   <meta
     name="description"
-    content="EMDAR | منصة ذكية لمرونة سلاسل الإمداد والأمن السيبراني."
+    content="EMDAR | من الإمداد إلى القرار. منصة ذكية لمرونة سلاسل الإمداد والأمن السيبراني."
   >
 
   <title>EMDAR | من الإمداد إلى القرار</title>
@@ -21,78 +21,86 @@
   >
 
   <style>
-
     /* =========================================================
-       EMDAR — BRAND COLORS
+       EMDAR
+       From Supply to Decision
        ========================================================= */
 
     :root {
-      --midnight: #0B1F3B;
-      --deep-blue: #1D4EDB;
-      --steel-blue: #3B82F6;
-      --ice-blue: #7DD3FC;
-      --pale-blue: #CBD5E1;
-      --cool-gray: #F3F6FB;
-
-      /* DARK MODE */
       --bg: #071426;
-      --bg-secondary: #0B1F3B;
-      --surface: rgba(11, 31, 59, 0.76);
-      --surface-solid: #0B1F3B;
-      --surface-light: #10294B;
+      --bg-soft: #0a1930;
+      --deep: #050d1a;
 
-      --text: #F3F6FB;
-      --text-soft: #CBD5E1;
-      --text-muted: #91A4BD;
+      --card: #0d1d33;
+      --card-2: #102640;
 
-      --border: rgba(125, 211, 252, 0.16);
-      --border-strong: rgba(125, 211, 252, 0.34);
+      --cyan: #5ed6f7;
+      --cyan-bright: #00e5ff;
+      --cyan-soft: rgba(94, 214, 247, 0.14);
 
-      --accent: #7DD3FC;
-      --accent-strong: #3B82F6;
-      --blue: #1D4EDB;
+      --white: #f4f8fc;
+      --text: #e9f1f8;
+      --muted: #91a6ba;
 
-      --shadow: rgba(0, 0, 0, 0.32);
-      --grid: rgba(125, 211, 252, 0.055);
+      --border: rgba(148, 163, 184, 0.17);
+      --border-cyan: rgba(94, 214, 247, 0.32);
 
-      --header-bg: rgba(7, 20, 38, 0.76);
+      --gold: #d9b978;
 
-      --button-text: #071426;
+      --shadow: rgba(0, 0, 0, 0.30);
 
-      --radius: 20px;
+      --page-glow:
+        radial-gradient(
+          circle at 78% 35%,
+          rgba(0, 229, 255, 0.10),
+          transparent 31%
+        ),
+        radial-gradient(
+          circle at 12% 80%,
+          rgba(57, 126, 191, 0.10),
+          transparent 34%
+        );
     }
-
 
     /* =========================================================
        LIGHT MODE
        ========================================================= */
 
     body.light {
-      --bg: #F3F6FB;
-      --bg-secondary: #EAF1F8;
-      --surface: rgba(255, 255, 255, 0.82);
-      --surface-solid: #FFFFFF;
-      --surface-light: #F8FAFD;
+      --bg: #f4f7fb;
+      --bg-soft: #eaf0f7;
+      --deep: #ffffff;
 
-      --text: #0B1F3B;
-      --text-soft: #334A67;
-      --text-muted: #61738B;
+      --card: #ffffff;
+      --card-2: #edf4fa;
 
-      --border: rgba(11, 31, 59, 0.12);
-      --border-strong: rgba(29, 78, 219, 0.28);
+      --cyan: #008eb5;
+      --cyan-bright: #007fa3;
+      --cyan-soft: rgba(0, 142, 181, 0.10);
 
-      --accent: #1D4EDB;
-      --accent-strong: #1D4EDB;
-      --blue: #1D4EDB;
+      --white: #071426;
+      --text: #102236;
+      --muted: #607489;
 
-      --shadow: rgba(11, 31, 59, 0.12);
-      --grid: rgba(11, 31, 59, 0.045);
+      --border: rgba(15, 40, 65, 0.13);
+      --border-cyan: rgba(0, 142, 181, 0.28);
 
-      --header-bg: rgba(243, 246, 251, 0.84);
+      --gold: #9b762d;
 
-      --button-text: #FFFFFF;
+      --shadow: rgba(30, 55, 80, 0.12);
+
+      --page-glow:
+        radial-gradient(
+          circle at 78% 35%,
+          rgba(0, 180, 220, 0.10),
+          transparent 31%
+        ),
+        radial-gradient(
+          circle at 12% 80%,
+          rgba(100, 150, 190, 0.10),
+          transparent 34%
+        );
     }
-
 
     /* =========================================================
        RESET
@@ -108,27 +116,17 @@
 
     body {
       margin: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-
       color: var(--text);
       background: var(--bg);
-
-      font-family:
-        "DM Sans",
-        "IBM Plex Sans Arabic",
-        sans-serif;
-
+      font-family: "IBM Plex Sans Arabic", "DM Sans", sans-serif;
+      overflow-x: hidden;
       transition:
         background 0.35s ease,
         color 0.35s ease;
     }
 
-    body.ar {
-      font-family:
-        "IBM Plex Sans Arabic",
-        "DM Sans",
-        sans-serif;
+    body.en {
+      font-family: "DM Sans", "IBM Plex Sans Arabic", sans-serif;
     }
 
     a {
@@ -136,89 +134,70 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
     button:focus-visible,
     a:focus-visible {
-      outline: 3px solid var(--accent);
+      outline: 3px solid var(--cyan);
       outline-offset: 4px;
     }
 
-
     /* =========================================================
-       PAGE BACKGROUND
+       PAGE
        ========================================================= */
 
     .page {
-      position: relative;
       min-height: 100vh;
+      position: relative;
       overflow: hidden;
-
       background:
-        radial-gradient(
-          circle at 82% 18%,
-          rgba(29, 78, 219, 0.18),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 15% 70%,
-          rgba(59, 130, 246, 0.10),
-          transparent 32%
-        ),
+        var(--page-glow),
         var(--bg);
-
       transition: background 0.35s ease;
     }
 
     .page::before {
       content: "";
-      position: fixed;
+      position: absolute;
       inset: 0;
-
       pointer-events: none;
-
-      opacity: 0.9;
+      opacity: 0.065;
 
       background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        linear-gradient(
+          rgba(120, 180, 210, 0.7) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(120, 180, 210, 0.7) 1px,
+          transparent 1px
+        );
 
       background-size: 72px 72px;
-
       mask-image: linear-gradient(
         to bottom,
         black,
-        transparent 92%
-      );
-
-      -webkit-mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 92%
+        transparent 85%
       );
     }
 
-
-    /* =========================================================
-       CONTAINER
-       ========================================================= */
-
     .container {
-      width: min(1180px, calc(100% - 44px));
-      margin-inline: auto;
+      width: min(1160px, calc(100% - 44px));
+      margin: auto;
       position: relative;
       z-index: 2;
     }
-
 
     /* =========================================================
        HEADER
        ========================================================= */
 
     header {
-      min-height: 86px;
+      min-height: 88px;
 
       display: flex;
       align-items: center;
@@ -228,153 +207,131 @@
 
       border-bottom: 1px solid var(--border);
 
-      background: var(--header-bg);
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      transition:
-        background 0.35s ease,
-        border-color 0.35s ease;
+      position: relative;
+      z-index: 20;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 15px;
+      min-width: 0;
     }
 
     /*
       IMPORTANT:
-      No white box around the logo.
-      The PNG is transparent and is displayed directly.
+      No white logo box.
+      The transparent logo is displayed directly.
     */
 
-    .logo-wrap {
+    .logo {
       width: 68px;
       height: 68px;
-
-      display: grid;
-      place-items: center;
-
-      background: transparent;
-      border: none;
-      box-shadow: none;
-    }
-
-    .logo-wrap img {
-      width: 66px;
-      height: 66px;
-
       object-fit: contain;
-
       display: block;
-
-      background: transparent;
-
-      filter:
-        drop-shadow(
-          0 8px 18px rgba(59, 130, 246, 0.18)
-        );
+      flex-shrink: 0;
     }
 
     .brand-copy {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+      min-width: 0;
     }
 
     .brand-name {
-      color: var(--text);
+      color: var(--cyan);
       font-size: 18px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.18em;
     }
 
     .brand-sub {
-      color: var(--text-muted);
-      font-size: 11px;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
 
+    .icon-button {
+      width: 43px;
+      height: 43px;
 
-    /* =========================================================
-       LANGUAGE + THEME BUTTONS
-       ========================================================= */
+      display: grid;
+      place-items: center;
 
-    .control-button {
-      min-width: 48px;
-      height: 44px;
-
-      padding: 0 15px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      gap: 7px;
-
-      border-radius: 13px;
-
-      border: 1px solid var(--border-strong);
+      border: 1px solid var(--border-cyan);
+      border-radius: 50%;
 
       color: var(--text);
-
-      background: var(--surface);
+      background: var(--cyan-soft);
 
       cursor: pointer;
 
       transition:
-        transform 0.22s ease,
-        background 0.22s ease,
-        border-color 0.22s ease;
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
     }
 
-    .control-button:hover {
+    .icon-button:hover {
       transform: translateY(-2px);
-
-      background: var(--surface-light);
-
-      border-color: var(--accent);
+      background: rgba(94, 214, 247, 0.18);
+      border-color: var(--cyan);
     }
 
-    .control-icon {
-      font-size: 17px;
-      line-height: 1;
+    .icon-button svg {
+      width: 19px;
+      height: 19px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
     }
 
-    .control-text {
-      font-size: 12px;
+    #langButton {
+      min-height: 43px;
+
+      border: 1px solid var(--border-cyan);
+      border-radius: 30px;
+
+      padding: 9px 15px;
+
+      color: var(--text);
+      background: var(--cyan-soft);
+
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
       font-weight: 600;
+
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
     }
 
+    #langButton:hover {
+      transform: translateY(-2px);
+      background: rgba(94, 214, 247, 0.18);
+    }
 
     /* =========================================================
        HERO
        ========================================================= */
 
     .hero {
-      min-height: 650px;
-
       display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
 
-      grid-template-columns:
-        minmax(0, 1fr)
-        minmax(420px, 0.9fr);
+      gap: 35px;
 
       align-items: center;
 
-      gap: 65px;
+      min-height: 610px;
 
-      padding:
-        68px
-        0
-        74px;
+      padding: 40px 0 55px;
     }
 
     .hero-copy {
@@ -382,84 +339,73 @@
     }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      color: var(--accent);
-
+      color: var(--cyan);
       font-size: 12px;
       font-weight: 700;
-
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
     }
 
     .eyebrow::before {
       content: "";
 
+      display: inline-block;
+
       width: 8px;
       height: 8px;
 
+      margin-inline-end: 9px;
+
       border-radius: 50%;
 
-      background: var(--accent);
+      background: var(--cyan);
 
       box-shadow:
-        0 0 16px
-        rgba(125, 211, 252, 0.72);
+        0 0 14px var(--cyan);
     }
 
     h1 {
-      margin: 20px 0 20px;
+      margin: 17px 0 22px;
 
-      font-size:
-        clamp(48px, 6vw, 76px);
+      max-width: 690px;
 
-      line-height: 1.08;
+      color: var(--white);
+
+      font-size: clamp(43px, 5vw, 68px);
+
+      line-height: 1.13;
 
       font-weight: 600;
 
-      letter-spacing: -0.055em;
+      letter-spacing: -0.045em;
     }
 
-    body.ar h1 {
-      font-size:
-        clamp(42px, 5.6vw, 70px);
-
-      line-height: 1.28;
-
+    body:not(.en) h1 {
       letter-spacing: 0;
+      line-height: 1.35;
     }
 
     .highlight {
-      color: var(--accent);
+      color: var(--cyan);
     }
 
-    .hero-description {
-      max-width: 650px;
+    .description {
+      max-width: 640px;
 
-      margin: 0 0 27px;
+      margin: 0;
 
-      color: var(--text-soft);
+      color: var(--muted);
 
       font-size: 17px;
-
       line-height: 1.95;
     }
-
-    .hero-description strong {
-      color: var(--text);
-    }
-
-
-    /* =========================================================
-       CTA BUTTONS
-       ========================================================= */
 
     .buttons {
       display: flex;
       flex-wrap: wrap;
+
       gap: 12px;
+
+      margin-top: 28px;
     }
 
     .button {
@@ -469,13 +415,11 @@
       align-items: center;
       justify-content: center;
 
-      padding:
-        13px
-        24px;
+      padding: 12px 23px;
 
       border-radius: 15px;
 
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
 
       transition:
@@ -489,292 +433,153 @@
     }
 
     .primary {
-      color: var(--button-text);
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--steel-blue),
-          var(--deep-blue)
-        );
+      color: #04111d;
+      background: var(--cyan);
 
       box-shadow:
-        0 15px 35px
-        rgba(29, 78, 219, 0.27);
+        0 13px 30px rgba(0, 180, 230, 0.18);
     }
 
     .primary:hover {
       box-shadow:
-        0 20px 45px
-        rgba(29, 78, 219, 0.38);
+        0 18px 38px rgba(0, 180, 230, 0.28);
     }
 
     .secondary {
       color: var(--text);
 
-      border: 1px solid var(--border-strong);
+      border: 1px solid var(--border-cyan);
 
-      background: var(--surface);
+      background: var(--cyan-soft);
     }
 
     .secondary:hover {
-      border-color: var(--accent);
-      background: var(--surface-light);
+      background: rgba(94, 214, 247, 0.16);
     }
 
+    .small-note {
+      margin: 14px 0 0;
+
+      color: var(--muted);
+
+      font-size: 12px;
+    }
 
     /* =========================================================
        HERO VISUAL
+       
+       VERY IMPORTANT:
+       The RINGS rotate.
+       The text/chips DO NOT rotate.
+       The chips are outside the rotating elements.
        ========================================================= */
 
     .visual {
-      position: relative;
+      height: 450px;
 
-      min-height: 470px;
+      position: relative;
 
       display: grid;
       place-items: center;
+
+      isolation: isolate;
     }
 
     .visual-glow {
       position: absolute;
 
-      width: 440px;
-      height: 440px;
+      width: 420px;
+      height: 420px;
 
       border-radius: 50%;
 
       background:
         radial-gradient(
           circle,
-          rgba(59, 130, 246, 0.20),
-          transparent 68%
+          rgba(0, 229, 255, 0.20),
+          transparent 66%
         );
 
-      filter: blur(8px);
+      filter: blur(12px);
+
+      z-index: -3;
     }
 
-    .visual-core {
-      position: relative;
+    /*
+      This is the STATIC visual base.
+      It does not rotate.
+    */
 
-      width: 390px;
-      height: 390px;
+    .visual-core {
+      width: 370px;
+      height: 370px;
+
+      position: relative;
 
       display: grid;
       place-items: center;
+    }
 
-      border-radius: 50%;
+    /*
+      ONLY THIS LAYER ROTATES.
+    */
+
+    .rotating-rings {
+      position: absolute;
+
+      inset: 0;
+
+      pointer-events: none;
+
+      animation:
+        ringRotate 42s linear infinite;
+
+      transform-origin: center;
+    }
+
+    .ring-outer {
+      position: absolute;
+
+      inset: 5px;
 
       border:
         1px solid
-        rgba(125, 211, 252, 0.23);
-
-      box-shadow:
-        inset 0 0 70px
-        rgba(59, 130, 246, 0.055);
-
-      animation:
-        slowRotate 40s linear infinite;
-    }
-
-    .visual-core::before,
-    .visual-core::after {
-      content: "";
-
-      position: absolute;
+        rgba(94, 214, 247, 0.28);
 
       border-radius: 50%;
+
+      box-shadow:
+        inset 0 0 55px rgba(94, 214, 247, 0.035);
+    }
+
+    .ring-middle {
+      position: absolute;
+
+      inset: 47px;
 
       border:
         1px dashed
-        rgba(125, 211, 252, 0.22);
+        rgba(94, 214, 247, 0.28);
+
+      border-radius: 50%;
     }
 
-    .visual-core::before {
-      inset: 48px;
+    .ring-inner {
+      position: absolute;
 
-      animation:
-        slowRotateReverse 27s linear infinite;
-    }
+      inset: 105px;
 
-    .visual-core::after {
-      inset: 104px;
-
-      border-style: solid;
-
-      opacity: 0.65;
-
-      animation:
-        slowRotate 18s linear infinite;
-    }
-
-
-    /* =========================================================
-       LOGO CENTER
-       ========================================================= */
-
-    .logo-center {
-      position: relative;
-      z-index: 5;
-
-      width: 152px;
-      height: 152px;
-
-      display: grid;
-      place-items: center;
+      border:
+        1px solid
+        rgba(94, 214, 247, 0.22);
 
       border-radius: 50%;
 
-      background:
-        radial-gradient(
-          circle at 35% 30%,
-          rgba(59, 130, 246, 0.18),
-          rgba(11, 31, 59, 0.96) 70%
-        );
-
-      border:
-        1px solid
-        rgba(125, 211, 252, 0.62);
-
-      box-shadow:
-        0 0 0 18px
-        rgba(125, 211, 252, 0.035),
-
-        0 0 0 38px
-        rgba(59, 130, 246, 0.025),
-
-        0 0 70px
-        rgba(59, 130, 246, 0.28);
-
       animation:
-        pulse 4.5s ease-in-out infinite;
+        innerRotate 27s linear infinite;
     }
 
-    body.light .logo-center {
-      background:
-        radial-gradient(
-          circle at 35% 30%,
-          #FFFFFF,
-          #EAF1F8 72%
-        );
-
-      box-shadow:
-        0 0 0 18px
-        rgba(29, 78, 219, 0.035),
-
-        0 0 0 38px
-        rgba(29, 78, 219, 0.018),
-
-        0 0 60px
-        rgba(29, 78, 219, 0.14);
-    }
-
-    .logo-center img {
-      width: 118px;
-      height: 118px;
-
-      object-fit: contain;
-
-      display: block;
-
-      background: transparent;
-
-      filter:
-        drop-shadow(
-          0 8px 18px
-          rgba(59, 130, 246, 0.18)
-        );
-    }
-
-
-    /* =========================================================
-       VISUAL NODES
-       ========================================================= */
-
-    .node {
-      position: absolute;
-
-      z-index: 8;
-
-      min-width: 145px;
-
-      padding:
-        12px
-        15px;
-
-      border-radius: 15px;
-
-      border:
-        1px solid
-        var(--border-strong);
-
-      background:
-        color-mix(
-          in srgb,
-          var(--surface-solid) 88%,
-          transparent
-        );
-
-      box-shadow:
-        0 14px 30px
-        var(--shadow);
-
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-
-      animation:
-        nodeFloat 4s ease-in-out infinite;
-    }
-
-    .node small {
-      display: block;
-
-      margin-bottom: 4px;
-
-      color: var(--accent);
-
-      font-size: 9px;
-      font-weight: 700;
-
-      letter-spacing: 0.12em;
-    }
-
-    .node strong {
-      display: block;
-
-      color: var(--text);
-
-      font-size: 13px;
-      font-weight: 600;
-    }
-
-    .node-1 {
-      top: 7%;
-      left: -2%;
-    }
-
-    .node-2 {
-      bottom: 9%;
-      left: 3%;
-
-      animation-delay: 0.8s;
-    }
-
-    .node-3 {
-      top: 27%;
-      right: -9%;
-
-      animation-delay: 1.3s;
-    }
-
-    .node-4 {
-      bottom: 6%;
-      right: 0%;
-
-      animation-delay: 1.8s;
-    }
-
-    .connection {
+    .orbit-dot {
       position: absolute;
 
       width: 8px;
@@ -782,449 +587,459 @@
 
       border-radius: 50%;
 
-      background: var(--ice-blue);
+      background: var(--cyan);
 
       box-shadow:
-        0 0 18px
-        var(--ice-blue);
-
-      animation:
-        floatDot 3s ease-in-out infinite;
+        0 0 18px var(--cyan);
     }
 
-    .connection.a {
-      top: 15%;
-      right: 23%;
+    .orbit-dot.one {
+      top: 8%;
+      right: 22%;
     }
 
-    .connection.b {
-      bottom: 20%;
-      left: 23%;
-
-      animation-delay: 1s;
+    .orbit-dot.two {
+      bottom: 17%;
+      left: 17%;
     }
 
-    .connection.c {
-      top: 45%;
-      left: 5%;
-
-      animation-delay: 1.7s;
+    .orbit-dot.three {
+      top: 53%;
+      right: 4%;
+      width: 5px;
+      height: 5px;
     }
 
+    /*
+      CENTER IS STATIC.
+      It does NOT rotate.
+    */
 
-    /* =========================================================
-       TRUST LINE
-       ========================================================= */
+    .center-core {
+      width: 128px;
+      height: 128px;
 
-    .trust-line {
-      display: flex;
-      flex-wrap: wrap;
+      position: absolute;
 
-      gap: 12px;
+      top: 50%;
+      left: 50%;
 
-      margin-top: 26px;
+      transform: translate(-50%, -50%);
 
-      color: var(--text-muted);
-
-      font-size: 12px;
-    }
-
-    .trust-item {
-      display: inline-flex;
-      align-items: center;
-
-      gap: 7px;
-    }
-
-    .trust-item::before {
-      content: "";
-
-      width: 6px;
-      height: 6px;
+      display: grid;
+      place-items: center;
 
       border-radius: 50%;
 
-      background: var(--accent);
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          rgba(94, 214, 247, 0.18),
+          transparent 55%
+        ),
+        var(--card);
+
+      border:
+        1px solid
+        var(--cyan);
+
+      box-shadow:
+        0 0 0 14px rgba(94, 214, 247, 0.045),
+        0 0 55px rgba(0, 210, 255, 0.25);
+
+      z-index: 4;
+
+      animation: centerPulse 4s ease-in-out infinite;
     }
 
+    .center-core img {
+      width: 92px;
+      height: 92px;
+
+      object-fit: contain;
+
+      display: block;
+    }
+
+    /*
+      ===========================================================
+      STATIC CHIPS
+      ===========================================================
+      
+      IMPORTANT:
+      NO rotation.
+      NO movement.
+      NO transform animation.
+      
+      They remain readable while the rings move behind them.
+    */
+
+    .chip {
+      position: absolute;
+
+      min-width: 148px;
+
+      padding: 12px 15px;
+
+      border:
+        1px solid
+        var(--border-cyan);
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(13, 29, 51, 0.96),
+          rgba(9, 24, 42, 0.96)
+        );
+
+      box-shadow:
+        0 14px 30px var(--shadow);
+
+      z-index: 8;
+
+      /*
+        NO animation here.
+        NO transform here.
+      */
+    }
+
+    body.light .chip {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.97),
+          rgba(235,244,250,0.97)
+        );
+    }
+
+    .chip small {
+      display: block;
+
+      margin-bottom: 4px;
+
+      color: var(--gold);
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+    }
+
+    .chip strong {
+      display: block;
+
+      color: var(--text);
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      line-height: 1.5;
+    }
+
+    .chip.one {
+      top: 13%;
+      left: -7%;
+    }
+
+    .chip.two {
+      top: 58%;
+      left: -11%;
+    }
+
+    .chip.three {
+      right: -8%;
+      bottom: 12%;
+
+      border-color: var(--cyan);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(9, 42, 58, 0.98),
+          rgba(8, 31, 48, 0.98)
+        );
+    }
+
+    body.light .chip.three {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(225,247,252,0.98),
+          rgba(242,248,251,0.98)
+        );
+    }
+
+    .chip.three strong {
+      color: var(--cyan);
+    }
+
+    /* =========================================================
+       STATS
+       ========================================================= */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+
+      padding: 25px 0;
+
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat {
+      padding-inline: 10px;
+    }
+
+    .stat:not(:last-child) {
+      border-inline-end: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+
+      color: var(--cyan);
+
+      font-size: 27px;
+
+      font-weight: 700;
+    }
+
+    .stat span {
+      color: var(--muted);
+
+      font-size: 13px;
+    }
 
     /* =========================================================
        SECTION
        ========================================================= */
 
     .section {
-      padding:
-        85px
-        0
-        75px;
+      padding: 78px 0 70px;
     }
 
-    .section-label {
-      color: var(--accent);
+    .label {
+      color: var(--cyan);
 
-      font-size: 11px;
+      font-size: 12px;
+
       font-weight: 700;
 
-      letter-spacing: 0.17em;
+      letter-spacing: 0.16em;
     }
 
     h2 {
       max-width: 850px;
 
-      margin:
-        13px
-        0
-        38px;
+      margin: 12px 0 32px;
 
-      font-size:
-        clamp(32px, 4.3vw, 52px);
+      color: var(--white);
 
-      line-height: 1.2;
+      font-size: clamp(31px, 4vw, 48px);
+
+      line-height: 1.25;
 
       font-weight: 600;
-
-      letter-spacing: -0.04em;
     }
-
-    body.ar h2 {
-      line-height: 1.4;
-      letter-spacing: 0;
-    }
-
-
-    /* =========================================================
-       FEATURE CARDS
-       ========================================================= */
 
     .cards {
       display: grid;
 
-      grid-template-columns:
-        repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
 
-      gap: 15px;
+      gap: 14px;
     }
 
     .card {
-      position: relative;
-
-      min-height: 235px;
+      min-height: 185px;
 
       padding: 25px;
-
-      border-radius: var(--radius);
 
       border:
         1px solid
         var(--border);
 
+      border-radius: 19px;
+
       background:
         linear-gradient(
-          145deg,
-          var(--surface),
-          rgba(7, 20, 38, 0.34)
+          135deg,
+          var(--card),
+          var(--card-2)
         );
-
-      box-shadow:
-        0 18px 45px
-        rgba(0, 0, 0, 0.08);
-
-      overflow: hidden;
 
       transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease;
-    }
-
-    body.light .card {
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.92),
-          rgba(234,241,248,0.72)
-        );
-    }
-
-    .card::after {
-      content: "";
-
-      position: absolute;
-
-      width: 150px;
-      height: 150px;
-
-      top: -70px;
-      right: -70px;
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(59, 130, 246, 0.16),
-          transparent 70%
-        );
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
     }
 
     .card:hover {
-      transform: translateY(-7px);
+      transform: translateY(-6px);
 
-      border-color:
-        var(--border-strong);
+      border-color: var(--border-cyan);
+
+      box-shadow:
+        0 18px 40px var(--shadow);
     }
 
-    .card-number {
-      color: var(--accent);
+    .card b {
+      color: var(--gold);
 
       font-size: 11px;
-      font-weight: 700;
 
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
     }
 
     .card h3 {
-      margin:
-        22px
-        0
-        9px;
+      margin: 24px 0 8px;
 
-      color: var(--text);
+      color: var(--white);
 
-      font-size: 21px;
-      font-weight: 600;
+      font-size: 20px;
     }
 
     .card p {
       margin: 0;
 
-      color: var(--text-muted);
+      color: var(--muted);
 
       font-size: 14px;
 
-      line-height: 1.85;
+      line-height: 1.8;
     }
 
+    .disclaimer {
+      max-width: 800px;
 
-    /* =========================================================
-       FLOW
-       ========================================================= */
+      margin: 34px 0 0;
 
-    .flow-section {
-      border-top:
-        1px solid
-        var(--border);
+      color: var(--muted);
 
-      border-bottom:
-        1px solid
-        var(--border);
-    }
-
-    .flow {
-      display: grid;
-
-      grid-template-columns:
-        repeat(5, 1fr);
-
-      gap: 10px;
-    }
-
-    .flow-item {
-      position: relative;
-
-      padding:
-        20px
-        17px;
-
-      min-height: 125px;
-
-      border-radius: 16px;
-
-      background:
-        var(--surface);
-
-      border:
-        1px solid
-        var(--border);
-
-      transition:
-        transform 0.25s ease,
-        border-color 0.25s ease;
-    }
-
-    .flow-item:hover {
-      transform: translateY(-5px);
-
-      border-color:
-        var(--border-strong);
-    }
-
-    .flow-item span {
-      display: block;
-
-      margin-bottom: 14px;
-
-      color: var(--accent);
-
-      font-size: 10px;
-      font-weight: 700;
-
-      letter-spacing: 0.12em;
-    }
-
-    .flow-item strong {
-      display: block;
-
-      color: var(--text);
-
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-
-    /* =========================================================
-       FINAL CTA
-       ========================================================= */
-
-    .final-section {
-      padding:
-        90px
-        0
-        80px;
-    }
-
-    .final-card {
-      position: relative;
-
-      padding:
-        55px
-        50px;
-
-      border-radius: 27px;
-
-      overflow: hidden;
-
-      border:
-        1px solid
-        var(--border-strong);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(11, 31, 59, 0.94),
-          rgba(29, 78, 219, 0.26)
-        );
-
-      box-shadow:
-        0 30px 80px
-        rgba(0, 0, 0, 0.16);
-    }
-
-    body.light .final-card {
-      background:
-        linear-gradient(
-          135deg,
-          #FFFFFF,
-          #EAF1F8
-        );
-    }
-
-    .final-card::before {
-      content: "";
-
-      position: absolute;
-
-      width: 380px;
-      height: 380px;
-
-      border-radius: 50%;
-
-      top: -210px;
-      left: -120px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(59, 130, 246, 0.22),
-          transparent 70%
-        );
-    }
-
-    .final-card-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .final-card h2 {
-      margin-bottom: 14px;
-    }
-
-    .final-card p {
-      max-width: 750px;
-
-      margin: 0 0 25px;
-
-      color: var(--text-soft);
-
-      font-size: 15px;
+      font-size: 13px;
 
       line-height: 1.9;
     }
 
+    /* =========================================================
+       CTA
+       ========================================================= */
+
+    .cta {
+      margin: 10px auto 80px;
+
+      padding: 48px 35px;
+
+      text-align: center;
+
+      border:
+        1px solid
+        var(--border-cyan);
+
+      border-radius: 26px;
+
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(94, 214, 247, 0.12),
+          transparent 55%
+        ),
+        linear-gradient(
+          135deg,
+          var(--card),
+          var(--bg-soft)
+        );
+    }
+
+    .cta h2 {
+      margin: 0 auto 12px;
+    }
+
+    .cta p {
+      max-width: 700px;
+
+      margin: 0 auto;
+
+      color: var(--muted);
+
+      line-height: 1.8;
+    }
+
+    .cta .button {
+      margin-top: 24px;
+    }
 
     /* =========================================================
        FOOTER
        ========================================================= */
 
     footer {
-      padding:
-        28px
-        0
-        35px;
+      display: flex;
 
-      border-top:
-        1px solid
-        var(--border);
+      justify-content: space-between;
 
-      color: var(--text-muted);
+      align-items: center;
 
-      font-size: 12px;
+      gap: 20px;
 
+      padding: 27px 0 38px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 13px;
+    }
+
+    .footer-credit {
       line-height: 1.9;
     }
 
-    .footer-inner {
+    .footer-credit strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .footer-credit .name {
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    .country {
       display: flex;
 
       align-items: center;
 
-      justify-content: space-between;
-
-      gap: 20px;
+      gap: 9px;
     }
 
-    .footer-credit {
-      color: var(--text-soft);
+    .saudi-dot {
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+
+      background: var(--cyan);
+
+      box-shadow:
+        0 0 13px var(--cyan);
     }
-
-    .footer-credit strong {
-      color: var(--accent);
-
-      font-weight: 600;
-    }
-
-    .footer-right {
-      color: var(--text-muted);
-
-      text-align: end;
-    }
-
 
     /* =========================================================
        ANIMATIONS
+       
+       ONLY RINGS MOVE.
+       TEXT DOES NOT MOVE.
        ========================================================= */
 
-    @keyframes slowRotate {
+    @keyframes ringRotate {
       from {
         transform: rotate(0deg);
       }
@@ -1234,129 +1049,82 @@
       }
     }
 
-    @keyframes slowRotateReverse {
+    @keyframes innerRotate {
       from {
-        transform: rotate(360deg);
+        transform: rotate(0deg);
       }
 
       to {
-        transform: rotate(0deg);
+        transform: rotate(-360deg);
       }
     }
 
-    @keyframes pulse {
+    @keyframes centerPulse {
       0%,
       100% {
         box-shadow:
-          0 0 0 18px
-          rgba(125, 211, 252, 0.035),
-
-          0 0 0 38px
-          rgba(59, 130, 246, 0.025),
-
-          0 0 70px
-          rgba(59, 130, 246, 0.28);
+          0 0 0 14px rgba(94, 214, 247, 0.045),
+          0 0 55px rgba(0, 210, 255, 0.25);
       }
 
       50% {
         box-shadow:
-          0 0 0 25px
-          rgba(125, 211, 252, 0.025),
-
-          0 0 0 48px
-          rgba(59, 130, 246, 0.018),
-
-          0 0 90px
-          rgba(59, 130, 246, 0.38);
+          0 0 0 22px rgba(94, 214, 247, 0.025),
+          0 0 78px rgba(0, 210, 255, 0.34);
       }
     }
-
-    @keyframes nodeFloat {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-9px);
-      }
-    }
-
-    @keyframes floatDot {
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-13px);
-      }
-    }
-
 
     /* =========================================================
        RESPONSIVE
        ========================================================= */
 
-    @media (max-width: 950px) {
-
+    @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
+        min-height: auto;
 
-        gap: 30px;
-
-        padding-top: 55px;
-      }
-
-      .visual {
-        min-height: 430px;
-
-        order: 2;
+        padding-top: 42px;
       }
 
       .hero-copy {
-        order: 1;
+        max-width: 760px;
       }
 
-      .cards {
-        grid-template-columns: 1fr;
+      .visual {
+        height: 420px;
+        margin-top: 5px;
       }
 
-      .flow {
-        grid-template-columns:
-          repeat(2, 1fr);
+      .visual-core {
+        width: 350px;
+        height: 350px;
       }
 
-      .footer-inner {
-        align-items: flex-start;
-
-        flex-direction: column;
+      .chip.one {
+        left: -3%;
       }
 
-      .footer-right {
-        text-align: start;
+      .chip.two {
+        left: -5%;
+      }
+
+      .chip.three {
+        right: -3%;
       }
     }
 
-
     @media (max-width: 650px) {
-
       .container {
-        width:
-          min(
-            100% - 28px,
-            1180px
-          );
+        width: min(100% - 30px, 1160px);
       }
 
       header {
-        min-height: 76px;
+        min-height: 78px;
       }
 
-      .logo-wrap,
-      .logo-wrap img {
-        width: 52px;
-        height: 52px;
+      .logo {
+        width: 55px;
+        height: 55px;
       }
 
       .brand-name {
@@ -1371,78 +1139,43 @@
         gap: 6px;
       }
 
-      .control-button {
-        min-width: 42px;
-
-        height: 40px;
-
-        padding:
-          0
-          10px;
+      .icon-button {
+        width: 38px;
+        height: 38px;
       }
 
-      .control-text {
-        display: none;
+      #langButton {
+        min-height: 38px;
+        padding: 7px 10px;
+        font-size: 11px;
       }
 
       .hero {
-        min-height: auto;
-
-        padding:
-          50px
-          0
-          55px;
-
-        gap: 5px;
+        padding: 33px 0 42px;
       }
 
       h1 {
-        font-size:
-          clamp(
-            43px,
-            13vw,
-            62px
-          );
-
-        line-height: 1.1;
+        font-size: clamp(38px, 10vw, 52px);
       }
 
-      body.ar h1 {
-        font-size:
-          clamp(
-            39px,
-            11.5vw,
-            56px
-          );
-
-        line-height: 1.35;
+      body:not(.en) h1 {
+        font-size: clamp(36px, 9.4vw, 49px);
       }
 
-      .hero-description {
+      .description {
         font-size: 15px;
-
-        line-height: 1.85;
       }
 
       .buttons {
-        display: grid;
-
-        grid-template-columns: 1fr;
+        flex-direction: column;
       }
 
       .button {
         width: 100%;
-
-        min-height: 58px;
       }
 
       .visual {
-        min-height: 330px;
-      }
-
-      .visual-glow {
-        width: 320px;
-        height: 320px;
+        height: 340px;
       }
 
       .visual-core {
@@ -1450,130 +1183,122 @@
         height: 280px;
       }
 
-      .visual-core::before {
+      .center-core {
+        width: 96px;
+        height: 96px;
+      }
+
+      .center-core img {
+        width: 69px;
+        height: 69px;
+      }
+
+      .ring-middle {
         inset: 35px;
       }
 
-      .visual-core::after {
-        inset: 75px;
+      .ring-inner {
+        inset: 78px;
       }
 
-      .logo-center {
-        width: 105px;
-        height: 105px;
+      .chip {
+        min-width: 116px;
+        padding: 9px 10px;
+        border-radius: 12px;
       }
 
-      .logo-center img {
-        width: 82px;
-        height: 82px;
+      .chip small {
+        font-size: 8px;
       }
 
-      .node {
-        min-width: 100px;
-
-        padding:
-          8px
-          10px;
-      }
-
-      .node small {
-        font-size: 7px;
-      }
-
-      .node strong {
+      .chip strong {
         font-size: 10px;
       }
 
-      .node-1 {
+      .chip.one {
+        top: 8%;
         left: -8%;
-        top: 5%;
       }
 
-      .node-2 {
-        left: -8%;
-        bottom: 3%;
+      .chip.two {
+        top: 61%;
+        left: -10%;
       }
 
-      .node-3 {
-        right: -10%;
-        top: 25%;
+      .chip.three {
+        right: -9%;
+        bottom: 7%;
       }
 
-      .node-4 {
-        right: -6%;
-        bottom: 4%;
+      .stats {
+        gap: 7px;
       }
 
-      .section {
-        padding:
-          65px
-          0
-          55px;
+      .stat {
+        padding-inline: 5px;
       }
 
-      h2 {
-        font-size: 34px;
-
-        line-height: 1.3;
+      .stat strong {
+        font-size: 18px;
       }
 
-      body.ar h2 {
-        line-height: 1.45;
+      .stat span {
+        font-size: 9px;
+        line-height: 1.5;
       }
 
-      .flow {
+      .cards {
         grid-template-columns: 1fr;
       }
 
-      .final-section {
-        padding:
-          65px
-          0;
+      .card {
+        min-height: auto;
       }
 
-      .final-card {
-        padding:
-          35px
-          23px;
+      .section {
+        padding: 65px 0 55px;
+      }
+
+      .cta {
+        margin-bottom: 60px;
+        padding: 36px 22px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
 
-
     @media (prefers-reduced-motion: reduce) {
-
       *,
       *::before,
       *::after {
         animation: none !important;
-
         transition: none !important;
-
         scroll-behavior: auto !important;
       }
     }
-
   </style>
 </head>
 
-
-<body class="ar">
+<body>
 
   <div class="page">
 
     <!-- =======================================================
          HEADER
-         ======================================================== -->
+         ======================================================= -->
 
     <header class="container">
 
-      <div class="brand">
+      <a href="#" class="brand" aria-label="EMDAR Home">
 
-        <div class="logo-wrap">
-          <img
-            src="EMDAR_colored_transparent.png"
-            alt="EMDAR"
-          >
-        </div>
+        <img
+          class="logo"
+          src="EMDAR_colored_transparent.png"
+          alt="EMDAR logo"
+        >
 
         <div class="brand-copy">
 
@@ -1591,56 +1316,46 @@
 
         </div>
 
-      </div>
-
+      </a>
 
       <div class="header-actions">
 
-        <!-- LANGUAGE -->
-
-        <button
-          id="langButton"
-          class="control-button"
-          type="button"
-          aria-label="تغيير اللغة"
-        >
-          <span
-            class="control-icon"
-            id="langIcon"
-          >
-            EN
-          </span>
-
-          <span
-            class="control-text"
-            id="langText"
-          >
-            English
-          </span>
-        </button>
-
-
-        <!-- DARK / LIGHT -->
+        <!-- Dark / Light -->
 
         <button
           id="themeButton"
-          class="control-button"
+          class="icon-button"
           type="button"
           aria-label="تغيير المظهر"
+          title="تغيير المظهر"
         >
-          <span
-            class="control-icon"
-            id="themeIcon"
-          >
-            ☼
-          </span>
 
-          <span
-            class="control-text"
-            id="themeText"
+          <svg
+            id="themeIcon"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
           >
-            الوضع الفاتح
-          </span>
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="M4.93 4.93l1.41 1.41"></path>
+            <path d="M17.66 17.66l1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="M4.93 19.07l1.41-1.41"></path>
+            <path d="M17.66 6.34l1.41-1.41"></path>
+          </svg>
+
+        </button>
+
+        <!-- Language -->
+
+        <button
+          id="langButton"
+          type="button"
+          aria-label="تغيير اللغة"
+        >
+          English →
         </button>
 
       </div>
@@ -1650,14 +1365,11 @@
 
     <!-- =======================================================
          MAIN
-         ======================================================== -->
+         ======================================================= -->
 
     <main>
 
-
-      <!-- =====================================================
-           HERO
-           ====================================================== -->
+      <!-- HERO -->
 
       <section class="hero container">
 
@@ -1665,10 +1377,10 @@
 
           <div
             class="eyebrow"
-            data-ar="مرونة سلاسل الإمداد · الأمن السيبراني · الذكاء الاصطناعي"
-            data-en="SUPPLY CHAIN RESILIENCE · CYBERSECURITY · AI"
+            data-ar="EMDAR · CYBER RESILIENCE & SUPPLY CHAIN INTELLIGENCE"
+            data-en="EMDAR · CYBER RESILIENCE & SUPPLY CHAIN INTELLIGENCE"
           >
-            مرونة سلاسل الإمداد · الأمن السيبراني · الذكاء الاصطناعي
+            EMDAR · CYBER RESILIENCE & SUPPLY CHAIN INTELLIGENCE
           </div>
 
 
@@ -1676,7 +1388,7 @@
 
             <span
               data-ar="نكتشف التغيير"
-              data-en="We detect change"
+              data-en="We detect the change"
             >
               نكتشف التغيير
             </span>
@@ -1685,21 +1397,21 @@
 
             <span
               class="highlight"
-              data-ar="قبل أن يتحول إلى تعطل."
+              data-ar="قبل أن يتحول إلى تعطّل."
               data-en="before it becomes disruption."
             >
-              قبل أن يتحول إلى تعطل.
+              قبل أن يتحول إلى تعطّل.
             </span>
 
           </h1>
 
 
           <p
-            class="hero-description"
-            data-ar="إمدار منصة ذكية لمرونة سلاسل الإمداد، تبدأ باكتشاف التغيرات غير الطبيعية في سلوك الموردين والحسابات والأجهزة والأنظمة، وتقيّم مستوى الثقة والتعرض للخطر قبل أن يتحول إلى حادث."
+            class="description"
+            data-ar="إمدار منصة ذكية لمرونة سلاسل الإمداد، تكتشف التغيرات غير الطبيعية في سلوك الموردين والحسابات والأجهزة والأنظمة، وتقيّم مستوى الثقة والتعرض للخطر قبل أن يتحول إلى حادث."
             data-en="EMDAR is an intelligent supply-chain resilience platform that detects abnormal changes across suppliers, accounts, devices, and systems, assessing trust and exposure before risk becomes an incident."
           >
-            إمدار منصة ذكية لمرونة سلاسل الإمداد، تبدأ باكتشاف التغيرات غير الطبيعية في سلوك الموردين والحسابات والأجهزة والأنظمة، وتقيّم مستوى الثقة والتعرض للخطر قبل أن يتحول إلى حادث.
+            إمدار منصة ذكية لمرونة سلاسل الإمداد، تكتشف التغيرات غير الطبيعية في سلوك الموردين والحسابات والأجهزة والأنظمة، وتقيّم مستوى الثقة والتعرض للخطر قبل أن يتحول إلى حادث.
           </p>
 
 
@@ -1719,50 +1431,33 @@
 
             <a
               class="button secondary"
-              href="#how"
-              data-ar="اكتشف كيف تعمل إمدار ↓"
-              data-en="Discover how EMDAR works ↓"
+              href="#innovation"
+              data-ar="اكتشف إمدار ↓"
+              data-en="Discover EMDAR ↓"
             >
-              اكتشف كيف تعمل إمدار ↓
+              اكتشف إمدار ↓
             </a>
 
           </div>
 
 
-          <div class="trust-line">
-
-            <span
-              class="trust-item"
-              data-ar="اكتشاف مبكر"
-              data-en="Early Detection"
-            >
-              اكتشاف مبكر
-            </span>
-
-            <span
-              class="trust-item"
-              data-ar="تحصين استباقي"
-              data-en="Proactive Immunization"
-            >
-              تحصين استباقي
-            </span>
-
-            <span
-              class="trust-item"
-              data-ar="تخطيط بديل مستمر"
-              data-en="Continuous Replanning"
-            >
-              تخطيط بديل مستمر
-            </span>
-
-          </div>
+          <p
+            class="small-note"
+            data-ar="منصة لدعم القرار والمرونة السيبرانية والتشغيلية · بيانات النموذج الأولي محاكاة"
+            data-en="Decision-support platform for cyber and operational resilience · Prototype data is simulated"
+          >
+            منصة لدعم القرار والمرونة السيبرانية والتشغيلية · بيانات النموذج الأولي محاكاة
+          </p>
 
         </div>
 
 
         <!-- ===================================================
-             CENTRAL VISUAL
-             ==================================================== -->
+             VISUAL
+             
+             RINGS MOVE
+             CHIPS DON'T MOVE
+             =================================================== -->
 
         <div
           class="visual"
@@ -1774,8 +1469,27 @@
 
           <div class="visual-core">
 
-            <!-- CENTER LOGO -->
-            <div class="logo-center">
+            <!-- ONLY THIS PART ROTATES -->
+
+            <div class="rotating-rings">
+
+              <div class="ring-outer"></div>
+
+              <div class="ring-middle"></div>
+
+              <div class="ring-inner"></div>
+
+
+              <span class="orbit-dot one"></span>
+              <span class="orbit-dot two"></span>
+              <span class="orbit-dot three"></span>
+
+            </div>
+
+
+            <!-- STATIC CENTER -->
+
+            <div class="center-core">
 
               <img
                 src="EMDAR_colored_transparent.png"
@@ -1785,9 +1499,9 @@
             </div>
 
 
-            <!-- NODES -->
+            <!-- STATIC TEXT -->
 
-            <div class="node node-1">
+            <div class="chip one">
 
               <small
                 data-ar="السلوك"
@@ -1797,16 +1511,16 @@
               </small>
 
               <strong
-                data-ar="بصمة المورد"
-                data-en="Supplier DNA"
+                data-ar="بصمة سلوك المورد"
+                data-en="Supplier behavior DNA"
               >
-                بصمة المورد
+                بصمة سلوك المورد
               </strong>
 
             </div>
 
 
-            <div class="node node-2">
+            <div class="chip two">
 
               <small
                 data-ar="الثقة"
@@ -1816,35 +1530,16 @@
               </small>
 
               <strong
-                data-ar="تقييم التعرض"
-                data-en="Exposure Assessment"
+                data-ar="تغيّر مستوى التعرض"
+                data-en="Exposure changes"
               >
-                تقييم التعرض
+                تغيّر مستوى التعرض
               </strong>
 
             </div>
 
 
-            <div class="node node-3">
-
-              <small
-                data-ar="الحماية"
-                data-en="PROTECT"
-              >
-                الحماية
-              </small>
-
-              <strong
-                data-ar="تحصين السلسلة"
-                data-en="Supply Immunization"
-              >
-                تحصين السلسلة
-              </strong>
-
-            </div>
-
-
-            <div class="node node-4">
+            <div class="chip three">
 
               <small
                 data-ar="القرار"
@@ -1854,20 +1549,14 @@
               </small>
 
               <strong
-                data-ar="أفضل بديل"
-                data-en="Best Alternative"
+                data-ar="أفضل بديل →"
+                data-en="Best alternative →"
               >
-                أفضل بديل
+                أفضل بديل →
+
               </strong>
 
             </div>
-
-
-            <!-- LIGHT POINTS -->
-
-            <i class="connection a"></i>
-            <i class="connection b"></i>
-            <i class="connection c"></i>
 
           </div>
 
@@ -1877,51 +1566,99 @@
 
 
       <!-- =====================================================
-           INNOVATION
-           ====================================================== -->
+           STATS
+           ===================================================== -->
 
-      <section class="section container">
+      <section class="stats container">
+
+        <div class="stat">
+
+          <strong>01</strong>
+
+          <span
+            data-ar="اكتشاف مبكر"
+            data-en="Early detection"
+          >
+            اكتشاف مبكر
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <strong>02</strong>
+
+          <span
+            data-ar="تحصين استباقي"
+            data-en="Proactive immunization"
+          >
+            تحصين استباقي
+          </span>
+
+        </div>
+
+
+        <div class="stat">
+
+          <strong>03</strong>
+
+          <span
+            data-ar="إعادة تخطيط مستمرة"
+            data-en="Continuous replanning"
+          >
+            إعادة تخطيط مستمرة
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           INNOVATION
+           ===================================================== -->
+
+      <section
+        id="innovation"
+        class="section container"
+      >
 
         <div
-          class="section-label"
-          data-ar="لماذا إمدار؟"
-          data-en="WHY EMDAR?"
+          class="label"
+          data-ar="كيف تعمل إمدار"
+          data-en="HOW EMDAR WORKS"
         >
-          لماذا إمدار؟
+          كيف تعمل إمدار
         </div>
 
 
         <h2
-          data-ar="من اكتشاف التغيير… إلى حماية القرار."
-          data-en="From detecting change to protecting the decision."
+          data-ar="من اكتشاف التغيير… إلى القرار الذي يحافظ على استمرارية السلسلة."
+          data-en="From detecting change to the decision that keeps the supply chain moving."
         >
-          من اكتشاف التغيير… إلى حماية القرار.
+          من اكتشاف التغيير… إلى القرار الذي يحافظ على استمرارية السلسلة.
         </h2>
 
 
         <div class="cards">
 
-
           <article class="card">
 
-            <div
-              class="card-number"
-            >
-              01 / BEHAVIOR
-            </div>
+            <b>01 / BEHAVIOR</b>
 
             <h3
-              data-ar="الذكاء السلوكي"
-              data-en="Behavioral Intelligence"
+              data-ar="بصمة السلوك"
+              data-en="Behavioral DNA"
             >
-              الذكاء السلوكي
+              بصمة السلوك
             </h3>
 
             <p
-              data-ar="تبني إمدار بصمة سلوكية للكيانات وتلتقط التغيرات غير الطبيعية في الموردين والحسابات والأجهزة والأنظمة، حتى عندما تكون بيانات الدخول صحيحة."
-              data-en="EMDAR builds behavioral profiles for entities and detects abnormal changes across suppliers, accounts, devices, and systems — even when valid credentials are being used."
+              data-ar="تتعلم إمدار النمط الطبيعي للموردين والحسابات والأجهزة والأنظمة، ثم تلتقط التغيرات غير المعتادة."
+              data-en="EMDAR learns normal behavioral patterns across suppliers, accounts, devices, and systems, then detects unusual changes."
             >
-              تبني إمدار بصمة سلوكية للكيانات وتلتقط التغيرات غير الطبيعية في الموردين والحسابات والأجهزة والأنظمة، حتى عندما تكون بيانات الدخول صحيحة.
+              تتعلم إمدار النمط الطبيعي للموردين والحسابات والأجهزة والأنظمة، ثم تلتقط التغيرات غير المعتادة.
             </p>
 
           </article>
@@ -1929,11 +1666,49 @@
 
           <article class="card">
 
-            <div
-              class="card-number"
+            <b>02 / TRUST</b>
+
+            <h3
+              data-ar="الثقة والتعرض"
+              data-en="Trust & Exposure"
             >
-              02 / RESILIENCE
-            </div>
+              الثقة والتعرض
+            </h3>
+
+            <p
+              data-ar="عندما يتغير السلوك، يتغير مستوى الثقة والتعرض للخطر، فتظهر الأولويات التي تحتاج إلى تحقق أو حماية."
+              data-en="When behavior changes, trust and exposure are recalculated so the highest-priority areas can be verified or protected."
+            >
+              عندما يتغير السلوك، يتغير مستوى الثقة والتعرض للخطر، فتظهر الأولويات التي تحتاج إلى تحقق أو حماية.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <b>03 / DECISION</b>
+
+            <h3
+              data-ar="بدائل مستمرة"
+              data-en="Continuous Alternatives"
+            >
+              بدائل مستمرة
+            </h3>
+
+            <p
+              data-ar="تقارن إمدار المورد والميناء والمسار ووسيلة النقل وموعد الشحن من ناحية التكلفة والوقت والمخاطر واستمرارية العمليات."
+              data-en="EMDAR compares suppliers, ports, routes, transport modes, and timing by cost, time, risk, and operational continuity."
+            >
+              تقارن إمدار المورد والميناء والمسار ووسيلة النقل وموعد الشحن من ناحية التكلفة والوقت والمخاطر واستمرارية العمليات.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <b>04 / IMMUNIZE</b>
 
             <h3
               data-ar="تحصين سلسلة الإمداد"
@@ -1943,10 +1718,10 @@
             </h3>
 
             <p
-              data-ar="عند انخفاض الثقة، لا تكتفي إمدار بالتنبيه؛ بل تقترح إجراءات وقائية تقلل التعرض وتحافظ على استمرارية العمليات."
-              data-en="When trust declines, EMDAR goes beyond alerts by recommending preventive actions that reduce exposure and preserve operational continuity."
+              data-ar="بدل الانتظار حتى التعطل، تقترح إمدار إجراءات وقائية مثل زيادة التحقق، تخفيف الاعتماد، وتجهيز البدائل."
+              data-en="Instead of waiting for disruption, EMDAR recommends preventive actions such as stronger verification, dependency reduction, and alternate capacity."
             >
-              عند انخفاض الثقة، لا تكتفي إمدار بالتنبيه؛ بل تقترح إجراءات وقائية تقلل التعرض وتحافظ على استمرارية العمليات.
+              بدل الانتظار حتى التعطل، تقترح إمدار إجراءات وقائية مثل زيادة التحقق، تخفيف الاعتماد، وتجهيز البدائل.
             </p>
 
           </article>
@@ -1954,287 +1729,91 @@
 
           <article class="card">
 
-            <div
-              class="card-number"
-            >
-              03 / ALTERNATIVES
-            </div>
+            <b>05 / CYBER</b>
 
             <h3
-              data-ar="البدائل المستمرة"
-              data-en="Continuous Alternatives"
+              data-ar="عند وقوع الهجوم"
+              data-en="When an Attack Happens"
             >
-              البدائل المستمرة
+              عند وقوع الهجوم
             </h3>
 
             <p
-              data-ar="تقارن إمدار البدائل التشغيلية واللوجستية مثل المورد أو الميناء أو المسار أو وسيلة النقل أو موعد الشحن، وفق التكلفة والوقت والمخاطر."
-              data-en="EMDAR compares operational and logistics alternatives — supplier, port, route, transport mode, or timing — across cost, time, risk, and continuity."
+              data-ar="تحلل إمدار الهجوم السيبراني وأثره على سلسلة الإمداد، ثم تحاكي خطط Plan A وPlan B وPlan C للاستجابة والتعافي."
+              data-en="If a cyberattack occurs, EMDAR analyzes its supply-chain impact and simulates Plan A, Plan B, and Plan C for response and recovery."
             >
-              تقارن إمدار البدائل التشغيلية واللوجستية مثل المورد أو الميناء أو المسار أو وسيلة النقل أو موعد الشحن، وفق التكلفة والوقت والمخاطر.
+              تحلل إمدار الهجوم السيبراني وأثره على سلسلة الإمداد، ثم تحاكي خطط Plan A وPlan B وPlan C للاستجابة والتعافي.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <b>06 / REPLAN</b>
+
+            <h3
+              data-ar="إعادة التخطيط"
+              data-en="Replan"
+            >
+              إعادة التخطيط
+            </h3>
+
+            <p
+              data-ar="إذا تغيرت الظروف، لا تتوقف الخطة؛ تعيد إمدار الحسابات وتقترح الحل الأفضل بناءً على الواقع الجديد."
+              data-en="When conditions change, the plan does not stop. EMDAR recalculates and recommends the best option for the new reality."
+            >
+              إذا تغيرت الظروف، لا تتوقف الخطة؛ تعيد إمدار الحسابات وتقترح الحل الأفضل بناءً على الواقع الجديد.
             </p>
 
           </article>
 
         </div>
 
-      </section>
 
-
-      <!-- =====================================================
-           FLOW
-           ====================================================== -->
-
-      <section
-        id="how"
-        class="section flow-section"
-      >
-
-        <div class="container">
-
-          <div
-            class="section-label"
-            data-ar="كيف تعمل إمدار؟"
-            data-en="HOW IT WORKS"
-          >
-            كيف تعمل إمدار؟
-          </div>
-
-
-          <h2
-            data-ar="نكتشف، نحصّن، نعيد التخطيط."
-            data-en="Detect. Protect. Re-plan."
-          >
-            نكتشف، نحصّن، نعيد التخطيط.
-          </h2>
-
-
-          <div class="flow">
-
-            <div class="flow-item">
-
-              <span>01</span>
-
-              <strong
-                data-ar="اكتشاف التغيير"
-                data-en="Detect Change"
-              >
-                اكتشاف التغيير
-              </strong>
-
-            </div>
-
-
-            <div class="flow-item">
-
-              <span>02</span>
-
-              <strong
-                data-ar="تقييم الثقة والتعرض"
-                data-en="Assess Trust & Exposure"
-              >
-                تقييم الثقة والتعرض
-              </strong>
-
-            </div>
-
-
-            <div class="flow-item">
-
-              <span>03</span>
-
-              <strong
-                data-ar="تحصين سلسلة الإمداد"
-                data-en="Immunize the Supply Chain"
-              >
-                تحصين سلسلة الإمداد
-              </strong>
-
-            </div>
-
-
-            <div class="flow-item">
-
-              <span>04</span>
-
-              <strong
-                data-ar="محاكاة البدائل"
-                data-en="Simulate Alternatives"
-              >
-                محاكاة البدائل
-              </strong>
-
-            </div>
-
-
-            <div class="flow-item">
-
-              <span>05</span>
-
-              <strong
-                data-ar="إعادة التخطيط مع تغيّر الواقع"
-                data-en="Re-plan as Conditions Change"
-              >
-                إعادة التخطيط مع تغيّر الواقع
-              </strong>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================================================
-           CYBER ATTACK
-           ====================================================== -->
-
-      <section class="section container">
-
-        <div
-          class="section-label"
-          data-ar="وعند وقوع الهجوم"
-          data-en="IF AN ATTACK OCCURS"
+        <p
+          class="disclaimer"
+          data-ar="إمدار منصة لدعم القرار والمرونة السيبرانية والتشغيلية. النموذج الأولي يستخدم بيانات محاكاة ولا يستبدل أنظمة الأمن أو خبراء الأمن السيبراني أو أصحاب القرار."
+          data-en="EMDAR is a decision-support platform for cyber and operational resilience. The prototype uses simulated data and does not replace security systems, cybersecurity professionals, or decision makers."
         >
-          وعند وقوع الهجوم
-        </div>
+          إمدار منصة لدعم القرار والمرونة السيبرانية والتشغيلية. النموذج الأولي يستخدم بيانات محاكاة ولا يستبدل أنظمة الأمن أو خبراء الأمن السيبراني أو أصحاب القرار.
+        </p>
 
+      </section>
+
+
+      <!-- =====================================================
+           CTA
+           ===================================================== -->
+
+      <section class="cta container">
 
         <h2
-          data-ar="إمدار لا تتوقف عند اكتشاف الهجوم."
-          data-en="EMDAR does not stop at detecting the attack."
+          data-ar="من الإمداد إلى القرار."
+          data-en="From Supply to Decision."
         >
-          إمدار لا تتوقف عند اكتشاف الهجوم.
+          من الإمداد إلى القرار.
         </h2>
 
 
-        <div class="cards">
+        <p
+          data-ar="نكتشف التغيير قبل الهجوم، نحصّن السلسلة قبل التعطل، ونعيد التخطيط مع تغيّر الواقع."
+          data-en="We detect change before the attack, immunize the supply chain before disruption, and replan as reality changes."
+        >
+          نكتشف التغيير قبل الهجوم، نحصّن السلسلة قبل التعطل، ونعيد التخطيط مع تغيّر الواقع.
+        </p>
 
 
-          <article class="card">
-
-            <div class="card-number">
-              01 / ANALYZE
-            </div>
-
-            <h3
-              data-ar="تحليل الأثر"
-              data-en="Analyze the Impact"
-            >
-              تحليل الأثر
-            </h3>
-
-            <p
-              data-ar="تحلل إمدار الهجوم وتحدد الأصول والجهات والشحنات والعمليات التي قد تتأثر."
-              data-en="EMDAR analyzes the attack and identifies affected assets, entities, shipments, and operations."
-            >
-              تحلل إمدار الهجوم وتحدد الأصول والجهات والشحنات والعمليات التي قد تتأثر.
-            </p>
-
-          </article>
-
-
-          <article class="card">
-
-            <div class="card-number">
-              02 / SIMULATE
-            </div>
-
-            <h3
-              data-ar="محاكاة Plan A / B / C"
-              data-en="Simulate Plan A / B / C"
-            >
-              محاكاة Plan A / B / C
-            </h3>
-
-            <p
-              data-ar="تحاكي إمدار سيناريوهات الاستجابة والتعافي وتقارن النتائج قبل اتخاذ القرار."
-              data-en="EMDAR simulates response and recovery scenarios and compares outcomes before a decision is made."
-            >
-              تحاكي إمدار سيناريوهات الاستجابة والتعافي وتقارن النتائج قبل اتخاذ القرار.
-            </p>
-
-          </article>
-
-
-          <article class="card">
-
-            <div class="card-number">
-              03 / REPLAN
-            </div>
-
-            <h3
-              data-ar="قرار يتغير مع الواقع"
-              data-en="Re-plan with Reality"
-            >
-              قرار يتغير مع الواقع
-            </h3>
-
-            <p
-              data-ar="إذا تغيرت الظروف، تعيد إمدار التخطيط وتقترح الحل الأفضل من جديد."
-              data-en="When conditions change, EMDAR recalculates the plan and recommends the best new option."
-            >
-              إذا تغيرت الظروف، تعيد إمدار التخطيط وتقترح الحل الأفضل من جديد.
-            </p>
-
-          </article>
-
-        </div>
-
-      </section>
-
-
-      <!-- =====================================================
-           FINAL CTA
-           ====================================================== -->
-
-      <section class="final-section container">
-
-        <div class="final-card">
-
-          <div class="final-card-content">
-
-            <div
-              class="section-label"
-              data-ar="إمدار"
-              data-en="EMDAR"
-            >
-              إمدار
-            </div>
-
-
-            <h2
-              data-ar="من الإمداد إلى القرار."
-              data-en="From Supply to Decision."
-            >
-              من الإمداد إلى القرار.
-            </h2>
-
-
-            <p
-              data-ar="نكتشف التغيير قبل الهجوم، نحصّن السلسلة قبل التعطل، ونُعيد التخطيط مع تغيّر الواقع."
-              data-en="We detect change before the attack, protect the supply chain before disruption, and re-plan as reality changes."
-            >
-              نكتشف التغيير قبل الهجوم، نحصّن السلسلة قبل التعطل، ونُعيد التخطيط مع تغيّر الواقع.
-            </p>
-
-
-            <a
-              class="button primary"
-              href="https://emdar-supply-shield.base44.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-ar="جرّب النموذج الأولي →"
-              data-en="Try the Prototype →"
-            >
-              جرّب النموذج الأولي →
-            </a>
-
-          </div>
-
-        </div>
+        <a
+          class="button primary"
+          href="https://emdar-supply-shield.base44.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-ar="جرّب النموذج الأولي →"
+          data-en="Try the Prototype →"
+        >
+          جرّب النموذج الأولي →
+        </a>
 
       </section>
 
@@ -2243,55 +1822,51 @@
 
     <!-- =======================================================
          FOOTER
-         ======================================================== -->
+         ======================================================= -->
 
     <footer class="container">
 
-      <div class="footer-inner">
+      <div class="footer-credit">
+
+        <strong
+          data-ar="مصمم ومطور بواسطة"
+          data-en="Designed & Developed by"
+        >
+          مصمم ومطور بواسطة
+        </strong>
+
+        <span class="name">
+          Jawaher Alhoqish
+        </span>
+
+        <br>
+
+        <span>
+          جواهر الهقيش
+        </span>
+
+        ·
+
+        <span
+          data-ar="EMDAR 2026 © جميع الحقوق محفوظة"
+          data-en="EMDAR 2026 © All rights reserved"
+        >
+          EMDAR 2026 © جميع الحقوق محفوظة
+        </span>
+
+      </div>
 
 
-        <div class="footer-credit">
+      <div class="country">
 
-          <span
-            data-ar="تصميم وتطوير بواسطة"
-            data-en="Designed & Developed by"
-          >
-            تصميم وتطوير بواسطة
-          </span>
+        <span class="saudi-dot"></span>
 
-          <strong>
-            <span
-              data-ar="جواهر الهقيش"
-              data-en="Jawaher Alhoqish"
-            >
-              جواهر الهقيش
-            </span>
-          </strong>
-
-        </div>
-
-
-        <div class="footer-right">
-
-          <span
-            data-ar="جميع الحقوق محفوظة"
-            data-en="All rights reserved"
-          >
-            جميع الحقوق محفوظة
-          </span>
-
-          <span> | </span>
-
-          <span
-            data-ar="إمدار"
-            data-en="EMDAR"
-          >
-            إمدار
-          </span>
-
-          <span> 2026 ©</span>
-
-        </div>
+        <span
+          data-ar="صنع في المملكة العربية السعودية"
+          data-en="Made in Saudi Arabia"
+        >
+          صنع في المملكة العربية السعودية
+        </span>
 
       </div>
 
@@ -2302,7 +1877,7 @@
 
   <!-- =========================================================
        JAVASCRIPT
-       ========================================================== -->
+       ========================================================= -->
 
   <script>
 
@@ -2313,70 +1888,52 @@
     const langButton =
       document.getElementById("langButton");
 
-    const langIcon =
-      document.getElementById("langIcon");
-
-    const langText =
-      document.getElementById("langText");
-
-
     let language =
       localStorage.getItem("emdar-language") || "ar";
 
 
-    function applyLanguage(lang) {
+    function updateLanguage() {
 
-      language = lang;
-
-      document.documentElement.lang = lang;
+      document.documentElement.lang = language;
 
       document.documentElement.dir =
-        lang === "ar"
+        language === "ar"
           ? "rtl"
           : "ltr";
 
       document.body.classList.toggle(
-        "ar",
-        lang === "ar"
+        "en",
+        language === "en"
       );
 
 
       document
-        .querySelectorAll(
-          "[data-ar][data-en]"
-        )
+        .querySelectorAll("[data-ar][data-en]")
         .forEach(element => {
 
           element.textContent =
             element.getAttribute(
-              "data-" + lang
+              "data-" + language
             );
 
         });
 
 
-      if (lang === "ar") {
+      langButton.textContent =
+        language === "ar"
+          ? "English →"
+          : "العربية →";
 
-        langIcon.textContent = "EN";
-        langText.textContent = "English";
 
-        document.title =
-          "EMDAR | من الإمداد إلى القرار";
-
-      } else {
-
-        langIcon.textContent = "ع";
-        langText.textContent = "العربية";
-
-        document.title =
-          "EMDAR | From Supply to Decision";
-
-      }
+      document.title =
+        language === "ar"
+          ? "إمدار | من الإمداد إلى القرار"
+          : "EMDAR | From Supply to Decision";
 
 
       localStorage.setItem(
         "emdar-language",
-        lang
+        language
       );
 
     }
@@ -2386,11 +1943,12 @@
       "click",
       () => {
 
-        applyLanguage(
+        language =
           language === "ar"
             ? "en"
-            : "ar"
-        );
+            : "ar";
+
+        updateLanguage();
 
       }
     );
@@ -2406,62 +1964,65 @@
     const themeIcon =
       document.getElementById("themeIcon");
 
-    const themeText =
-      document.getElementById("themeText");
-
 
     let theme =
       localStorage.getItem("emdar-theme") || "dark";
 
 
-    function applyTheme(mode) {
+    function updateTheme() {
 
-      theme = mode;
+      const isLight =
+        theme === "light";
 
       document.body.classList.toggle(
         "light",
-        mode === "light"
+        isLight
       );
 
 
-      if (mode === "light") {
+      themeButton.setAttribute(
+        "aria-label",
+        isLight
+          ? "التبديل إلى الوضع الداكن"
+          : "التبديل إلى الوضع الفاتح"
+      );
 
-        themeIcon.textContent = "☾";
 
-        themeText.textContent =
-          language === "ar"
-            ? "الوضع الداكن"
-            : "Dark Mode";
+      themeButton.setAttribute(
+        "title",
+        isLight
+          ? "الوضع الداكن"
+          : "الوضع الفاتح"
+      );
 
-        document
-          .querySelector('meta[name="theme-color"]')
-          .setAttribute(
-            "content",
-            "#F3F6FB"
-          );
+
+      if (isLight) {
+
+        themeIcon.innerHTML = `
+          <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3
+          6.7 6.7 0 0 0 21 12.8Z"></path>
+        `;
 
       } else {
 
-        themeIcon.textContent = "☼";
-
-        themeText.textContent =
-          language === "ar"
-            ? "الوضع الفاتح"
-            : "Light Mode";
-
-        document
-          .querySelector('meta[name="theme-color"]')
-          .setAttribute(
-            "content",
-            "#0B1F3B"
-          );
+        themeIcon.innerHTML = `
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2"></path>
+          <path d="M12 20v2"></path>
+          <path d="M4.93 4.93l1.41 1.41"></path>
+          <path d="M17.66 17.66l1.41 1.41"></path>
+          <path d="M2 12h2"></path>
+          <path d="M20 12h2"></path>
+          <path d="M4.93 19.07l1.41-1.41"></path>
+          <path d="M17.66 6.34l1.41-1.41"></path>
+        `;
 
       }
 
 
       localStorage.setItem(
         "emdar-theme",
-        mode
+        theme
       );
 
     }
@@ -2471,11 +2032,12 @@
       "click",
       () => {
 
-        applyTheme(
+        theme =
           theme === "dark"
             ? "light"
-            : "dark"
-        );
+            : "dark";
+
+        updateTheme();
 
       }
     );
@@ -2485,9 +2047,8 @@
        INITIALIZE
        ========================================================= */
 
-    applyLanguage(language);
-
-    applyTheme(theme);
+    updateLanguage();
+    updateTheme();
 
   </script>
 
