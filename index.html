@@ -2,13 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <meta name="theme-color" content="#071426">
-  <meta
-    name="description"
-    content="EMDAR | من الإمداد إلى القرار. منصة ذكية لمرونة سلاسل الإمداد والأمن السيبراني."
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>EMDAR | من الإمداد إلى القرار</title>
 
@@ -21,22 +15,20 @@
   >
 
   <style>
-    /* =========================================================
-       EMDAR
-       From Supply to Decision
-       ========================================================= */
+
+    /* =====================================================
+       ROOT
+    ===================================================== */
 
     :root {
       --bg: #071426;
       --bg-soft: #0a1930;
-      --deep: #050d1a;
-
       --card: #0d1d33;
       --card-2: #102640;
 
       --cyan: #5ed6f7;
       --cyan-bright: #00e5ff;
-      --cyan-soft: rgba(94, 214, 247, 0.14);
+      --cyan-soft: rgba(94, 214, 247, 0.13);
 
       --white: #f4f8fc;
       --text: #e9f1f8;
@@ -46,31 +38,17 @@
       --border-cyan: rgba(94, 214, 247, 0.32);
 
       --gold: #d9b978;
-
       --shadow: rgba(0, 0, 0, 0.30);
-
-      --page-glow:
-        radial-gradient(
-          circle at 78% 35%,
-          rgba(0, 229, 255, 0.10),
-          transparent 31%
-        ),
-        radial-gradient(
-          circle at 12% 80%,
-          rgba(57, 126, 191, 0.10),
-          transparent 34%
-        );
     }
 
-    /* =========================================================
+
+    /* =====================================================
        LIGHT MODE
-       ========================================================= */
+    ===================================================== */
 
     body.light {
       --bg: #f4f7fb;
       --bg-soft: #eaf0f7;
-      --deep: #ffffff;
-
       --card: #ffffff;
       --card-2: #edf4fa;
 
@@ -86,25 +64,13 @@
       --border-cyan: rgba(0, 142, 181, 0.28);
 
       --gold: #9b762d;
-
       --shadow: rgba(30, 55, 80, 0.12);
-
-      --page-glow:
-        radial-gradient(
-          circle at 78% 35%,
-          rgba(0, 180, 220, 0.10),
-          transparent 31%
-        ),
-        radial-gradient(
-          circle at 12% 80%,
-          rgba(100, 150, 190, 0.10),
-          transparent 34%
-        );
     }
 
-    /* =========================================================
+
+    /* =====================================================
        RESET
-       ========================================================= */
+    ===================================================== */
 
     * {
       box-sizing: border-box;
@@ -118,15 +84,24 @@
       margin: 0;
       color: var(--text);
       background: var(--bg);
-      font-family: "IBM Plex Sans Arabic", "DM Sans", sans-serif;
+
+      font-family:
+        "IBM Plex Sans Arabic",
+        "DM Sans",
+        sans-serif;
+
       overflow-x: hidden;
+
       transition:
         background 0.35s ease,
         color 0.35s ease;
     }
 
     body.en {
-      font-family: "DM Sans", "IBM Plex Sans Arabic", sans-serif;
+      font-family:
+        "DM Sans",
+        "IBM Plex Sans Arabic",
+        sans-serif;
     }
 
     a {
@@ -134,37 +109,47 @@
       text-decoration: none;
     }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
+    button {
+      font-family: inherit;
     }
 
-    button:focus-visible,
-    a:focus-visible {
-      outline: 3px solid var(--cyan);
-      outline-offset: 4px;
-    }
 
-    /* =========================================================
+    /* =====================================================
        PAGE
-       ========================================================= */
+    ===================================================== */
 
     .page {
       min-height: 100vh;
+
       position: relative;
+
       overflow: hidden;
+
       background:
-        var(--page-glow),
+        radial-gradient(
+          circle at 78% 35%,
+          rgba(0, 229, 255, 0.09),
+          transparent 31%
+        ),
+        radial-gradient(
+          circle at 12% 80%,
+          rgba(57, 126, 191, 0.10),
+          transparent 34%
+        ),
         var(--bg);
+
       transition: background 0.35s ease;
     }
 
     .page::before {
       content: "";
+
       position: absolute;
       inset: 0;
+
       pointer-events: none;
-      opacity: 0.065;
+
+      opacity: 0.055;
 
       background-image:
         linear-gradient(
@@ -178,23 +163,21 @@
         );
 
       background-size: 72px 72px;
-      mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 85%
-      );
     }
 
     .container {
       width: min(1160px, calc(100% - 44px));
+
       margin: auto;
+
       position: relative;
       z-index: 2;
     }
 
-    /* =========================================================
+
+    /* =====================================================
        HEADER
-       ========================================================= */
+    ===================================================== */
 
     header {
       min-height: 88px;
@@ -214,21 +197,18 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 15px;
-      min-width: 0;
-    }
 
-    /*
-      IMPORTANT:
-      No white logo box.
-      The transparent logo is displayed directly.
-    */
+      gap: 15px;
+    }
 
     .logo {
       width: 68px;
       height: 68px;
+
       object-fit: contain;
+
       display: block;
+
       flex-shrink: 0;
     }
 
@@ -238,14 +218,20 @@
 
     .brand-name {
       color: var(--cyan);
+
+      font-family: "DM Sans", sans-serif;
+
       font-size: 18px;
       font-weight: 700;
+
       letter-spacing: 0.18em;
     }
 
     .brand-sub {
       margin-top: 3px;
+
       color: var(--muted);
+
       font-size: 12px;
       white-space: nowrap;
     }
@@ -253,6 +239,7 @@
     .header-actions {
       display: flex;
       align-items: center;
+
       gap: 9px;
     }
 
@@ -273,56 +260,50 @@
 
       transition:
         transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
+        background 0.2s ease;
     }
 
     .icon-button:hover {
       transform: translateY(-2px);
+
       background: rgba(94, 214, 247, 0.18);
-      border-color: var(--cyan);
     }
 
     .icon-button svg {
       width: 19px;
       height: 19px;
+
       stroke: currentColor;
       fill: none;
+
       stroke-width: 1.8;
     }
 
     #langButton {
       min-height: 43px;
 
+      padding: 9px 15px;
+
       border: 1px solid var(--border-cyan);
       border-radius: 30px;
-
-      padding: 9px 15px;
 
       color: var(--text);
       background: var(--cyan-soft);
 
       cursor: pointer;
-      font: inherit;
+
       font-size: 13px;
       font-weight: 600;
-
-      transition:
-        transform 0.2s ease,
-        background 0.2s ease;
     }
 
-    #langButton:hover {
-      transform: translateY(-2px);
-      background: rgba(94, 214, 247, 0.18);
-    }
 
-    /* =========================================================
+    /* =====================================================
        HERO
-       ========================================================= */
+    ===================================================== */
 
     .hero {
       display: grid;
+
       grid-template-columns: 1.04fr 0.96fr;
 
       gap: 35px;
@@ -340,9 +321,11 @@
 
     .eyebrow {
       color: var(--cyan);
+
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+
+      letter-spacing: 0.13em;
     }
 
     .eyebrow::before {
@@ -396,6 +379,7 @@
       color: var(--muted);
 
       font-size: 17px;
+
       line-height: 1.95;
     }
 
@@ -424,8 +408,7 @@
 
       transition:
         transform 0.25s ease,
-        box-shadow 0.25s ease,
-        background 0.25s ease;
+        box-shadow 0.25s ease;
     }
 
     .button:hover {
@@ -434,15 +417,11 @@
 
     .primary {
       color: #04111d;
+
       background: var(--cyan);
 
       box-shadow:
         0 13px 30px rgba(0, 180, 230, 0.18);
-    }
-
-    .primary:hover {
-      box-shadow:
-        0 18px 38px rgba(0, 180, 230, 0.28);
     }
 
     .secondary {
@@ -453,10 +432,6 @@
       background: var(--cyan-soft);
     }
 
-    .secondary:hover {
-      background: rgba(94, 214, 247, 0.16);
-    }
-
     .small-note {
       margin: 14px 0 0;
 
@@ -465,14 +440,13 @@
       font-size: 12px;
     }
 
-    /* =========================================================
-       HERO VISUAL
+
+    /* =====================================================
+       VISUAL
        
-       VERY IMPORTANT:
-       The RINGS rotate.
-       The text/chips DO NOT rotate.
-       The chips are outside the rotating elements.
-       ========================================================= */
+       IMPORTANT:
+       EVERYTHING IS STATIC EXCEPT THE SMALL DOTS.
+    ===================================================== */
 
     .visual {
       height: 450px;
@@ -496,7 +470,7 @@
       background:
         radial-gradient(
           circle,
-          rgba(0, 229, 255, 0.20),
+          rgba(0, 229, 255, 0.18),
           transparent 66%
         );
 
@@ -505,10 +479,10 @@
       z-index: -3;
     }
 
-    /*
-      This is the STATIC visual base.
-      It does not rotate.
-    */
+
+    /* =====================================================
+       STATIC VISUAL CORE
+    ===================================================== */
 
     .visual-core {
       width: 370px;
@@ -520,11 +494,56 @@
       place-items: center;
     }
 
-    /*
-      ONLY THIS LAYER ROTATES.
-    */
 
-    .rotating-rings {
+    /* =====================================================
+       STATIC RINGS
+       
+       NO ROTATION HERE.
+    ===================================================== */
+
+    .ring {
+      position: absolute;
+
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .ring.outer {
+      inset: 5px;
+
+      border:
+        1px solid
+        rgba(94, 214, 247, 0.28);
+
+      box-shadow:
+        inset 0 0 55px rgba(94, 214, 247, 0.035);
+    }
+
+    .ring.middle {
+      inset: 47px;
+
+      border:
+        1px dashed
+        rgba(94, 214, 247, 0.28);
+    }
+
+    .ring.inner {
+      inset: 105px;
+
+      border:
+        1px solid
+        rgba(94, 214, 247, 0.22);
+    }
+
+
+    /* =====================================================
+       MOVING DOT ORBITS
+       
+       ONLY THESE MOVE.
+    ===================================================== */
+
+    .dot-orbit {
       position: absolute;
 
       inset: 0;
@@ -532,54 +551,29 @@
       pointer-events: none;
 
       animation:
-        ringRotate 42s linear infinite;
-
-      transform-origin: center;
+        orbitSpin 18s linear infinite;
     }
 
-    .ring-outer {
-      position: absolute;
-
-      inset: 5px;
-
-      border:
-        1px solid
-        rgba(94, 214, 247, 0.28);
-
-      border-radius: 50%;
-
-      box-shadow:
-        inset 0 0 55px rgba(94, 214, 247, 0.035);
+    .dot-orbit.slow {
+      animation-duration: 25s;
     }
 
-    .ring-middle {
-      position: absolute;
-
-      inset: 47px;
-
-      border:
-        1px dashed
-        rgba(94, 214, 247, 0.28);
-
-      border-radius: 50%;
+    .dot-orbit.fast {
+      animation-duration: 14s;
+      animation-direction: reverse;
     }
 
-    .ring-inner {
-      position: absolute;
 
-      inset: 105px;
+    /*
+      The dot itself is attached to the orbit.
 
-      border:
-        1px solid
-        rgba(94, 214, 247, 0.22);
+      The orbit rotates.
+      The ring does NOT rotate.
+      The text does NOT rotate.
+      The logo does NOT rotate.
+    */
 
-      border-radius: 50%;
-
-      animation:
-        innerRotate 27s linear infinite;
-    }
-
-    .orbit-dot {
+    .moving-dot {
       position: absolute;
 
       width: 8px;
@@ -590,30 +584,43 @@
       background: var(--cyan);
 
       box-shadow:
-        0 0 18px var(--cyan);
+        0 0 7px var(--cyan),
+        0 0 18px rgba(0, 229, 255, 0.75);
     }
 
-    .orbit-dot.one {
-      top: 8%;
-      right: 22%;
+    .dot-orbit.outer-dot .moving-dot {
+      top: 4px;
+      left: 50%;
+
+      transform: translateX(-50%);
     }
 
-    .orbit-dot.two {
-      bottom: 17%;
-      left: 17%;
+    .dot-orbit.middle-dot .moving-dot {
+      top: 46px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      width: 6px;
+      height: 6px;
     }
 
-    .orbit-dot.three {
-      top: 53%;
-      right: 4%;
+    .dot-orbit.inner-dot .moving-dot {
+      top: 104px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
       width: 5px;
       height: 5px;
     }
 
-    /*
-      CENTER IS STATIC.
-      It does NOT rotate.
-    */
+
+    /* =====================================================
+       STATIC CENTER LOGO
+       
+       NO ROTATION.
+    ===================================================== */
 
     .center-core {
       width: 128px;
@@ -647,9 +654,7 @@
         0 0 0 14px rgba(94, 214, 247, 0.045),
         0 0 55px rgba(0, 210, 255, 0.25);
 
-      z-index: 4;
-
-      animation: centerPulse 4s ease-in-out infinite;
+      z-index: 10;
     }
 
     .center-core img {
@@ -661,18 +666,13 @@
       display: block;
     }
 
-    /*
-      ===========================================================
-      STATIC CHIPS
-      ===========================================================
-      
-      IMPORTANT:
-      NO rotation.
-      NO movement.
-      NO transform animation.
-      
-      They remain readable while the rings move behind them.
-    */
+
+    /* =====================================================
+       STATIC TEXT CHIPS
+       
+       NO TRANSFORM
+       NO ANIMATION
+    ===================================================== */
 
     .chip {
       position: absolute;
@@ -697,11 +697,11 @@
       box-shadow:
         0 14px 30px var(--shadow);
 
-      z-index: 8;
+      z-index: 20;
 
       /*
-        NO animation here.
-        NO transform here.
+        IMPORTANT:
+        NOTHING MOVES HERE.
       */
     }
 
@@ -777,13 +777,35 @@
       color: var(--cyan);
     }
 
-    /* =========================================================
+
+    /* =====================================================
+       ORBIT ANIMATION
+       
+       THIS IS THE ONLY ANIMATION.
+    ===================================================== */
+
+    @keyframes orbitSpin {
+
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+
+    }
+
+
+    /* =====================================================
        STATS
-       ========================================================= */
+    ===================================================== */
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
 
       gap: 20px;
 
@@ -798,7 +820,8 @@
     }
 
     .stat:not(:last-child) {
-      border-inline-end: 1px solid var(--border);
+      border-inline-end:
+        1px solid var(--border);
     }
 
     .stat strong {
@@ -807,7 +830,6 @@
       color: var(--cyan);
 
       font-size: 27px;
-
       font-weight: 700;
     }
 
@@ -817,9 +839,10 @@
       font-size: 13px;
     }
 
-    /* =========================================================
+
+    /* =====================================================
        SECTION
-       ========================================================= */
+    ===================================================== */
 
     .section {
       padding: 78px 0 70px;
@@ -852,7 +875,8 @@
     .cards {
       display: grid;
 
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns:
+        repeat(3, 1fr);
 
       gap: 14px;
     }
@@ -863,8 +887,7 @@
       padding: 25px;
 
       border:
-        1px solid
-        var(--border);
+        1px solid var(--border);
 
       border-radius: 19px;
 
@@ -884,7 +907,8 @@
     .card:hover {
       transform: translateY(-6px);
 
-      border-color: var(--border-cyan);
+      border-color:
+        var(--border-cyan);
 
       box-shadow:
         0 18px 40px var(--shadow);
@@ -928,9 +952,10 @@
       line-height: 1.9;
     }
 
-    /* =========================================================
+
+    /* =====================================================
        CTA
-       ========================================================= */
+    ===================================================== */
 
     .cta {
       margin: 10px auto 80px;
@@ -940,8 +965,7 @@
       text-align: center;
 
       border:
-        1px solid
-        var(--border-cyan);
+        1px solid var(--border-cyan);
 
       border-radius: 26px;
 
@@ -976,9 +1000,10 @@
       margin-top: 24px;
     }
 
-    /* =========================================================
+
+    /* =====================================================
        FOOTER
-       ========================================================= */
+    ===================================================== */
 
     footer {
       display: flex;
@@ -1004,11 +1029,13 @@
 
     .footer-credit strong {
       color: var(--text);
+
       font-weight: 600;
     }
 
     .footer-credit .name {
       color: var(--cyan);
+
       font-weight: 700;
     }
 
@@ -1032,67 +1059,23 @@
         0 0 13px var(--cyan);
     }
 
-    /* =========================================================
-       ANIMATIONS
-       
-       ONLY RINGS MOVE.
-       TEXT DOES NOT MOVE.
-       ========================================================= */
 
-    @keyframes ringRotate {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    @keyframes innerRotate {
-      from {
-        transform: rotate(0deg);
-      }
-
-      to {
-        transform: rotate(-360deg);
-      }
-    }
-
-    @keyframes centerPulse {
-      0%,
-      100% {
-        box-shadow:
-          0 0 0 14px rgba(94, 214, 247, 0.045),
-          0 0 55px rgba(0, 210, 255, 0.25);
-      }
-
-      50% {
-        box-shadow:
-          0 0 0 22px rgba(94, 214, 247, 0.025),
-          0 0 78px rgba(0, 210, 255, 0.34);
-      }
-    }
-
-    /* =========================================================
+    /* =====================================================
        RESPONSIVE
-       ========================================================= */
+    ===================================================== */
 
     @media (max-width: 900px) {
+
       .hero {
         grid-template-columns: 1fr;
+
         min-height: auto;
 
         padding-top: 42px;
       }
 
-      .hero-copy {
-        max-width: 760px;
-      }
-
       .visual {
         height: 420px;
-        margin-top: 5px;
       }
 
       .visual-core {
@@ -1111,11 +1094,18 @@
       .chip.three {
         right: -3%;
       }
+
     }
 
+
     @media (max-width: 650px) {
+
       .container {
-        width: min(100% - 30px, 1160px);
+        width:
+          min(
+            100% - 30px,
+            1160px
+          );
       }
 
       header {
@@ -1146,20 +1136,33 @@
 
       #langButton {
         min-height: 38px;
+
         padding: 7px 10px;
+
         font-size: 11px;
       }
 
       .hero {
-        padding: 33px 0 42px;
+        padding:
+          33px 0 42px;
       }
 
       h1 {
-        font-size: clamp(38px, 10vw, 52px);
+        font-size:
+          clamp(
+            38px,
+            10vw,
+            52px
+          );
       }
 
       body:not(.en) h1 {
-        font-size: clamp(36px, 9.4vw, 49px);
+        font-size:
+          clamp(
+            36px,
+            9.4vw,
+            49px
+          );
       }
 
       .description {
@@ -1193,17 +1196,28 @@
         height: 69px;
       }
 
-      .ring-middle {
+      .ring.middle {
         inset: 35px;
       }
 
-      .ring-inner {
+      .ring.inner {
         inset: 78px;
+      }
+
+      .dot-orbit.middle-dot .moving-dot {
+        top: 34px;
+      }
+
+      .dot-orbit.inner-dot .moving-dot {
+        top: 77px;
       }
 
       .chip {
         min-width: 116px;
-        padding: 9px 10px;
+
+        padding:
+          9px 10px;
+
         border-radius: 12px;
       }
 
@@ -1244,60 +1258,69 @@
 
       .stat span {
         font-size: 9px;
-        line-height: 1.5;
       }
 
       .cards {
         grid-template-columns: 1fr;
       }
 
-      .card {
-        min-height: auto;
-      }
-
       .section {
-        padding: 65px 0 55px;
+        padding:
+          65px 0 55px;
       }
 
       .cta {
         margin-bottom: 60px;
-        padding: 36px 22px;
+
+        padding:
+          36px 22px;
       }
 
       footer {
         flex-direction: column;
+
         align-items: flex-start;
       }
+
     }
 
+
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+
+      .dot-orbit {
         animation: none !important;
-        transition: none !important;
+      }
+
+      * {
         scroll-behavior: auto !important;
       }
+
     }
+
   </style>
 </head>
+
 
 <body>
 
   <div class="page">
 
-    <!-- =======================================================
+
+    <!-- ===================================================
          HEADER
-         ======================================================= -->
+    =================================================== -->
 
     <header class="container">
 
-      <a href="#" class="brand" aria-label="EMDAR Home">
+      <a
+        href="#"
+        class="brand"
+      >
 
         <img
           class="logo"
           src="EMDAR_colored_transparent.png"
-          alt="EMDAR logo"
+          alt="EMDAR"
         >
 
         <div class="brand-copy">
@@ -1318,42 +1341,41 @@
 
       </a>
 
-      <div class="header-actions">
 
-        <!-- Dark / Light -->
+      <div class="header-actions">
 
         <button
           id="themeButton"
           class="icon-button"
           type="button"
           aria-label="تغيير المظهر"
-          title="تغيير المظهر"
         >
 
           <svg
             id="themeIcon"
             viewBox="0 0 24 24"
-            aria-hidden="true"
           >
             <circle cx="12" cy="12" r="4"></circle>
+
             <path d="M12 2v2"></path>
             <path d="M12 20v2"></path>
+
             <path d="M4.93 4.93l1.41 1.41"></path>
             <path d="M17.66 17.66l1.41 1.41"></path>
+
             <path d="M2 12h2"></path>
             <path d="M20 12h2"></path>
+
             <path d="M4.93 19.07l1.41-1.41"></path>
             <path d="M17.66 6.34l1.41-1.41"></path>
           </svg>
 
         </button>
 
-        <!-- Language -->
 
         <button
           id="langButton"
           type="button"
-          aria-label="تغيير اللغة"
         >
           English →
         </button>
@@ -1363,15 +1385,19 @@
     </header>
 
 
-    <!-- =======================================================
+    <!-- ===================================================
          MAIN
-         ======================================================= -->
+    =================================================== -->
 
     <main>
 
-      <!-- HERO -->
+
+      <!-- =================================================
+           HERO
+      ================================================= -->
 
       <section class="hero container">
+
 
         <div class="hero-copy">
 
@@ -1452,12 +1478,11 @@
         </div>
 
 
-        <!-- ===================================================
-             VISUAL
+        <!-- =================================================
+             ANIMATED VISUAL
              
-             RINGS MOVE
-             CHIPS DON'T MOVE
-             =================================================== -->
+             ONLY DOTS MOVE.
+        ================================================= -->
 
         <div
           class="visual"
@@ -1469,25 +1494,46 @@
 
           <div class="visual-core">
 
-            <!-- ONLY THIS PART ROTATES -->
 
-            <div class="rotating-rings">
+            <!-- ================================
+                 STATIC RINGS
+            ================================= -->
 
-              <div class="ring-outer"></div>
+            <div class="ring outer"></div>
 
-              <div class="ring-middle"></div>
+            <div class="ring middle"></div>
 
-              <div class="ring-inner"></div>
+            <div class="ring inner"></div>
 
 
-              <span class="orbit-dot one"></span>
-              <span class="orbit-dot two"></span>
-              <span class="orbit-dot three"></span>
+            <!-- ================================
+                 ONLY THESE DOTS MOVE
+            ================================= -->
+
+            <div class="dot-orbit outer-dot">
+
+              <span class="moving-dot"></span>
 
             </div>
 
 
-            <!-- STATIC CENTER -->
+            <div class="dot-orbit middle-dot slow">
+
+              <span class="moving-dot"></span>
+
+            </div>
+
+
+            <div class="dot-orbit inner-dot fast">
+
+              <span class="moving-dot"></span>
+
+            </div>
+
+
+            <!-- ================================
+                 STATIC CENTER LOGO
+            ================================= -->
 
             <div class="center-core">
 
@@ -1499,7 +1545,9 @@
             </div>
 
 
-            <!-- STATIC TEXT -->
+            <!-- ================================
+                 STATIC CHIPS
+            ================================= -->
 
             <div class="chip one">
 
@@ -1558,6 +1606,7 @@
 
             </div>
 
+
           </div>
 
         </div>
@@ -1565,9 +1614,9 @@
       </section>
 
 
-      <!-- =====================================================
+      <!-- =================================================
            STATS
-           ===================================================== -->
+      ================================================= -->
 
       <section class="stats container">
 
@@ -1615,9 +1664,9 @@
       </section>
 
 
-      <!-- =====================================================
+      <!-- =================================================
            INNOVATION
-           ===================================================== -->
+      ================================================= -->
 
       <section
         id="innovation"
@@ -1642,6 +1691,7 @@
 
 
         <div class="cards">
+
 
           <article class="card">
 
@@ -1768,6 +1818,7 @@
 
           </article>
 
+
         </div>
 
 
@@ -1782,9 +1833,9 @@
       </section>
 
 
-      <!-- =====================================================
+      <!-- =================================================
            CTA
-           ===================================================== -->
+      ================================================= -->
 
       <section class="cta container">
 
@@ -1820,9 +1871,9 @@
     </main>
 
 
-    <!-- =======================================================
+    <!-- ===================================================
          FOOTER
-         ======================================================= -->
+    =================================================== -->
 
     <footer class="container">
 
@@ -1872,18 +1923,19 @@
 
     </footer>
 
+
   </div>
 
 
-  <!-- =========================================================
+  <!-- =====================================================
        JAVASCRIPT
-       ========================================================= -->
+  ===================================================== -->
 
   <script>
 
-    /* =========================================================
+    /* =====================================================
        LANGUAGE
-       ========================================================= */
+    ===================================================== */
 
     const langButton =
       document.getElementById("langButton");
@@ -1894,7 +1946,8 @@
 
     function updateLanguage() {
 
-      document.documentElement.lang = language;
+      document.documentElement.lang =
+        language;
 
       document.documentElement.dir =
         language === "ar"
@@ -1908,7 +1961,9 @@
 
 
       document
-        .querySelectorAll("[data-ar][data-en]")
+        .querySelectorAll(
+          "[data-ar][data-en]"
+        )
         .forEach(element => {
 
           element.textContent =
@@ -1954,9 +2009,9 @@
     );
 
 
-    /* =========================================================
-       DARK / LIGHT MODE
-       ========================================================= */
+    /* =====================================================
+       DARK / LIGHT
+    ===================================================== */
 
     const themeButton =
       document.getElementById("themeButton");
@@ -1966,7 +2021,8 @@
 
 
     let theme =
-      localStorage.getItem("emdar-theme") || "dark";
+      localStorage.getItem("emdar-theme") ||
+      "dark";
 
 
     function updateTheme() {
@@ -1974,25 +2030,10 @@
       const isLight =
         theme === "light";
 
+
       document.body.classList.toggle(
         "light",
         isLight
-      );
-
-
-      themeButton.setAttribute(
-        "aria-label",
-        isLight
-          ? "التبديل إلى الوضع الداكن"
-          : "التبديل إلى الوضع الفاتح"
-      );
-
-
-      themeButton.setAttribute(
-        "title",
-        isLight
-          ? "الوضع الداكن"
-          : "الوضع الفاتح"
       );
 
 
@@ -2007,12 +2048,16 @@
 
         themeIcon.innerHTML = `
           <circle cx="12" cy="12" r="4"></circle>
+
           <path d="M12 2v2"></path>
           <path d="M12 20v2"></path>
+
           <path d="M4.93 4.93l1.41 1.41"></path>
           <path d="M17.66 17.66l1.41 1.41"></path>
+
           <path d="M2 12h2"></path>
           <path d="M20 12h2"></path>
+
           <path d="M4.93 19.07l1.41-1.41"></path>
           <path d="M17.66 6.34l1.41-1.41"></path>
         `;
@@ -2043,9 +2088,9 @@
     );
 
 
-    /* =========================================================
-       INITIALIZE
-       ========================================================= */
+    /* =====================================================
+       INIT
+    ===================================================== */
 
     updateLanguage();
     updateTheme();
